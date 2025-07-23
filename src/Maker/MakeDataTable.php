@@ -142,7 +142,10 @@ EOF
             $this->generateController($entityClassNameDetails, $templatePath, $generator, $io);
         }
 
-        // 5. Résultats
+        // 5. Écrire tous les changements (requis par MakerBundle récent)
+        $generator->writeChanges();
+
+        // 6. Résultats
         $this->displayResults($io, $entityShortName, $templatePath, $input->getOption('controller'));
     }
 
