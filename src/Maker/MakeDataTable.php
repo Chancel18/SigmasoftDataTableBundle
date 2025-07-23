@@ -235,17 +235,21 @@ EOF
         // Champs simples
         foreach ($metadata->getFieldNames() as $fieldName) {
             $fieldMapping = $metadata->getFieldMapping($fieldName);
-            $type = $this->mapDoctrineTypeToDataTableType($fieldMapping['type']);
+            
+            // Convertir FieldMapping en array si nécessaire (compatibilité Doctrine)
+            $fieldMappingArray = $this->normalizeFieldMapping($fieldMapping);
+            
+            $type = $this->mapDoctrineTypeToDataTableType($fieldMappingArray['type']);
 
             $fields[$fieldName] = [
                 'type' => $type,
                 'label' => $this->generateFieldLabel($fieldName),
-                'sortable' => $this->isFieldSortable($fieldMapping),
-                'searchable' => $this->isFieldSearchable($fieldMapping),
+                'sortable' => $this->isFieldSortable($fieldMappingArray),
+                'searchable' => $this->isFieldSearchable($fieldMappingArray),
             ];
 
             // Configuration spécifique selon le type
-            $fields[$fieldName] = array_merge($fields[$fieldName], $this->getTypeSpecificConfig($fieldMapping));
+            $fields[$fieldName] = array_merge($fields[$fieldName], $this->getTypeSpecificConfig($fieldMappingArray));
 
             $io->text(sprintf('  ✅ <info>%s</info> → %s (%s)', 
                 $fieldName, 
@@ -563,5 +567,47 @@ EOF
         }
         
         return $word . 's';
+    }
+
+    /**
+     * Normalise le FieldMapping pour compatibilité entre versions Doctrine
+     */
+    private function normalizeFieldMapping($fieldMapping): array
+    {
+        // Si c'est déjà un array, on le retourne tel quel
+        if (is_array($fieldMapping)) {
+            return $fieldMapping;
+        }
+
+        // Si c'est un objet FieldMapping (Doctrine récent), on le convertit
+        if (is_object($fieldMapping)) {
+            $normalized = [];
+            
+            // Propriétés essentielles du FieldMapping
+            $normalized['type'] = $fieldMapping->type ?? 'string';
+            $normalized['fieldName'] = $fieldMapping->fieldName ?? '';
+            $normalized['length'] = $fieldMapping->length ?? null;
+            $normalized['nullable'] = $fieldMapping->nullable ?? true;
+            $normalized['unique'] = $fieldMapping->unique ?? false;
+            
+            // Autres propriétés possibles
+            if (property_exists($fieldMapping, 'precision')) {
+                $normalized['precision'] = $fieldMapping->precision;
+            }
+            if (property_exists($fieldMapping, 'scale')) {
+                $normalized['scale'] = $fieldMapping->scale;
+            }
+            
+            return $normalized;
+        }
+
+        // Fallback si ni array ni objet reconnu
+        return [
+            'type' => 'string',
+            'fieldName' => '',
+            'length' => null,
+            'nullable' => true,
+            'unique' => false
+        ];
     }
 }
