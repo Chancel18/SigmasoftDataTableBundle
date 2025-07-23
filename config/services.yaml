@@ -35,11 +35,9 @@ services:
         tags:
             - { name: maker.command }
 
-    # Event Subscribers
+    # Event Subscribers (auto-configurés via attributs AsDoctrineListener)
     Sigmasoft\DataTableBundle\EventListener\RealtimeUpdateSubscriber:
-        tags:
-            - { name: kernel.event_listener, event: 'sigmasoft_datatable.after_load', method: 'onAfterLoad' }
-            - { name: kernel.event_listener, event: 'sigmasoft_datatable.after_delete', method: 'onAfterDelete' }
+        # Pas de tags nécessaires - utilise les attributs #[AsDoctrineListener]
 
     # Value Formatter
     Sigmasoft\DataTableBundle\Service\ValueFormatter:
