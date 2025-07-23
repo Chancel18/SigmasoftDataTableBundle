@@ -1,6 +1,0 @@
-# Configuration automatique des composants Twig pour SigmasoftDataTableBundle
-twig_component:
-    defaults:
-        Sigmasoft\DataTableBundle\Twig\Components\:
-            name_prefix: 'Sigmasoft'
-            template_directory: '@SigmasoftDataTable/components'

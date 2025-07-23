@@ -11,7 +11,10 @@
       "Bash(git commit:*)",
       "Bash(mkdir:*)",
       "Bash(gh:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "WebFetch(domain:symfony.com)",
+      "Bash(cp:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }

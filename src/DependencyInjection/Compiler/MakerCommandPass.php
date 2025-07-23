@@ -7,12 +7,16 @@ namespace Sigmasoft\DataTableBundle\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class MakerCommandPass implements CompilerPassInterface
+/**
+ * Compiler pass pour enregistrer conditionnellement la commande Maker
+ */
+final class MakerCommandPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        // Si MakerBundle n'est pas disponible, supprimer le service MakeDataTable
+        // Vérifier si MakerBundle est disponible
         if (!class_exists('Symfony\Bundle\MakerBundle\MakerBundle')) {
+            // Supprimer la définition de la commande Maker si MakerBundle n'est pas installé
             if ($container->hasDefinition('Sigmasoft\DataTableBundle\Maker\MakeDataTable')) {
                 $container->removeDefinition('Sigmasoft\DataTableBundle\Maker\MakeDataTable');
             }

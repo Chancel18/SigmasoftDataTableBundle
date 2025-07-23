@@ -1,0 +1,50 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    # Services principaux
+    Sigmasoft\DataTableBundle\Service\:
+        resource: '../src/Service'
+        public: false
+
+    # Configuration Manager avec injection des paramètres
+    Sigmasoft\DataTableBundle\Service\ConfigurationManager:
+        arguments:
+            $globalConfig: '%sigmasoft_data_table.global_config%'
+            $entitiesConfig: '%sigmasoft_data_table.entities%'
+            $templates: '%sigmasoft_data_table.templates%'
+
+    # Service principal DataTable
+    Sigmasoft\DataTableBundle\Service\DataTableServiceInterface:
+        alias: Sigmasoft\DataTableBundle\Service\DataTableService
+
+    # Composant Twig
+    Sigmasoft\DataTableBundle\Twig\Components\SigmasoftDataTableComponent:
+        arguments:
+            $dataTableService: '@Sigmasoft\DataTableBundle\Service\DataTableServiceInterface'
+            $configurationManager: '@Sigmasoft\DataTableBundle\Service\ConfigurationManager'
+            $realtimeService: '@Sigmasoft\DataTableBundle\Service\RealtimeUpdateService'
+        tags:
+            - { name: twig.component, key: 'SigmasoftDataTable' }
+
+    # Commande Maker (conditionnelle)
+    Sigmasoft\DataTableBundle\Maker\MakeDataTable:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        tags:
+            - { name: maker.command }
+
+    # Event Subscribers
+    Sigmasoft\DataTableBundle\EventListener\RealtimeUpdateSubscriber:
+        tags:
+            - { name: kernel.event_listener, event: 'sigmasoft_datatable.after_load', method: 'onAfterLoad' }
+            - { name: kernel.event_listener, event: 'sigmasoft_datatable.after_delete', method: 'onAfterDelete' }
+
+    # Value Formatter
+    Sigmasoft\DataTableBundle\Service\ValueFormatter:
+        public: false
+
+    # Realtime Update Service
+    Sigmasoft\DataTableBundle\Service\RealtimeUpdateService:
+        public: false
