@@ -1,5 +1,56 @@
 # CHANGELOG - SigmasoftDataTableBundle
 
+## v1.3.6 (23/07/2025) - 🔧 CORRECTIFS CRITIQUES
+
+### 🐛 **CORRECTIONS MAJEURES**
+
+#### Détection d'Entités Améliorée
+- **[FIX]** Résolution multiple des noms d'entités dans MakeDataTable.php
+- **[ENHANCED]** Support des noms courts (User) et complets (App\Entity\User)
+- **[CASE-INSENSITIVE]** Recherche insensible à la casse pour les entités
+- **[INTERACTIVE]** Mode interactif avec liste des entités disponibles
+- **[ERROR-HANDLING]** Messages d'erreur détaillés quand entité non trouvée
+
+#### Compatibilité Doctrine ORM
+- **[CRITICAL-FIX]** Correction erreur FieldMapping vs array avec Doctrine récent
+- **[COMPATIBILITY]** Support Doctrine ORM 2.x (arrays) et 3.x (objets FieldMapping)
+- **[NORMALIZE]** Méthode normalizeFieldMapping() pour conversion automatique
+- **[CROSS-VERSION]** Gestion transparente des différentes versions Doctrine
+
+### 🛠️ **MÉTHODES AJOUTÉES**
+
+```php
+// Résolution intelligente des entités
+private function resolveEntityClass(string $input, array $choices): ?string
+{
+    // Support nom court, complet, et insensible à la casse
+}
+
+// Normalisation FieldMapping pour compatibilité
+private function normalizeFieldMapping($fieldMapping): array
+{
+    // Conversion objet FieldMapping -> array si nécessaire
+}
+```
+
+### ⚡ **AMÉLIORATIONS COMMANDE MAKER**
+
+- **[UX]** Interface interactive améliorée avec listing des entités
+- **[DEBUG]** Messages d'erreur plus informatifs
+- **[ROBUST]** Gestion d'erreurs renforcée pour cas edge
+- **[PERFORMANCE]** Optimisation de la détection des entités
+
+### 🔍 **RÉSOLUTION DE BUGS**
+
+| Problème | Solution |
+|----------|----------|
+| "Entité User non trouvée" | Résolution multiple avec noms courts/complets |
+| "FieldMapping must be array" | Normalisation automatique objets/arrays |
+| Mode interactif vide | Affichage explicite des entités disponibles |
+| Erreurs de type Doctrine | Support cross-version transparent |
+
+---
+
 ## v1.3.0 (23/07/2025) - 🚀 GÉNÉRATION AUTOMATIQUE
 
 ### 🛠️ NOUVELLE COMMANDE MAKER SYMFONY
