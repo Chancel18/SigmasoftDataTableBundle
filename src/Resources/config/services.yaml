@@ -11,11 +11,24 @@ services:
 
     Sigmasoft\DataTableBundle\Service\DataTableService:
         arguments:
-            $allowedEntities: '%sigmasoft_data_table.allowed_entities%'
+            $allowedEntities: '%sigmasoft_data_table.entities%'
+
+    Sigmasoft\DataTableBundle\Service\ConfigurationManager:
+        arguments:
+            $globalConfig: '%sigmasoft_data_table.global_config%'
+            $entitiesConfig: '%sigmasoft_data_table.entities%'
+            $templates: '%sigmasoft_data_table.templates%'
 
     Sigmasoft\DataTableBundle\Service\ValueFormatter:
         arguments:
-            $defaultConfig: '%sigmasoft_data_table.default_config%'
+            $defaultConfig: '%sigmasoft_data_table.global_config%'
+
+    Sigmasoft\DataTableBundle\Service\RealtimeUpdateService:
+        arguments:
+            $hub: '@?Symfony\Component\Mercure\HubInterface'
+            $twig: '@twig'
+            $mercureEnabled: false
+            $turboEnabled: false
 
     Sigmasoft\DataTableBundle\Twig\Components\SigmasoftDataTableComponent:
         tags:

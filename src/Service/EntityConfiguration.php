@@ -19,7 +19,12 @@ class EntityConfiguration
 
     public function getLabel(): string
     {
-        return $this->config['label'] ?? class_basename($this->entityClass);
+        return $this->config['label'] ?? $this->getClassBasename($this->entityClass);
+    }
+
+    private function getClassBasename(string $className): string
+    {
+        return basename(str_replace('\\', '/', $className));
     }
 
     public function getFields(): array

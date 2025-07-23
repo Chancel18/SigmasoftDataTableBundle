@@ -12,11 +12,11 @@ use Twig\Environment;
 class RealtimeUpdateService
 {
     public function __construct(
-        private readonly HubInterface $hub,
-        private readonly Environment $twig,
         private readonly ConfigurationManager $configurationManager,
-        private readonly bool $mercureEnabled = true,
-        private readonly bool $turboEnabled = true
+        private readonly ?HubInterface $hub = null,
+        private readonly ?Environment $twig = null,
+        private readonly bool $mercureEnabled = false,
+        private readonly bool $turboEnabled = false
     ) {}
 
     public function broadcastDataTableUpdate(
@@ -33,12 +33,12 @@ class RealtimeUpdateService
         }
 
         // Générer l'update Turbo Stream
-        if ($realtimeConfig['turbo_streams'] && $this->turboEnabled) {
+        if ($realtimeConfig['turbo_streams'] && $this->turboEnabled && $this->twig !== null) {
             $this->broadcastTurboStream($entityClass, $eventType, $data, $context);
         }
 
         // Publier via Mercure
-        if ($realtimeConfig['mercure'] && $this->mercureEnabled) {
+        if ($realtimeConfig['mercure'] && $this->mercureEnabled && $this->hub !== null) {
             $this->publishMercureUpdate($entityClass, $eventType, $data, $context, $realtimeConfig);
         }
     }
