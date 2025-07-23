@@ -335,6 +335,12 @@ final class SigmasoftDataTableComponent
         ];
     }
 
+    #[ExposeInTemplate('currentSort')]
+    public function getCurrentSortForTemplate(): array
+    {
+        return $this->getCurrentSort();
+    }
+
     #[LiveAction]
     public function refreshData(): void
     {

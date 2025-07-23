@@ -1,0 +1,517 @@
+{# Template principal du composant DataTable avec Bootstrap intégré #}
+<div{{ attributes.defaults({
+    'class': 'sigmasoft-datatable',
+    'data-live-component': 'SigmasoftDataTableComponent',
+    'data-turbo-permanent': true
+}) }}>
+    
+    {# Alerts et messages d'erreur #}
+    {% if this.hasErrors %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h6 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Erreurs détectées</h6>
+            <ul class="mb-0">
+                {% for error in this.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    {% endif %}
+
+    {# Message d'alerte contextuel #}
+    {% if this.showAlertMessage %}
+        <div class="alert alert-{{ this.alertType }} alert-dismissible fade show" role="alert">
+            {% if this.alertType == 'success' %}
+                <i class="fas fa-check-circle"></i>
+            {% elseif this.alertType == 'info' %}
+                <i class="fas fa-info-circle"></i>
+            {% elseif this.alertType == 'warning' %}
+                <i class="fas fa-exclamation-triangle"></i>
+            {% else %}
+                <i class="fas fa-times-circle"></i>
+            {% endif %}
+            {{ this.alertMessage }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    {% endif %}
+
+    {# En-tête avec recherche et actions #}
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                <i class="fas fa-table"></i> 
+                {{ this.config.label ?? 'Données' }}
+                {% if this.items %}
+                    <span class="badge bg-secondary ms-2">{{ this.items.totalCount }} élément(s)</span>
+                {% endif %}
+            </h5>
+
+            <div class="d-flex gap-2">
+                {# Actualisation manuelle #}
+                {% if this.realtimeConfig.enabled %}
+                    <button type="button" 
+                            class="btn btn-outline-secondary btn-sm"
+                            data-action="live#action" 
+                            data-live-action-param="refreshData"
+                            title="Actualiser">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    
+                    <button type="button" 
+                            class="btn btn-outline-{{ this.autoRefresh ? 'success' : 'secondary' }} btn-sm"
+                            data-action="live#action" 
+                            data-live-action-param="toggleAutoRefresh"
+                            title="Auto-actualisation">
+                        <i class="fas fa-{{ this.autoRefresh ? 'pause' : 'play' }}"></i>
+                    </button>
+                {% endif %}
+
+                {# Export si activé #}
+                {% if this.config.isExportEnabled %}
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary btn-sm dropdown-toggle" 
+                                type="button" 
+                                data-bs-toggle="dropdown">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for format in this.config.exportConfig.formats ?? ['csv'] %}
+                                <li>
+                                    <a class="dropdown-item" 
+                                       href="#"
+                                       data-action="live#action" 
+                                       data-live-action-param="export" 
+                                       data-live-format-param="{{ format }}">
+                                        <i class="fas fa-file-{{ format == 'xlsx' ? 'excel' : 'csv' }}"></i> 
+                                        {{ format|upper }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {# Barre de recherche et filtres #}
+        {% if this.config.isSearchEnabled or this.config.filters|length > 0 %}
+            <div class="card-body border-bottom">
+                <div class="row g-3">
+                    {# Recherche globale #}
+                    {% if this.config.isSearchEnabled %}
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control" 
+                                       placeholder="Rechercher..."
+                                       data-model="inputSearch"
+                                       data-action="keyup.enter->live#action"
+                                       data-live-action-param="search"
+                                       value="{{ this.inputSearch }}">
+                                {% if this.inputSearch %}
+                                    <button class="btn btn-outline-secondary" 
+                                            type="button"
+                                            data-action="live#action" 
+                                            data-live-action-param="clearSearch">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {# Filtres rapides #}
+                    {% if this.filters|length > 0 %}
+                        <div class="col-md-6">
+                            <div class="d-flex gap-2 flex-wrap">
+                                {% for key, value in this.filters if key != '_sort' %}
+                                    <span class="badge bg-primary">
+                                        {{ key }}: {{ value }}
+                                        <button type="button" 
+                                                class="btn-close btn-close-white ms-1"
+                                                data-action="live#action" 
+                                                data-live-action-param="applyFilter"
+                                                data-live-field-param="{{ key }}"
+                                                data-live-value-param=""></button>
+                                    </span>
+                                {% endfor %}
+                                {% if this.filters|length > 1 %}
+                                    <button class="btn btn-sm btn-outline-secondary"
+                                            data-action="live#action" 
+                                            data-live-action-param="clearFilters">
+                                        <i class="fas fa-eraser"></i> Tout effacer
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+        {# Tableau de données principal #}
+        <div class="card-body p-0">
+            {% if this.items and this.items.items|length > 0 %}
+                
+                {# Actions groupées si activées #}
+                {% if this.config.areBulkActionsEnabled and this.config.bulkActions|length > 0 %}
+                    <div class="d-flex justify-content-between align-items-center p-3 bg-light border-bottom">
+                        <div>
+                            <span class="text-muted">
+                                <span data-live-prop="selectedItems">{{ this.selectedItems|length }}</span> élément(s) sélectionné(s)
+                            </span>
+                        </div>
+                        <div>
+                            {% for action, config in this.config.bulkActions %}
+                                <button type="button" 
+                                        class="btn btn-{{ config.variant ?? 'primary' }} btn-sm me-2"
+                                        data-action="live#action" 
+                                        data-live-action-param="bulkAction"
+                                        data-live-action-value="{{ action }}"
+                                        {% if this.selectedItems|length == 0 %}disabled{% endif %}
+                                        {% if config.confirm ?? false %}
+                                            onclick="return confirm('{{ config.confirmMessage ?? 'Êtes-vous sûr ?' }}')"
+                                        {% endif %}>
+                                    {% if config.icon is defined %}
+                                        <i class="fas fa-{{ config.icon }}"></i>
+                                    {% endif %}
+                                    {{ config.label ?? action|title }}
+                                </button>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {# Tableau Bootstrap responsive #}
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0{{ this.config.cssClasses.table ?? '' }}">
+                        <thead class="table-light">
+                            <tr>
+                                {# Case à cocher pour sélection globale #}
+                                {% if this.config.areBulkActionsEnabled %}
+                                    <th style="width: 40px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" 
+                                                   type="checkbox" 
+                                                   id="select-all"
+                                                   onchange="toggleAllSelection(this)">
+                                        </div>
+                                    </th>
+                                {% endif %}
+
+                                {# En-têtes de colonnes avec tri #}
+                                {% for fieldName, fieldConfig in this.config.fields %}
+                                    <th {% if fieldConfig.width is defined %}style="width: {{ fieldConfig.width }}"{% endif %}>
+                                        {% if fieldConfig.sortable ?? false %}
+                                            <a href="#" 
+                                               class="text-decoration-none text-dark d-flex align-items-center justify-content-between"
+                                               data-action="live#action" 
+                                               data-live-action-param="sort"
+                                               data-live-field-param="{{ fieldName }}">
+                                                {{ fieldConfig.label ?? fieldName|title }}
+                                                {% set currentSort = this.currentSort %}
+                                                {% if currentSort.field == fieldName %}
+                                                    <i class="fas fa-sort-{{ currentSort.direction == 'asc' ? 'up' : 'down' }} text-primary ms-1"></i>
+                                                {% else %}
+                                                    <i class="fas fa-sort text-muted ms-1"></i>
+                                                {% endif %}
+                                            </a>
+                                        {% else %}
+                                            {{ fieldConfig.label ?? fieldName|title }}
+                                        {% endif %}
+                                    </th>
+                                {% endfor %}
+
+                                {# Actions individuelles #}
+                                {% if this.config.areActionsEnabled and this.config.actions|length > 0 %}
+                                    <th style="width: 120px;" class="text-center">Actions</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in this.items.items %}
+                                <tr id="datatable-row-{{ item.id ?? loop.index }}"
+                                    class="{{ this.config.cssClasses.row ?? '' }}">
+                                    
+                                    {# Case à cocher pour sélection individuelle #}
+                                    {% if this.config.areBulkActionsEnabled %}
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input item-checkbox" 
+                                                       type="checkbox" 
+                                                       value="{{ item.id ?? loop.index }}"
+                                                       data-model="selectedItems"
+                                                       {% if item.id in this.selectedItems %}checked{% endif %}>
+                                            </div>
+                                        </td>
+                                    {% endif %}
+
+                                    {# Données des colonnes #}
+                                    {% for fieldName, fieldConfig in this.config.fields %}
+                                        <td class="{{ fieldConfig.cssClass ?? '' }}">
+                                            {% set value = this.getValue(item, fieldName) %}
+                                            
+                                            {# Formatage selon le type de champ #}
+                                            {% if fieldConfig.type == 'boolean' %}
+                                                <span class="badge bg-{{ value ? 'success' : 'secondary' }}">
+                                                    <i class="fas fa-{{ value ? 'check' : 'times' }}"></i>
+                                                    {{ value ? 'Oui' : 'Non' }}
+                                                </span>
+                                            {% elseif fieldConfig.type == 'date' or fieldConfig.type == 'datetime' %}
+                                                {% if value %}
+                                                    <span title="{{ value|date('Y-m-d H:i:s') }}">
+                                                        {{ value|date(fieldConfig.format ?? 'd/m/Y') }}
+                                                    </span>
+                                                {% else %}
+                                                    <span class="text-muted">-</span>
+                                                {% endif %}
+                                            {% elseif fieldConfig.type == 'currency' %}
+                                                <span class="text-end d-block">
+                                                    {{ value|number_format(2, ',', ' ') }} €
+                                                </span>
+                                            {% elseif fieldConfig.type == 'email' %}
+                                                {% if value %}
+                                                    <a href="mailto:{{ value }}" class="text-decoration-none">
+                                                        <i class="fas fa-envelope me-1"></i>{{ value }}
+                                                    </a>
+                                                {% else %}
+                                                    <span class="text-muted">-</span>
+                                                {% endif %}
+                                            {% elseif fieldConfig.type == 'url' %}
+                                                {% if value %}
+                                                    <a href="{{ value }}" target="_blank" class="text-decoration-none">
+                                                        <i class="fas fa-external-link-alt me-1"></i>Lien
+                                                    </a>
+                                                {% else %}
+                                                    <span class="text-muted">-</span>
+                                                {% endif %}
+                                            {% elseif fieldConfig.type == 'image' %}
+                                                {% if value %}
+                                                    <img src="{{ value }}" 
+                                                         alt="Image" 
+                                                         class="img-thumbnail" 
+                                                         style="max-width: 50px; max-height: 50px;">
+                                                {% else %}
+                                                    <span class="text-muted">-</span>
+                                                {% endif %}
+                                            {% elseif fieldConfig.type == 'badge' %}
+                                                <span class="badge bg-{{ fieldConfig.badgeColor ?? 'primary' }}">
+                                                    {{ value }}
+                                                </span>
+                                            {% else %}
+                                                {# Texte standard avec gestion de longueur #}
+                                                {% if value|length > (fieldConfig.maxLength ?? 50) %}
+                                                    <span title="{{ value }}">
+                                                        {{ value|slice(0, fieldConfig.maxLength ?? 50) }}...
+                                                    </span>
+                                                {% else %}
+                                                    {{ value ?? '-' }}
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                    {% endfor %}
+
+                                    {# Actions individuelles #}
+                                    {% if this.config.areActionsEnabled and this.config.actions|length > 0 %}
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                {% for action, config in this.config.actions %}
+                                                    {% if action == 'delete' %}
+                                                        <button type="button" 
+                                                                class="btn btn-outline-danger"
+                                                                data-action="live#action" 
+                                                                data-live-action-param="deleteItem"
+                                                                data-live-id-param="{{ item.id ?? loop.index }}"
+                                                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')"
+                                                                title="Supprimer">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    {% elseif action == 'edit' %}
+                                                        <a href="{{ config.route is defined ? path(config.route, {id: item.id}) : '#' }}" 
+                                                           class="btn btn-outline-primary"
+                                                           title="Modifier">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                    {% elseif action == 'view' %}
+                                                        <a href="{{ config.route is defined ? path(config.route, {id: item.id}) : '#' }}" 
+                                                           class="btn btn-outline-info"
+                                                           title="Voir">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                    {% else %}
+                                                        <button type="button" 
+                                                                class="btn btn-outline-{{ config.variant ?? 'secondary' }}"
+                                                                {% if config.action is defined %}
+                                                                    data-action="live#action" 
+                                                                    data-live-action-param="{{ config.action }}"
+                                                                {% endif %}
+                                                                title="{{ config.label ?? action|title }}">
+                                                            {% if config.icon is defined %}
+                                                                <i class="fas fa-{{ config.icon }}"></i>
+                                                            {% else %}
+                                                                {{ config.label ?? action|title }}
+                                                            {% endif %}
+                                                        </button>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            {% else %}
+                {# Aucune donnée trouvée #}
+                <div class="text-center py-5">
+                    <div class="mb-3">
+                        <i class="fas fa-inbox fa-3x text-muted"></i>
+                    </div>
+                    <h5 class="text-muted">Aucune donnée trouvée</h5>
+                    <p class="text-muted">
+                        {% if this.inputSearch %}
+                            Aucun résultat pour "{{ this.inputSearch }}"
+                        {% else %}
+                            Aucun élément à afficher pour le moment
+                        {% endif %}
+                    </p>
+                    {% if this.inputSearch %}
+                        <button class="btn btn-outline-primary"
+                                data-action="live#action" 
+                                data-live-action-param="clearSearch">
+                            <i class="fas fa-times"></i> Effacer la recherche
+                        </button>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+
+        {# Pagination Bootstrap #}
+        {% if this.items and this.items.pageCount > 1 %}
+            <div class="card-footer">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="text-muted">
+                        Affichage de {{ ((this.items.currentPage - 1) * this.items.itemsPerPage + 1) }} 
+                        à {{ min(this.items.currentPage * this.items.itemsPerPage, this.items.totalCount) }} 
+                        sur {{ this.items.totalCount }} éléments
+                    </div>
+                    
+                    <nav aria-label="Pagination">
+                        <ul class="pagination pagination-sm mb-0">
+                            {# Première page #}
+                            <li class="page-item {{ this.items.currentPage == 1 ? 'disabled' : '' }}">
+                                <a class="page-link" 
+                                   href="#"
+                                   data-action="live#action" 
+                                   data-live-action-param="changePage"
+                                   data-live-page-param="1"
+                                   title="Première page">
+                                    <i class="fas fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                            
+                            {# Page précédente #}
+                            <li class="page-item {{ not this.items.hasPreviousPage ? 'disabled' : '' }}">
+                                <a class="page-link" 
+                                   href="#"
+                                   data-action="live#action" 
+                                   data-live-action-param="changePage"
+                                   data-live-page-param="{{ this.items.previousPage }}"
+                                   title="Page précédente">
+                                    <i class="fas fa-angle-left"></i>
+                                </a>
+                            </li>
+
+                            {# Pages numériques #}
+                            {% set startPage = max(1, this.items.currentPage - 2) %}
+                            {% set endPage = min(this.items.pageCount, this.items.currentPage + 2) %}
+                            
+                            {% if startPage > 1 %}
+                                <li class="page-item">
+                                    <a class="page-link" 
+                                       href="#"
+                                       data-action="live#action" 
+                                       data-live-action-param="changePage"
+                                       data-live-page-param="1">1</a>
+                                </li>
+                                {% if startPage > 2 %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+
+                            {% for page in range(startPage, endPage) %}
+                                <li class="page-item {{ page == this.items.currentPage ? 'active' : '' }}">
+                                    <a class="page-link" 
+                                       href="#"
+                                       data-action="live#action" 
+                                       data-live-action-param="changePage"
+                                       data-live-page-param="{{ page }}">{{ page }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {% if endPage < this.items.pageCount %}
+                                {% if endPage < this.items.pageCount - 1 %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                {% endif %}
+                                <li class="page-item">
+                                    <a class="page-link" 
+                                       href="#"
+                                       data-action="live#action" 
+                                       data-live-action-param="changePage"
+                                       data-live-page-param="{{ this.items.pageCount }}">{{ this.items.pageCount }}</a>
+                                </li>
+                            {% endif %}
+                            
+                            {# Page suivante #}
+                            <li class="page-item {{ not this.items.hasNextPage ? 'disabled' : '' }}">
+                                <a class="page-link" 
+                                   href="#"
+                                   data-action="live#action" 
+                                   data-live-action-param="changePage"
+                                   data-live-page-param="{{ this.items.nextPage }}"
+                                   title="Page suivante">
+                                    <i class="fas fa-angle-right"></i>
+                                </a>
+                            </li>
+                            
+                            {# Dernière page #}
+                            <li class="page-item {{ this.items.currentPage == this.items.pageCount ? 'disabled' : '' }}">
+                                <a class="page-link" 
+                                   href="#"
+                                   data-action="live#action" 
+                                   data-live-action-param="changePage"
+                                   data-live-page-param="{{ this.items.pageCount }}"
+                                   title="Dernière page">
+                                    <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {# JavaScript pour la gestion des cases à cocher #}
+    {% if this.config.areBulkActionsEnabled %}
+        <script>
+            function toggleAllSelection(selectAllCheckbox) {
+                const itemCheckboxes = document.querySelectorAll('.item-checkbox');
+                itemCheckboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                    // Déclencher l'événement de changement pour Live Component
+                    checkbox.dispatchEvent(new Event('change'));
+                });
+            }
+        </script>
+    {% endif %}
+</div>
