@@ -44,9 +44,9 @@ final class MakeDataTable extends AbstractMaker
         $command
             ->addArgument('entity-class', InputArgument::OPTIONAL, 'Nom de la classe d\'entité (ex: User)')
             ->addOption('controller', 'c', InputOption::VALUE_NONE, 'Générer aussi le contrôleur CRUD')
-            ->addOption('overwrite', 'o', InputOption::VALUE_NONE, 'Écraser les fichiers existants')
+            ->addOption('overwrite', null, InputOption::VALUE_NONE, 'Écraser les fichiers existants')
             ->addOption('with-actions', 'a', InputOption::VALUE_NONE, 'Inclure les actions CRUD (view, edit, delete)')
-            ->addOption('with-export', 'e', InputOption::VALUE_NONE, 'Inclure les fonctionnalités d\'export')
+            ->addOption('with-export', 'x', InputOption::VALUE_NONE, 'Inclure les fonctionnalités d\'export')
             ->addOption('with-bulk', 'b', InputOption::VALUE_NONE, 'Inclure les actions groupées')
             ->addOption('template-path', 't', InputOption::VALUE_REQUIRED, 'Chemin du template à générer', 'admin/')
             ->setHelp(
@@ -64,6 +64,9 @@ Cela génère :
 
 Options avancées :
 <info>php %command.full_name% User --controller --with-actions --with-export</info>
+
+Avec raccourcis :
+<info>php %command.full_name% User -c -a -x -b</info>
 EOF
             );
 

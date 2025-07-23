@@ -71,6 +71,9 @@ php bin/console list make
 ```bash
 # Génération automatique d'un DataTable
 php bin/console make:datatable User --controller --with-actions --with-export
+
+# Avec raccourcis
+php bin/console make:datatable User -c -a -x -b
 ```
 
 ### Utilisation dans les Templates

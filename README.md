@@ -60,6 +60,9 @@ twig_component:
 ```bash
 # Génération complète en une commande
 php bin/console make:datatable User --controller --with-actions --with-export
+
+# Avec raccourcis (plus rapide)
+php bin/console make:datatable User -c -a -x -b
 ```
 
 ### Utilisation dans le Template

@@ -16,6 +16,9 @@ php bin/console make:datatable User --controller
 
 # Avec toutes les fonctionnalités
 php bin/console make:datatable User --controller --with-actions --with-export --with-bulk
+
+# Équivalent avec raccourcis
+php bin/console make:datatable User -c -a -x -b
 ```
 
 #### Résultat Automatique
@@ -36,8 +39,11 @@ La commande analyse automatiquement votre entité Doctrine et :
 ### Exemple de Génération Complète
 
 ```bash
-# Commande
+# Commande (version longue)
 php bin/console make:datatable Product --controller --with-actions --with-export
+
+# Commande (version courte)
+php bin/console make:datatable Product -c -a -x
 
 # Fichiers générés automatiquement :
 # ✅ config/packages/sigmasoft_data_table.yaml (configuration)
