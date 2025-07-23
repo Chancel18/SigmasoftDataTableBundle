@@ -1,5 +1,64 @@
 # CHANGELOG - SigmasoftDataTableBundle
 
+## v2.0.1 (23/07/2025) - 🔧 PATCH MAKERBUNDLE TEMPLATES
+
+### 🐛 **CORRECTIF CRITIQUE**
+
+#### Résolution Templates MakerBundle
+- **[FIXED]** Erreur "Cannot find template datatable/index.twig" persistante après refactoring v2.0.0
+- **[COMPATIBILITY]** Ajout structure dual pour compatibilité MakerBundle + Bundle moderne
+- **[SKELETON]** Restoration de `src/Resources/skeleton/` pour génération MakerBundle
+- **[DUAL-STRUCTURE]** Maintien templates runtime dans `templates/bundles/` (conforme Symfony 6+)
+
+### 🛠️ **ARCHITECTURE TECHNIQUE**
+
+#### Structure Dual Approach
+```
+Bundle Structure:
+├── templates/bundles/SigmasoftDataTableBundle/    # Templates runtime (Symfony 6+ compliant)
+│   ├── components/                                # Composants Twig Live
+│   └── datatable/                                 # Templates bundle
+└── src/Resources/skeleton/                        # Templates génération MakerBundle
+    └── datatable/                                 # Templates skeleton pour make:datatable
+        ├── index.twig                             # Template skeleton interface
+        └── Controller.tpl.php                     # Template skeleton contrôleur
+```
+
+#### Références Template Corrigées
+```php
+// MakeDataTable.php - Génération
+$generator->generateTemplate($templateFile, 'datatable/index.twig', [...]);
+$generator->generateController($controllerClass, 'datatable/Controller.tpl.php', [...]);
+
+// Runtime - Utilisation des templates @Bundle (inchangé)
+<twig:SigmasoftDataTable entityClass="App\Entity\User" />
+```
+
+### ⚡ **IMPACT & COMPATIBILITÉ**
+
+#### Résolution Immédiate
+- **[RESOLVED]** Commande `make:datatable` pleinement fonctionnelle
+- **[MAINTAINED]** Conformité Symfony 6+ pour structure bundle
+- **[COMPATIBILITY]** Support MakerBundle pour génération code
+- **[NO-BREAKING]** Aucun changement côté utilisateur
+
+#### Standards Respectés
+- ✅ **SemVer** : v2.0.1 (patch fix sur v2.0.0)
+- ✅ **Symfony 6+** : AbstractBundle + templates/bundles/
+- ✅ **MakerBundle** : skeleton/ pour génération
+- ✅ **Backward** : Pas de breaking changes
+
+### 📋 **VALIDATION**
+
+| Fonctionnalité | Status | Test |
+|----------------|--------|------|
+| `make:datatable User` | ✅ Opérationnel | Templates skeleton trouvés |
+| Structure bundle moderne | ✅ Maintenue | templates/bundles/ préservée |
+| Composants Twig Live | ✅ Fonctionnels | @Bundle notation active |
+| Configuration AbstractBundle | ✅ Active | loadExtension() opérationnel |
+
+---
+
 ## v2.0.0 (23/07/2025) - 🚀 REFACTORING MAJEUR SYMFONY 6+
 
 ### 💥 **BREAKING CHANGES**
