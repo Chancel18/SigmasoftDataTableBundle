@@ -1,6 +1,66 @@
 # 📖 Guide d'Utilisation - SigmasoftDataTableBundle
 
-## 🚀 Utilisation Simple du Composant Twig
+## 🚀 NOUVEAU : Génération Automatique avec Maker
+
+### 🛠️ Commande `make:datatable` - Génération Ultra-Rapide
+
+La nouvelle commande Maker permet de générer automatiquement un DataTable complet en analysant vos entités Doctrine.
+
+#### Génération Basique
+```bash
+# Génération automatique complète
+php bin/console make:datatable User
+
+# Avec contrôleur CRUD
+php bin/console make:datatable User --controller
+
+# Avec toutes les fonctionnalités
+php bin/console make:datatable User --controller --with-actions --with-export --with-bulk
+```
+
+#### Résultat Automatique
+- ✅ **Configuration YAML** générée avec auto-détection des champs
+- ✅ **Template Twig** avec composant intégré UNE SEULE LIGNE
+- ✅ **Contrôleur CRUD** avec toutes les actions (optionnel)
+- ✅ **Routes** configurées automatiquement
+
+#### Auto-détection Intelligente
+La commande analyse automatiquement votre entité Doctrine et :
+- 🔍 **Détecte les types** de champs (string, integer, boolean, date, etc.)
+- 🏷️ **Génère les labels** (camelCase → "Title Case")
+- 🔍 **Configure la recherche** (champs string/text automatiquement recherchables)
+- ⬆️⬇️ **Configure le tri** (tous les champs sauf text/json/blob)
+- 🔗 **Gère les relations** (ManyToOne/OneToOne avec champ d'affichage)
+- 🎨 **Applique les formats** (email, url, image détectés par nom)
+
+### Exemple de Génération Complète
+
+```bash
+# Commande
+php bin/console make:datatable Product --controller --with-actions --with-export
+
+# Fichiers générés automatiquement :
+# ✅ config/packages/sigmasoft_data_table.yaml (configuration)
+# ✅ templates/product/index.html.twig (template avec UNE ligne)
+# ✅ src/Controller/ProductController.php (contrôleur CRUD complet)
+```
+
+**Template généré :**
+```twig
+{# templates/product/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>🛍️ Gestion des Produits</h1>
+    
+    {# 🚀 UNE SEULE LIGNE POUR TOUT LE TABLEAU ! #}
+    <twig:SigmasoftDataTableComponent entityClass="App\\Entity\\Product" />
+{% endblock %}
+```
+
+**Résultat immédiat :** Interface Bootstrap professionnelle complète !
+
+## 🎨 Utilisation Simple du Composant Twig
 
 Le composant `SigmasoftDataTableComponent` génère automatiquement un tableau Bootstrap complet sans avoir besoin de coder manuellement l'HTML.
 

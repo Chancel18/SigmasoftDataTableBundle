@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>
+                    <i class="fas fa-table"></i> 
+                    {{ page_title }}
+                </h1>
+                
+                {% if with_controller %}
+                <div class="btn-group" role="group">
+                    <a href="{{ path('{{ entity_name_lower }}_new') }}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Nouveau {{ entity_name }}
+                    </a>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-cog"></i> Options
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-download"></i> Exporter tout</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Configuration</a></li>
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            {# 🚀 COMPOSANT DATATABLE AUTOMATIQUE - UNE SEULE LIGNE ! #}
+            <twig:SigmasoftDataTableComponent entityClass="{{ entity_class_name }}" />
+            
+            {# Alternative avec configuration personnalisée:
+            <twig:SigmasoftDataTableComponent 
+                entityClass="{{ entity_class_name }}" 
+                :overrideConfig="{
+                    'items_per_page': 50,
+                    'enable_search': true,
+                    'enable_sort': true
+                }" />
+            #}
+        </div>
+    </div>
+</div>
+
+{# Styles personnalisés pour cette entité #}
+<style>
+    .{{ entity_name_lower }}-datatable .table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+    }
+    
+    .{{ entity_name_lower }}-datatable .badge {
+        font-size: 0.75em;
+    }
+    
+    .{{ entity_name_lower }}-datatable .btn-group .btn {
+        border-radius: 0.375rem;
+    }
+</style>
+
+{# Scripts personnalisés si nécessaires #}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        // Personnalisations JavaScript pour {{ entity_name }}
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DataTable {{ entity_name }} initialisé');
+            
+            // Exemple: Auto-refresh toutes les 30 secondes
+            // setInterval(() => {
+            //     document.querySelector('[data-live-component="SigmasoftDataTableComponent"]')
+            //         ?.dispatchEvent(new CustomEvent('live:refresh'));
+            // }, 30000);
+        });
+    </script>
+{% endblock %}
+{% endblock %}

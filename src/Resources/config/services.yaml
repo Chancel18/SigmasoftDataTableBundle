@@ -23,3 +23,10 @@ services:
             $templates: '%sigmasoft_data_table.templates%'
         tags:
             - { name: twig.component }
+
+    # Commande Maker pour génération automatique
+    Sigmasoft\DataTableBundle\Maker\MakeDataTable:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        tags:
+            - { name: maker.command }
