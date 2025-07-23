@@ -1,5 +1,69 @@
 # CHANGELOG - SigmasoftDataTableBundle
 
+## v2.0.3 (23/07/2025) - 🔧 CORRECTION COMPILER PASS
+
+### 🐛 **CORRECTIF CRITIQUE**
+
+#### Timing Compiler Pass AbstractBundle
+- **[CRITICAL-FIX]** Erreur "Compiler passes must be registered before container is compiled"
+- **[LIFECYCLE]** Déplacement `MakerCommandPass` de `loadExtension()` vers `preBuild()`
+- **[TIMING]** Respect du lifecycle AbstractBundle pour enregistrement compiler passes
+- **[COMPLIANCE]** Conformité totale aux standards Symfony AbstractBundle
+
+### 🛠️ **ARCHITECTURE TECHNIQUE**
+
+#### Correction Lifecycle Bundle
+```php
+// AVANT (problématique - v2.0.2)
+public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
+{
+    // Configuration + services
+    $builder->addCompilerPass(new MakerCommandPass()); // ❌ Trop tard
+}
+
+// APRÈS (correct - v2.0.3)
+public function preBuild(ContainerBuilder $container): void
+{
+    parent::preBuild($container);
+    $container->addCompilerPass(new MakerCommandPass()); // ✅ Bon timing
+}
+
+public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
+{
+    // Seulement configuration + services ✅
+}
+```
+
+#### Séparation des Responsabilités
+- **[preBuild()]** Enregistrement compiler passes avant compilation
+- **[loadExtension()]** Configuration paramètres et import services
+- **[configure()]** Définition schema configuration (inchangé)
+
+### ⚡ **IMPACT & RÉSOLUTION**
+
+#### Erreur Résolue
+- **[BEFORE]** "You cannot add compiler pass from extension... must be registered before container is compiled"
+- **[AFTER]** Enregistrement compiler pass au moment approprié du lifecycle
+- **[TIMING]** `preBuild()` appelée avant compilation vs `loadExtension()` pendant compilation
+- **[STABILITY]** Bundle s'initialise correctement sans erreur lifecycle
+
+#### Standards Respectés
+- ✅ **AbstractBundle** : Lifecycle methods utilisées correctement
+- ✅ **Symfony 6+** : Conformité pattern moderne
+- ✅ **SemVer** : v2.0.3 (patch fix sur erreur critique)
+- ✅ **Best Practices** : Séparation responsabilités claire
+
+### 📋 **VALIDATION**
+
+| Composant | Avant v2.0.3 | Après v2.0.3 | Status |
+|-----------|---------------|---------------|---------|
+| Bundle Init | ❌ Erreur compiler pass | ✅ Initialisation propre | ✅ Fixé |
+| MakerBundle | ❌ Service non enregistré | ✅ Conditional registration | ✅ Opérationnel |
+| Container | ❌ Compilation échoue | ✅ Compilation réussie | ✅ Stable |
+| Configuration | ✅ Fonctionnelle | ✅ Fonctionnelle | ✅ Maintenue |
+
+---
+
 ## v2.0.2 (23/07/2025) - 🧪 TESTS UNITAIRES & VALIDATION
 
 ### ✅ **TESTS COMPLETS AJOUTÉS**
