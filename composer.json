@@ -80,6 +80,7 @@
         "fakerphp/faker": "^1.24"
     },
     "suggest": {
+        "symfony/maker-bundle": "Pour la commande de génération automatique make:datatable (^1.64)",
         "phpoffice/phpspreadsheet": "Pour l'export Excel/CSV avancé (^2.3)",
         "tecnickcom/tcpdf": "Pour l'export PDF (^6.7)",
         "symfony/cache": "Pour la mise en cache des configurations (^6.3|^7.0)",

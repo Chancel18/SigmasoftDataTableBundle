@@ -200,6 +200,33 @@ class User
 
 ## 🚀 Commandes de Diagnostic
 
+## 🛠️ Problèmes avec la Commande Maker
+
+### 1. "make:datatable not found"
+
+**Error :**
+```
+Command "make:datatable" is not defined.
+```
+
+**Solutions :**
+
+1. **Installer MakerBundle :**
+```bash
+composer require symfony/maker-bundle --dev
+php bin/console cache:clear
+```
+
+2. **Vérifier que la commande est enregistrée :**
+```bash
+php bin/console list make | grep datatable
+```
+
+3. **Si toujours absent, vérifier les services :**
+```bash
+php bin/console debug:container maker.command
+```
+
 ### Vérification de l'Installation
 
 ```bash

@@ -26,6 +26,9 @@ class SigmasoftDataTableExtension extends Extension
 
         // Configuration automatique des composants Twig
         $this->configureTwigComponents($container);
+        
+        // Configuration conditionnelle de la commande Maker
+        $this->configureMakerCommand($container);
     }
 
     private function configureTwigComponents(ContainerBuilder $container): void
@@ -44,6 +47,17 @@ class SigmasoftDataTableExtension extends Extension
             ];
             
             $container->prependExtensionConfig('twig_component', $newConfig);
+        }
+    }
+
+    private function configureMakerCommand(ContainerBuilder $container): void
+    {
+        // Enregistrer la commande Maker seulement si MakerBundle est disponible
+        if (class_exists('Symfony\Bundle\MakerBundle\MakerBundle')) {
+            $definition = $container->register('sigmasoft_data_table.maker.make_data_table', 'Sigmasoft\DataTableBundle\Maker\MakeDataTable')
+                ->setArguments(['@doctrine.orm.entity_manager'])
+                ->addTag('maker.command')
+                ->setAutoconfigured(true);
         }
     }
 }

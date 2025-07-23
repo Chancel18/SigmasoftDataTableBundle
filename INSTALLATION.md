@@ -33,7 +33,15 @@ twig_component:
             template_directory: '@SigmasoftDataTable/components'
 ```
 
-### 4. Configuration du Bundle
+### 4. Installation du MakerBundle (Optionnel)
+
+Pour utiliser la commande de génération automatique :
+
+```bash
+composer require symfony/maker-bundle --dev
+```
+
+### 5. Configuration du Bundle
 
 ```yaml
 # config/packages/sigmasoft_data_table.yaml
@@ -45,6 +53,18 @@ sigmasoft_data_table:
 ```
 
 ## 🛠️ Génération Automatique
+
+### Prérequis pour la Commande Maker
+
+La commande `make:datatable` nécessite `symfony/maker-bundle` :
+
+```bash
+# Si pas encore installé
+composer require symfony/maker-bundle --dev
+
+# Vérifier que la commande est disponible
+php bin/console list make
+```
 
 ### Commande Maker
 
