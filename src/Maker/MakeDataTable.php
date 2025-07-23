@@ -451,12 +451,13 @@ EOF
     {
         $configPath = 'config/packages/sigmasoft_data_table.yaml';
         $yamlContent = Yaml::dump($config, 4, 2);
+        $fullPath = $generator->getRootDirectory() . '/' . $configPath;
 
-        if ($generator->fileExists($configPath)) {
+        if (file_exists($fullPath)) {
             $io->note('Configuration existante trouvée, ajout de l\'entité...');
             
             // Fusionner avec configuration existante
-            $existingConfig = Yaml::parseFile($generator->getRootDirectory() . '/' . $configPath);
+            $existingConfig = Yaml::parseFile($fullPath);
             if (!isset($existingConfig['sigmasoft_data_table']['entities'])) {
                 $existingConfig['sigmasoft_data_table']['entities'] = [];
             }
