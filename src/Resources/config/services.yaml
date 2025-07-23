@@ -18,11 +18,8 @@ services:
             $defaultConfig: '%sigmasoft_data_table.default_config%'
 
     Sigmasoft\DataTableBundle\Twig\Components\SigmasoftDataTableComponent:
-        arguments:
-            $defaultConfig: '%sigmasoft_data_table.default_config%'
-            $templates: '%sigmasoft_data_table.templates%'
         tags:
-            - { name: twig.component }
+            - { name: twig.component, key: 'SigmasoftDataTableComponent' }
 
     # Commande Maker pour génération automatique
     Sigmasoft\DataTableBundle\Maker\MakeDataTable:

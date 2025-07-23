@@ -45,6 +45,17 @@ Générez automatiquement des interfaces DataTable professionnelles avec **UNE S
 composer require sigmasoft/datatable-bundle
 ```
 
+### Configuration Automatique
+Le bundle configure automatiquement les composants Twig. Si vous rencontrez l'erreur "Could not generate a component name", ajoutez :
+
+```yaml
+# config/packages/twig_component.yaml
+twig_component:
+    defaults:
+        Sigmasoft\DataTableBundle\Twig\Components\:
+            name_prefix: 'Sigmasoft'
+```
+
 ### Génération Automatique
 ```bash
 # Génération complète en une commande

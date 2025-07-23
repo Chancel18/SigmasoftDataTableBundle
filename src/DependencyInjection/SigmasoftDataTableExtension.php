@@ -23,5 +23,27 @@ class SigmasoftDataTableExtension extends Extension
         $container->setParameter('sigmasoft_data_table.global_config', $config['global_config'] ?? []);
         $container->setParameter('sigmasoft_data_table.entities', $config['entities'] ?? []);
         $container->setParameter('sigmasoft_data_table.templates', $config['templates'] ?? []);
+
+        // Configuration automatique des composants Twig
+        $this->configureTwigComponents($container);
+    }
+
+    private function configureTwigComponents(ContainerBuilder $container): void
+    {
+        // Enregistrer automatiquement le namespace des composants Twig
+        if ($container->hasExtension('twig_component')) {
+            $twigComponentConfig = $container->getExtensionConfig('twig_component');
+            
+            // Ajouter le namespace Sigmasoft\DataTableBundle aux defaults
+            $newConfig = [
+                'defaults' => [
+                    'Sigmasoft\\DataTableBundle\\Twig\\Components\\' => [
+                        'name_prefix' => 'Sigmasoft'
+                    ]
+                ]
+            ];
+            
+            $container->prependExtensionConfig('twig_component', $newConfig);
+        }
     }
 }
