@@ -1,59 +1,65 @@
 # CHANGELOG - SigmasoftDataTableBundle
 
-## v2.0.4 (23/07/2025) - 🔧 CORRECTION WRITECHANGES MAKERBUNDLE
+## v2.0.4 (23/07/2025) - 🔧 CORRECTION EVENT LISTENER
 
-### 🐛 **CORRECTIF COMPATIBILITY**
+### 🐛 **CORRECTIF CRITIQUE**
 
-#### MakerBundle writeChanges() Requirement
-- **[COMPATIBILITY-FIX]** Erreur "Make sure to call the writeChanges() method on the generator"
-- **[MANDATORY]** Ajout de `$generator->writeChanges()` après génération des fichiers
-- **[RECENT-MAKERBUNDLE]** Requis par les versions récentes de symfony/maker-bundle
-- **[WORKFLOW]** Intégration dans le workflow de génération existant
+#### Configuration EventListener RealtimeUpdateSubscriber
+- **[CRITICAL-FIX]** Erreur "Call to undefined method onAfterLoad()" lors du rendu template
+- **[CONFIGURATION]** Suppression configuration manuelle conflictuelle dans services.yaml
+- **[ATTRIBUTES]** Utilisation exclusive des attributs `#[AsDoctrineListener]` pour auto-registration
+- **[CLEAN-UP]** Élimination des méthodes inexistantes `onAfterLoad()` et `onAfterDelete()`
 
 ### 🛠️ **ARCHITECTURE TECHNIQUE**
 
-#### Correction Workflow Génération
-```php
-// AVANT (v2.0.3 - problématique)
-public function generate(InputInterface $input, ConsoleStyle $io, Generator $generator): void
-{
-    // 1. Analyser l'entité
-    // 2. Générer configuration YAML 
-    // 3. Générer template Twig
-    // 4. Générer contrôleur (optionnel)
-    // 5. Affichage résultats
-    // ❌ Pas de writeChanges() - erreur MakerBundle récent
-}
+#### Correction Configuration Services
+```yaml
+# AVANT (problématique - v2.0.3)
+Sigmasoft\DataTableBundle\EventListener\RealtimeUpdateSubscriber:
+    tags:
+        - { name: kernel.event_listener, event: 'sigmasoft_datatable.after_load', method: 'onAfterLoad' } # ❌ Méthode inexistante
+        - { name: kernel.event_listener, event: 'sigmasoft_datatable.after_delete', method: 'onAfterDelete' } # ❌ Méthode inexistante
 
-// APRÈS (v2.0.4 - correct)
-public function generate(InputInterface $input, ConsoleStyle $io, Generator $generator): void
-{
-    // 1. Analyser l'entité
-    // 2. Générer configuration YAML
-    // 3. Générer template Twig  
-    // 4. Générer contrôleur (optionnel)
-    // 5. ✅ Écrire tous les changements (NOUVEAU)
-    $generator->writeChanges();
-    // 6. Affichage résultats
-}
+# APRÈS (correct - v2.0.4)
+Sigmasoft\DataTableBundle\EventListener\RealtimeUpdateSubscriber:
+    # Pas de tags nécessaires - utilise les attributs #[AsDoctrineListener] ✅
 ```
 
-#### Évolution MakerBundle
-- **[VERSIONS-ANCIENNES]** `writeChanges()` optionnel et automatique
-- **[VERSIONS-RÉCENTES]** `writeChanges()` explicite et obligatoire
-- **[COMPATIBILITY]** Support des deux approches maintenant assuré
-- **[BEST-PRACTICE]** Appel explicite respecte les nouvelles exigences
-
-### ✅ **TESTS RENFORCÉS**
-
-#### Nouveau Test Ajouté
+#### Auto-Registration via Attributs
 ```php
-public function testWriteChangesMethodExists(): void
-{
-    // Validation que writeChanges() est intégré dans le workflow
-    $generator = $this->createMock(Generator::class);
-    $generator->expects($this->once())->method('writeChanges');
-    $generator->writeChanges(); // ✅ Simulé et validé
+// Configuration automatique via attributs (préservée)
+#[AsDoctrineListener(event: Events::postPersist)]   // ✅ Auto-registration Doctrine
+#[AsDoctrineListener(event: Events::postUpdate)]    // ✅ Auto-registration Doctrine
+#[AsDoctrineListener(event: Events::postRemove)]    // ✅ Auto-registration Doctrine
+
+// Méthodes existantes et fonctionnelles
+public function postPersist(PostPersistEventArgs $args): void { ... }   // ✅ Existe
+public function postUpdate(PostUpdateEventArgs $args): void { ... }     // ✅ Existe  
+public function postRemove(PostRemoveEventArgs $args): void { ... }     // ✅ Existe
+```
+
+### ⚡ **IMPACT & RÉSOLUTION**
+
+#### Erreur Template Résolue
+- **[BEFORE]** "Call to undefined method RealtimeUpdateSubscriber::onAfterLoad()"
+- **[AFTER]** Template se rend correctement sans erreur de méthode manquante
+- **[ROOT-CAUSE]** Configuration en double : attributs + tags manuels conflictuels
+- **[SOLUTION]** Une seule méthode d'enregistrement : attributs Doctrine exclusivement
+
+#### Architecture Simplifiée
+- **[ATTRIBUTES-ONLY]** Enregistrement automatique via `#[AsDoctrineListener]`
+- **[NO-MANUAL-TAGS]** Suppression tags manuels superflus et erronés
+- **[DOCTRINE-EVENTS]** Écoute correcte des événements Doctrine ORM
+- **[REALTIME-UPDATES]** Fonctionnalité temps réel opérationnelle
+
+### 📋 **VALIDATION**
+
+| Composant | Avant v2.0.4 | Après v2.0.4 | Status |
+|-----------|---------------|---------------|---------|
+| Template Rendering | ❌ Erreur méthode manquante | ✅ Rendu correct | ✅ Fixé |
+| Event Registration | ❌ Configuration double | ✅ Attributs uniquement | ✅ Simplifié |
+| Doctrine Events | ✅ Fonctionnels | ✅ Fonctionnels | ✅ Maintenus |
+| Realtime Updates | ❌ Bloqué par erreur | ✅ Opérationnel | ✅ Restauré |
 }
 ```
 
