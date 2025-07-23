@@ -1,5 +1,38 @@
 # CHANGELOG - SigmasoftDataTableBundle
 
+## v1.3.7 (23/07/2025) - 🔧 CORRECTION MAKERBUNDLE
+
+### 🐛 **CORRECTION CRITIQUE**
+
+#### Méthode Dépréciée MakerBundle
+- **[CRITICAL-FIX]** Correction erreur "fileExists" méthode non trouvée dans Generator
+- **[COMPATIBILITY]** Remplacement `$generator->fileExists()` par `file_exists()` natif
+- **[UPGRADE]** Support des versions récentes de symfony/maker-bundle
+- **[YAML-MERGE]** Maintien de la logique de fusion des configurations existantes
+
+### 🛠️ **CHANGEMENTS TECHNIQUES**
+
+```php
+// AVANT (dépréciée)
+if ($generator->fileExists($configPath)) {
+    // logique...
+}
+
+// APRÈS (compatible)
+$fullPath = $generator->getRootDirectory() . '/' . $configPath;
+if (file_exists($fullPath)) {
+    // logique...
+}
+```
+
+### ⚡ **IMPACT**
+
+- **[RESOLVED]** Erreur "Attempted to call undefined method fileExists" corrigée
+- **[STABLE]** Commande `make:datatable` fonctionnelle sur toutes versions MakerBundle
+- **[BACKWARD]** Compatibilité maintenue avec configurations existantes
+
+---
+
 ## v1.3.6 (23/07/2025) - 🔧 CORRECTIFS CRITIQUES
 
 ### 🐛 **CORRECTIONS MAJEURES**
