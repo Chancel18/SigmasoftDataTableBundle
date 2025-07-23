@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="h3 mb-0">
+                        <i class="fas fa-table me-2"></i>
+                        {{ page_title }}
+                    </h1>
+                    
+                    {% if with_controller %}
+                        <div class="d-flex gap-2">
+                            <a href="{{ path(entity_name_lower ~ '_new') }}" class="btn btn-primary">
+                                <i class="fas fa-plus me-1"></i>
+                                Nouveau {{ entity_name }}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="card shadow-sm">
+                    <div class="card-body p-0">
+                        {# 🚀 COMPOSANT DATATABLE - UNE SEULE LIGNE POUR TOUT LE TABLEAU ! #}
+                        <twig:SigmasoftDataTable entityClass="{{ entity_class_name }}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+        }
+        
+        .btn-group-sm > .btn {
+            font-size: 0.8rem;
+        }
+        
+        .table th {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+        }
+        
+        .badge {
+            font-size: 0.75em;
+        }
+        
+        .datatable-container {
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .pagination .page-link {
+            border-radius: 0.25rem;
+            margin: 0 2px;
+        }
+        
+        .search-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+        
+        .search-container .form-control {
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        // Initialisation des tooltips Bootstrap
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+{% endblock %}

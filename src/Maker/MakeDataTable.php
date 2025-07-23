@@ -480,7 +480,7 @@ EOF
 
         $generator->generateTemplate(
             $templateFile,
-            '@SigmasoftDataTableBundle/datatable/index.twig',
+            'datatable/index.twig',
             [
                 'entity_name' => $entityName,
                 'entity_name_lower' => strtolower($entityName),
@@ -506,7 +506,7 @@ EOF
 
         $generator->generateController(
             $controllerClassNameDetails->getFullName(),
-            '@SigmasoftDataTableBundle/datatable/Controller.tpl.php',
+            'datatable/Controller.tpl.php',
             [
                 'entity_full_class_name' => $entityClassNameDetails->getFullName(),
                 'entity_class_name' => $entityClassNameDetails->getShortName(),
