@@ -80,11 +80,19 @@ EOF
         }
 
         $argument = $command->getDefinition()->getArgument('entity-class');
-
         $entities = $this->getEntityChoices();
 
+        // Afficher les entités disponibles
+        $shortNames = array_filter($entities, fn($e) => !str_contains($e, '\\'));
+        if (!empty($shortNames)) {
+            $io->section('📋 Entités Doctrine disponibles:');
+            $io->listing($shortNames);
+        } else {
+            $io->warning('⚠️  Aucune entité Doctrine trouvée. Assurez-vous d\'avoir créé au moins une entité avec doctrine:make:entity');
+        }
+
         $question = new Question($argument->getDescription());
-        $question->setAutocompleterValues($entities);
+        $question->setAutocompleterValues($shortNames ?: $entities);
 
         $value = $io->askQuestion($question);
 
@@ -93,13 +101,28 @@ EOF
 
     public function generate(InputInterface $input, ConsoleStyle $io, Generator $generator): void
     {
+        $entityInput = $input->getArgument('entity-class');
+        $entityChoices = $this->getEntityChoices();
+        
+        // Résoudre l'entité (accepter nom court ou complet)
+        $resolvedEntity = $this->resolveEntityClass($entityInput, $entityChoices);
+        
+        if (!$resolvedEntity) {
+            $io->error(sprintf(
+                'Entité "%s" non trouvée. Entités disponibles: %s',
+                $entityInput,
+                implode(', ', array_filter($entityChoices, fn($e) => !str_contains($e, '\\')))
+            ));
+            return;
+        }
+
         $entityClassNameDetails = $generator->createClassNameDetails(
-            Validator::entityExists($input->getArgument('entity-class'), $this->getEntityChoices()),
+            $this->getShortClassName($resolvedEntity),
             'Entity\\'
         );
 
-        $entityClass = $entityClassNameDetails->getFullName();
-        $entityShortName = $entityClassNameDetails->getShortName();
+        $entityClass = $resolvedEntity;
+        $entityShortName = $this->getShortClassName($resolvedEntity);
 
         $io->title(sprintf('🚀 Génération DataTable pour %s', $entityShortName));
 
@@ -135,9 +158,58 @@ EOF
     {
         $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();
 
-        return array_map(function (ClassMetadata $classMetadata) {
-            return $classMetadata->getName();
-        }, $metadata);
+        $choices = [];
+        foreach ($metadata as $classMetadata) {
+            $fullName = $classMetadata->getName();
+            $shortName = $this->getShortClassName($fullName);
+            
+            // Ajouter le nom complet
+            $choices[] = $fullName;
+            
+            // Ajouter aussi le nom court pour faciliter l'utilisation
+            if ($shortName !== $fullName) {
+                $choices[] = $shortName;
+            }
+        }
+
+        return array_unique($choices);
+    }
+
+    private function getShortClassName(string $fullClassName): string
+    {
+        $parts = explode('\\', $fullClassName);
+        return end($parts);
+    }
+
+    private function resolveEntityClass(string $input, array $choices): ?string
+    {
+        // Si l'input correspond exactement à un choix
+        if (in_array($input, $choices, true)) {
+            return $input;
+        }
+
+        // Chercher par nom court
+        foreach ($choices as $choice) {
+            if ($this->getShortClassName($choice) === $input) {
+                return $choice;
+            }
+        }
+
+        // Chercher avec App\Entity\ comme préfixe
+        $withAppEntity = 'App\\Entity\\' . $input;
+        if (in_array($withAppEntity, $choices, true)) {
+            return $withAppEntity;
+        }
+
+        // Recherche insensible à la casse
+        $inputLower = strtolower($input);
+        foreach ($choices as $choice) {
+            if (strtolower($this->getShortClassName($choice)) === $inputLower) {
+                return $choice;
+            }
+        }
+
+        return null;
     }
 
     private function analyzeEntity(string $entityClass): ClassMetadata
