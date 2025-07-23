@@ -154,6 +154,7 @@ EOF
         );
     }
 
+
     private function getEntityChoices(): array
     {
         $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();
@@ -478,9 +479,11 @@ EOF
         $templatePath = trim($input->getOption('template-path'), '/') . '/';
         $templateFile = $templatePath . strtolower($entityName) . '/index.html.twig';
 
+        $skeletonPath = __DIR__ . '/../Resources/skeleton/datatable/index.twig';
+        
         $generator->generateTemplate(
             $templateFile,
-            'datatable/index.twig',
+            $skeletonPath,
             [
                 'entity_name' => $entityName,
                 'entity_name_lower' => strtolower($entityName),
@@ -504,9 +507,11 @@ EOF
             'Controller'
         );
 
+        $controllerSkeletonPath = __DIR__ . '/../Resources/skeleton/datatable/Controller.tpl.php';
+        
         $generator->generateController(
             $controllerClassNameDetails->getFullName(),
-            'datatable/Controller.tpl.php',
+            $controllerSkeletonPath,
             [
                 'entity_full_class_name' => $entityClassNameDetails->getFullName(),
                 'entity_class_name' => $entityClassNameDetails->getShortName(),
