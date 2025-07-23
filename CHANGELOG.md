@@ -1,5 +1,97 @@
 # CHANGELOG - SigmasoftDataTableBundle
 
+## v2.0.0 (23/07/2025) - 🚀 REFACTORING MAJEUR SYMFONY 6+
+
+### 💥 **BREAKING CHANGES**
+
+#### Modernisation Bundle Structure
+- **[BREAKING]** Migration de `Bundle` vers `AbstractBundle` (standard Symfony 6+)
+- **[BREAKING]** Suppression de `src/Resources/` (structure dépréciée)
+- **[BREAKING]** Templates déplacés vers `templates/bundles/SigmasoftDataTableBundle/`
+- **[BREAKING]** Suppression des classes Extension manuelles
+- **[BREAKING]** Configuration intégrée directement dans le bundle
+
+#### Changements de Structure
+```diff
+- src/Resources/views/components/ → templates/bundles/SigmasoftDataTableBundle/components/
+- src/Resources/skeleton/ → templates/bundles/SigmasoftDataTableBundle/datatable/
+- src/DependencyInjection/Extension.php → loadExtension() dans AbstractBundle
+- 'datatable/index.twig' → '@SigmasoftDataTableBundle/datatable/index.twig'
+```
+
+### ✅ **NOUVELLES FONCTIONNALITÉS**
+
+#### Configuration Moderne
+- **[NEW]** `DefinitionConfigurator` pour configuration bundle native
+- **[NEW]** `ContainerConfigurator` pour injection services moderne
+- **[NEW]** Auto-configuration complète des services avec type hints
+- **[NEW]** Configuration YAML intégrée avec validation schema
+
+#### Templates Standards
+- **[NEW]** Structure `templates/bundles/` conforme aux standards Symfony
+- **[NEW]** Namespacing correct avec notation `@Bundle`
+- **[NEW]** Templates skeleton modernisés avec Bootstrap 5
+- **[NEW]** Support complet template inheritance
+
+### 🔧 **CORRECTIONS CRITIQUES**
+
+#### Erreurs Template Résolues
+- **[FIXED]** "Cannot find template datatable/index.twig" - Template créé dans structure moderne
+- **[FIXED]** Références template incorrectes - Notation @Bundle standardisée
+- **[FIXED]** Structure Resources dépréciée - Migration complète vers AbstractBundle
+- **[FIXED]** Configuration Extension complexe - Simplifiée avec loadExtension()
+
+### 🛠️ **AMÉLIORATIONS TECHNIQUES**
+
+#### Conformité Standards Symfony
+```php
+// AVANT (déprécié)
+class SigmasoftDataTableBundle extends Bundle
+{
+    public function build(ContainerBuilder $container): void { ... }
+    public function getContainerExtension(): Extension { ... }
+}
+
+// APRÈS (moderne)
+class SigmasoftDataTableBundle extends AbstractBundle
+{
+    public function configure(DefinitionConfigurator $definition): void { ... }
+    public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void { ... }
+}
+```
+
+#### Services Modernisés
+- **[ENHANCED]** Auto-wiring complet avec types stricts
+- **[ENHANCED]** Configuration services YAML simplifiée
+- **[ENHANCED]** Injection dépendances type-safe
+- **[ENHANCED]** Compiler passes optimisés
+
+### 📊 **RESPECT STANDARDS OFFICIELS**
+
+| Composant | Avant | Après | Status |
+|-----------|-------|-------|---------|
+| Bundle Structure | Bundle (déprécité) | AbstractBundle | ✅ Conforme |
+| Templates | src/Resources/ | templates/bundles/ | ✅ Conforme |
+| Configuration | Extension manuelle | loadExtension() | ✅ Conforme |
+| Services | Définition manuelle | Auto-configuration | ✅ Conforme |
+| Namespacing | Chemins directs | @Bundle notation | ✅ Conforme |
+
+### 🚀 **MIGRATION GUIDE**
+
+#### Pour les utilisateurs existants:
+1. **Templates** : Aucun changement côté utilisation
+2. **Configuration** : Même syntaxe YAML
+3. **Composants** : Même utilisation `<twig:SigmasoftDataTable>`
+4. **Commandes** : `make:datatable` inchangée
+
+#### Avantages immédiats:
+- ✅ **Compatibilité** : 100% conforme Symfony 6+ officiel
+- ✅ **Performance** : Configuration native plus rapide
+- ✅ **Maintenabilité** : Code plus propre et moderne
+- ✅ **Évolutivité** : Structure pérenne pour futures versions
+
+---
+
 ## v1.3.7 (23/07/2025) - 🔧 CORRECTION MAKERBUNDLE
 
 ### 🐛 **CORRECTION CRITIQUE**

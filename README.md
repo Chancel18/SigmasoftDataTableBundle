@@ -45,11 +45,12 @@ Générez automatiquement des interfaces DataTable professionnelles avec **UNE S
 composer require sigmasoft/datatable-bundle
 ```
 
-### 🔧 Corrections Récentes (v1.3.6)
-- ✅ **Détection d'entités** : Support noms courts/complets (User ↔ App\Entity\User)
-- ✅ **Compatibilité Doctrine** : Support ORM 2.x/3.x (FieldMapping objet/array)
-- ✅ **Mode interactif** : Liste automatique des entités disponibles
-- ✅ **Messages d'erreur** : Diagnostic détaillé des problèmes de détection
+### 🚀 **NOUVEAU v2.0.0** - Refactoring Majeur Symfony 6+
+- ✅ **Structure moderne** : Migration vers AbstractBundle (standard officiel)
+- ✅ **Templates conformes** : Structure `templates/bundles/` avec notation @Bundle
+- ✅ **Configuration native** : DefinitionConfigurator intégré
+- ✅ **100% conforme** : Respect total des standards Symfony officiels
+- ✅ **Breaking changes** : Voir [CHANGELOG.md](CHANGELOG.md) pour migration
 
 ### Configuration Automatique
 Le bundle configure automatiquement les composants Twig. Si vous rencontrez l'erreur "Could not generate a component name", ajoutez :
