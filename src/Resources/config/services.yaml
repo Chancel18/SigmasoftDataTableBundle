@@ -34,5 +34,10 @@ services:
         tags:
             - { name: twig.component, key: 'SigmasoftDataTable' }
 
-    # Note: La commande Maker est enregistrée conditionnellement dans l'Extension
-    # si symfony/maker-bundle est disponible
+    # Commande Maker pour génération automatique (conditionnelle)
+    Sigmasoft\DataTableBundle\Maker\MakeDataTable:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        tags:
+            - { name: maker.command }
+        autoconfigure: true
