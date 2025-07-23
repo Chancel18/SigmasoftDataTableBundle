@@ -1,0 +1,37 @@
+{# templates/components/datatable/table_content.html.twig #}
+<div class="table-responsive" data-loading="addClass(opacity-50)">
+    <table class="table table-striped table-hover align-middle" role="table">
+        <thead class="table-light">
+            <tr role="row">
+                {% for field, label in fields %}
+                    {% include '@components/datatable/sortable_header.html.twig' with {
+                        field: field,
+                        label: label,
+                        currentHeader: this.currentHeader,
+                        currentDirection: this.currentDirection
+                    } %}
+                {% endfor %}
+                {% if withActions %}
+                    <th scope="col" class="text-center" style="width: 120px;">
+                        <span class="visually-hidden">Actions</span>
+                        Actions
+                    </th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% if this.items and this.items|length > 0 %}
+                {% for item in this.items %}
+                    {% include '@components/datatable/table_row.html.twig' with {
+                        item: item,
+                        fields: fields,
+                        withActions: withActions,
+                        loop: loop
+                    } %}
+                {% endfor %}
+            {% else %}
+                {% include '@components/datatable/empty_state.html.twig' %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>

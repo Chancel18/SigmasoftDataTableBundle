@@ -1,0 +1,24 @@
+{# templates/components/SigmasoftDataTableComponent.html.twig #}
+<div{{ attributes }} class="sigmasoft-datatable">
+    {% if this.hasErrors %}
+        {% include '@components/datatable/error_alerts.html.twig' with { errors: this.errors } %}
+    {% endif %}
+
+    {% embed '@components/card_default.html.twig' with { 
+        enable_footer: this.items and this.items.pageCount > 1, 
+        enable_header: this.enableSearchField 
+    } %}
+        {% block header %}
+            {% include '@components/datatable/header_filters.html.twig' %}
+        {% endblock %}
+
+        {% block body %}
+            {% include '@components/datatable/alert_message.html.twig' %}
+            {% include '@components/datatable/table_content.html.twig' %}
+        {% endblock %}
+
+        {% block footer %}
+            {% include '@components/datatable/pagination.html.twig' %}
+        {% endblock %}
+    {% endembed %}
+</div>

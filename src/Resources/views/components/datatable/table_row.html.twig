@@ -1,0 +1,16 @@
+{# templates/components/datatable/table_row.html.twig #}
+<tr role="row" {% if loop.index is odd %}class="table-row-odd"{% endif %}>
+    {% for field in fields|keys %}
+        <td>
+            {% set value = this.getValue(item, field) %}
+            {% if field in badgeColumns %}
+                {% include '@components/datatable/badge_cell.html.twig' with { value: value } %}
+            {% else %}
+                {{ value ?: '-' }}
+            {% endif %}
+        </td>
+    {% endfor %}
+    {% if withActions %}
+        {% include '@components/datatable/actions_cell.html.twig' with { item: item } %}
+    {% endif %}
+</tr>

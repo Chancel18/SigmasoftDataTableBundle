@@ -1,0 +1,25 @@
+{# templates/components/datatable/sortable_header.html.twig #}
+<th scope="col" class="sortable-header">
+    <button 
+        type="button"
+        class="btn btn-link p-0 text-decoration-none text-dark fw-semibold d-flex align-items-center gap-1"
+        data-action="live#action"
+        data-live-action-param="sort"
+        data-live-field-param="{{ field }}"
+        aria-label="Trier par {{ label }}"
+        title="Trier par {{ label }}"
+    >
+        {{ label|capitalize }}
+        <span class="sort-icon" aria-hidden="true">
+            {% if field == currentHeader %}
+                {% if currentDirection == 'asc' %}
+                    <i class="bi bi-sort-up text-primary"></i>
+                {% else %}
+                    <i class="bi bi-sort-down text-primary"></i>
+                {% endif %}
+            {% else %}
+                <i class="bi bi-sort-alpha-down text-muted"></i>
+            {% endif %}
+        </span>
+    </button>
+</th>

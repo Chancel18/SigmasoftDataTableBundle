@@ -1,0 +1,24 @@
+{# templates/components/datatable/relation_filters.html.twig #}
+{% set relationFilterOptions = this.getRelationFilterOptions() %}
+{% if relationFilterOptions %}
+    <div class="d-flex gap-2 justify-content-end flex-wrap">
+        {% for field, options in relationFilterOptions %}
+            <select 
+                class="form-select form-select-sm"
+                style="width: auto; min-width: 150px;"
+                data-action="live#action"
+                data-live-action-param="updateFilter"
+                data-live-field-param="{{ field }}"
+                aria-label="Filtrer par {{ field }}"
+            >
+                <option value="">Tous ({{ field }})</option>
+                {% for opt in options %}
+                    <option value="{{ opt.id }}" 
+                        {% if filters[field]|default('') == opt.id %}selected{% endif %}>
+                        {{ opt.label }}
+                    </option>
+                {% endfor %}
+            </select>
+        {% endfor %}
+    </div>
+{% endif %}

@@ -1,0 +1,213 @@
+{
+    "name": "sigmasoft/datatable-bundle",
+    "type": "symfony-bundle",
+    "description": "Bundle Symfony pour la création de tableaux de données interactifs avec support temps réel, Turbo Streams et Mercure",
+    "keywords": [
+        "symfony",
+        "datatable",
+        "live-component",
+        "turbo",
+        "mercure",
+        "realtime",
+        "pagination",
+        "search",
+        "filter"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gedeon MAKELA",
+            "email": "g.makela@sigmasoft-solution.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "symfony/framework-bundle": "^6.3|^7.0",
+        "symfony/twig-bundle": "^6.3|^7.0",
+        "symfony/form": "^6.3|^7.0",
+        "symfony/validator": "^6.3|^7.0",
+        "symfony/serializer": "^6.3|^7.0",
+        "symfony/property-access": "^6.3|^7.0",
+        "symfony/options-resolver": "^6.3|^7.0",
+        "symfony/event-dispatcher": "^6.3|^7.0",
+        "symfony/dependency-injection": "^6.3|^7.0",
+        "symfony/config": "^6.3|^7.0",
+        "symfony/console": "^6.3|^7.0",
+        "symfony/http-foundation": "^6.3|^7.0",
+        "symfony/http-kernel": "^6.3|^7.0",
+        "symfony/routing": "^6.3|^7.0",
+        "twig/twig": "^3.12",
+        "twig/intl-extra": "^3.12",
+        "symfony/ux-live-component": "^2.23",
+        "symfony/ux-twig-component": "^2.23",
+        "symfony/ux-turbo": "^2.23",
+        "symfony/ux-icons": "^2.23",
+        "doctrine/orm": "^3.3",
+        "doctrine/doctrine-bundle": "^2.13",
+        "doctrine/common": "^3.4",
+        "doctrine/collections": "^2.3",
+        "knplabs/knp-paginator-bundle": "^6.5",
+        "symfony/mercure-bundle": "^0.3.8",
+        "symfony/notifier": "^6.3|^7.0",
+        "symfony/asset": "^6.3|^7.0",
+        "symfony/webpack-encore-bundle": "^2.2",
+        "symfony/string": "^6.3|^7.0",
+        "symfony/translation": "^6.3|^7.0",
+        "symfony/security-core": "^6.3|^7.0",
+        "psr/log": "^3.0",
+        "psr/event-dispatcher": "^1.0",
+        "psr/cache": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "symfony/test-pack": "^1.1",
+        "symfony/phpunit-bridge": "^6.3|^7.0",
+        "symfony/browser-kit": "^6.3|^7.0",
+        "symfony/css-selector": "^6.3|^7.0",
+        "symfony/dom-crawler": "^6.3|^7.0",
+        "dama/doctrine-test-bundle": "^8.2",
+        "phpstan/phpstan": "^1.12",
+        "phpstan/phpstan-symfony": "^1.2",
+        "phpstan/phpstan-doctrine": "^1.3",
+        "rector/rector": "^1.2.10",
+        "friendsofphp/php-cs-fixer": "^3.68",
+        "symfony/debug-bundle": "^6.3|^7.0",
+        "symfony/stopwatch": "^6.3|^7.0",
+        "symfony/web-profiler-bundle": "^6.3|^7.0",
+        "symfony/var-dumper": "^6.3|^7.0",
+        "symfony/maker-bundle": "^1.64",
+        "doctrine/doctrine-fixtures-bundle": "^3.6",
+        "fakerphp/faker": "^1.24"
+    },
+    "suggest": {
+        "phpoffice/phpspreadsheet": "Pour l'export Excel/CSV avancé (^2.3)",
+        "tecnickcom/tcpdf": "Pour l'export PDF (^6.7)",
+        "symfony/cache": "Pour la mise en cache des configurations (^6.3|^7.0)",
+        "predis/predis": "Client Redis pour le cache distribué (^2.2)",
+        "symfony/messenger": "Pour le traitement asynchrone (^6.3|^7.0)",
+        "monolog/monolog": "Pour les logs avancés (^3.8)",
+        "sentry/sentry-symfony": "Pour le monitoring d'erreurs (^5.1)",
+        "api-platform/core": "Pour les API REST/GraphQL (^4.1)",
+        "symfony/serializer-pack": "Pour la sérialisation avancée (^1.3)",
+        "elasticsearch/elasticsearch": "Pour la recherche Elasticsearch (^8.15)",
+        "friendsofsymfony/elastica-bundle": "Intégration Symfony-Elasticsearch (^6.4)",
+        "league/csv": "Pour l'export/import CSV avancé (^9.16)",
+        "spatie/array-to-xml": "Pour l'export XML (^3.3)",
+        "symfony/mailer": "Pour les notifications email (^6.3|^7.0)",
+        "symfony/lock": "Pour la gestion des verrous (^6.3|^7.0)",
+        "symfony/rate-limiter": "Pour la limitation de débit (^6.3|^7.0)",
+        "twig/extra-bundle": "Extensions Twig supplémentaires (^3.12)",
+        "babdev/pagerfanta-bundle": "Alternative de pagination (^4.7)",
+        "nelmio/cors-bundle": "Pour les CORS API (^2.5)",
+        "lexik/jwt-authentication-bundle": "Pour l'authentification JWT (^3.4)",
+        "ramsey/uuid-doctrine": "Support UUID Doctrine (^2.1)",
+        "gedmo/doctrine-extensions": "Extensions Doctrine (behaviors) (^3.16)",
+        "stof/doctrine-extensions-bundle": "Bundle pour Gedmo extensions (^1.12)",
+        "vich/uploader-bundle": "Pour l'upload de fichiers (^2.4)",
+        "liip/imagine-bundle": "Pour le traitement d'images (^2.13)",
+        "php-amqplib/rabbitmq-bundle": "Pour RabbitMQ (^1.14)",
+        "snc/redis-bundle": "Pour Redis (^4.7)",
+        "dunglas/doctrine-json-odm": "Pour les documents JSON (^1.4)",
+        "doctrine/doctrine-migrations-bundle": "Pour les migrations (^3.3)",
+        "symfony/stimulus-bundle": "Pour Stimulus integration (^2.23)",
+        "symfony/turbo-pack": "Pack Turbo complet (^1.2)"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sigmasoft\\DataTableBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sigmasoft\\DataTableBundle\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "6.3.*|7.0.*|7.1.*|7.2.*"
+        },
+        "symfony-bundle-class": "Sigmasoft\\DataTableBundle\\SigmasoftDataTableBundle"
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "optimize-autoloader": true,
+        "classmap-authoritative": true,
+        "apcu-autoloader": true,
+        "platform": {
+            "php": "8.1.0"
+        },
+        "audit": {
+            "abandoned": "report"
+        },
+        "allow-plugins": {
+            "symfony/flex": true,
+            "symfony/runtime": true,
+            "php-http/discovery": true
+        }
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html coverage --coverage-clover coverage.xml",
+        "test-unit": "phpunit --testsuite=unit",
+        "test-integration": "phpunit --testsuite=integration",
+        "cs-fix": "php-cs-fixer fix",
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
+        "phpstan": "phpstan analyse src tests --level=8",
+        "phpstan-baseline": "phpstan analyse src tests --level=8 --generate-baseline",
+        "rector": "rector process --dry-run",
+        "rector-fix": "rector process",
+        "psalm": "psalm",
+        "psalm-baseline": "psalm --set-baseline=psalm-baseline.xml",
+        "security-check": "symfony security:check",
+        "lint": [
+            "bin/console lint:twig templates/",
+            "bin/console lint:yaml config/"
+        ],
+        "quality": [
+            "@cs-check",
+            "@phpstan",
+            "@test"
+        ],
+        "ci": [
+            "@security-check",
+            "@lint",
+            "@quality"
+        ],
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "archive": {
+        "exclude": [
+            "tests/",
+            "docs/",
+            ".github/",
+            ".gitignore",
+            "phpunit.xml.dist",
+            "rector.php",
+            ".php-cs-fixer.dist.php",
+            "psalm.xml",
+            "phpstan.neon",
+            "var/",
+            "public/build/",
+            "node_modules/",
+            "*.log"
+        ]
+    }
+}

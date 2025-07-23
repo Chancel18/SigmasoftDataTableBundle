@@ -1,0 +1,25 @@
+# src/SigmasoftDataTableBundle/Resources/config/services.yaml
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Sigmasoft\DataTableBundle\Service\DataTableServiceInterface:
+        alias: Sigmasoft\DataTableBundle\Service\DataTableService
+
+    Sigmasoft\DataTableBundle\Service\DataTableService:
+        arguments:
+            $allowedEntities: '%sigmasoft_data_table.allowed_entities%'
+
+    Sigmasoft\DataTableBundle\Service\ValueFormatter:
+        arguments:
+            $defaultConfig: '%sigmasoft_data_table.default_config%'
+
+    Sigmasoft\DataTableBundle\Twig\Components\SigmasoftDataTableComponent:
+        arguments:
+            $defaultConfig: '%sigmasoft_data_table.default_config%'
+            $templates: '%sigmasoft_data_table.templates%'
+        tags:
+            - { name: twig.component }

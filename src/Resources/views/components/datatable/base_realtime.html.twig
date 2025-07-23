@@ -1,0 +1,118 @@
+{# templates/components/datatable/base_realtime.html.twig #}
+<div{{ attributes.defaults({
+    'data-controller': 'datatable-realtime',
+    'data-datatable-realtime-config-value': realtimeConfig|json_encode,
+    'data-turbo-permanent': ''
+}) }}>
+    
+    {% if realtimeConfig.enabled %}
+        {# Turbo Stream source #}
+        {% if realtimeConfig.streamName %}
+            {{ turbo_stream_from(realtimeConfig.streamName) }}
+        {% endif %}
+        
+        {# Mercure EventSource #}
+        {% if realtimeConfig.mercureTopics %}
+            <div data-controller="mercure"
+                 data-mercure-topics-value="{{ realtimeConfig.mercureTopics|json_encode }}"
+                 data-action="mercure:message->datatable-realtime#handleMercureMessage">
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {# Contrôles temps réel #}
+    <div class="datatable-realtime-controls mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="datatable-info">
+                {% if this.items %}
+                    <small class="text-muted">
+                        {{ this.items.getTotalItemCount() }} éléments
+                        <span data-datatable-realtime-target="lastUpdate"></span>
+                    </small>
+                {% endif %}
+            </div>
+            
+            {% if realtimeConfig.enabled %}
+                <div class="btn-group btn-group-sm">
+                    <button type="button" 
+                            class="btn btn-outline-secondary"
+                            data-action="live#action"
+                            data-live-action-param="refreshData"
+                            data-datatable-realtime-target="refreshBtn"
+                            title="Actualiser">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                    
+                    {% if realtimeConfig.autoRefresh %}
+                        <button type="button" 
+                                class="btn btn-outline-primary"
+                                data-action="live#action"
+                                data-live-action-param="toggleAutoRefresh"
+                                data-datatable-realtime-target="autoRefreshBtn"
+                                title="Actualisation automatique">
+                            <i class="bi bi-pause-circle" data-auto-refresh="on"></i>
+                            <i class="bi bi-play-circle d-none" data-auto-refresh="off"></i>
+                        </button>
+                    {% else %}
+                        <button type="button" 
+                                class="btn btn-outline-secondary"
+                                data-action="live#action"
+                                data-live-action-param="toggleAutoRefresh"
+                                data-datatable-realtime-target="autoRefreshBtn"
+                                title="Actualisation automatique">
+                            <i class="bi bi-play-circle" data-auto-refresh="off"></i>
+                            <i class="bi bi-pause-circle d-none" data-auto-refresh="on"></i>
+                        </button>
+                    {% endif %}
+                    
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" 
+                                class="btn btn-outline-secondary dropdown-toggle"
+                                data-bs-toggle="dropdown">
+                            <i class="bi bi-gear"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><h6 class="dropdown-header">Intervalle de rafraîchissement</h6></li>
+                            <li><a class="dropdown-item" href="#" data-interval="5000">5 secondes</a></li>
+                            <li><a class="dropdown-item" href="#" data-interval="10000">10 secondes</a></li>
+                            <li><a class="dropdown-item" href="#" data-interval="30000">30 secondes</a></li>
+                            <li><a class="dropdown-item" href="#" data-interval="60000">1 minute</a></li>
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {# Indicateur de connexion temps réel #}
+    {% if realtimeConfig.enabled %}
+        <div class="alert alert-info d-none" data-datatable-realtime-target="connectionStatus">
+            <div class="d-flex align-items-center">
+                <div class="spinner-border spinner-border-sm me-2" role="status">
+                    <span class="visually-hidden">Connexion...</span>
+                </div>
+                <span data-datatable-realtime-target="connectionMessage">Connexion en temps réel...</span>
+            </div>
+        </div>
+    {% endif %}
+
+    {# Contenu principal du tableau #}
+    {% embed '@SigmasoftDataTable/components/datatable/base.html.twig' %}
+        {% block table_body %}
+            <tbody id="datatable-tbody" data-datatable-realtime-target="tbody">
+                {% if this.items and this.items|length > 0 %}
+                    {% for item in this.items %}
+                        {% include '@SigmasoftDataTable/components/datatable/row.html.twig' with {
+                            item: item,
+                            config: config,
+                            loop: loop,
+                            row_id: 'datatable-row-' ~ item.id
+                        } %}
+                    {% endfor %}
+                {% else %}
+                    {% include '@SigmasoftDataTable/components/datatable/empty_state.html.twig' %}
+                {% endif %}
+            </tbody>
+        {% endblock %}
+    {% endembed %}
+</div>
