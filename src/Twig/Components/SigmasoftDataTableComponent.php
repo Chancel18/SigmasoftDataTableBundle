@@ -265,13 +265,12 @@ final class SigmasoftDataTableComponent
 
         return new DataTableRequest(
             entityClass: $this->entityClass,
-            fields: array_keys($this->entityConfig->getFields()),
-            searchFields: $this->entityConfig->getSearchFields(),
-            search: $this->inputSearch,
-            sortField: $sort['field'],
-            sortDirection: $sort['direction'],
             page: $this->page,
             itemsPerPage: $this->getEffectiveItemsPerPage(),
+            sortField: $sort['field'],
+            sortDirection: $sort['direction'],
+            search: $this->inputSearch,
+            searchFields: $this->entityConfig->getSearchFields(),
             filters: $this->getCleanFilters()
         );
     }

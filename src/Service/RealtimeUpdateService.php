@@ -68,7 +68,7 @@ class RealtimeUpdateService
 
         match ($eventType) {
             'row.create' => $this->broadcastRowCreate($streamName, $data, $context),
-            'row.update' => $this->broadcastRowUpdate($streamName, $data, $context),
+            'row.update' => $this->broadcastRowUpdateToStream($streamName, $data, $context),
             'row.delete' => $this->broadcastRowDelete($streamName, $data, $context),
             'table.refresh' => $this->broadcastTableRefresh($streamName, $context),
             'bulk.update' => $this->broadcastBulkUpdate($streamName, $data, $context),
@@ -116,7 +116,7 @@ class RealtimeUpdateService
         );
     }
 
-    private function broadcastRowUpdate(string $streamName, object $entity, array $context): void
+    private function broadcastRowUpdateToStream(string $streamName, object $entity, array $context): void
     {
         $html = $this->renderRowHtml($entity, $context);
         $rowId = "datatable-row-{$entity->getId()}";
