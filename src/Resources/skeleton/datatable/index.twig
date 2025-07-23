@@ -31,10 +31,10 @@
             </div>
 
             {# 🚀 COMPOSANT DATATABLE AUTOMATIQUE - UNE SEULE LIGNE ! #}
-            <twig:SigmasoftDataTableComponent entityClass="{{ entity_class_name }}" />
+            <twig:SigmasoftDataTable entityClass="{{ entity_class_name }}" />
             
             {# Alternative avec configuration personnalisée:
-            <twig:SigmasoftDataTableComponent 
+            <twig:SigmasoftDataTable 
                 entityClass="{{ entity_class_name }}" 
                 :overrideConfig="{
                     'items_per_page': 50,
@@ -72,7 +72,7 @@
             
             // Exemple: Auto-refresh toutes les 30 secondes
             // setInterval(() => {
-            //     document.querySelector('[data-live-component="SigmasoftDataTableComponent"]')
+            //     document.querySelector('[data-live-component="SigmasoftDataTable"]')
             //         ?.dispatchEvent(new CustomEvent('live:refresh'));
             // }, 30000);
         });

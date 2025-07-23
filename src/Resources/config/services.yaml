@@ -19,7 +19,7 @@ services:
 
     Sigmasoft\DataTableBundle\Twig\Components\SigmasoftDataTableComponent:
         tags:
-            - { name: twig.component, key: 'SigmasoftDataTableComponent' }
+            - { name: twig.component, key: 'SigmasoftDataTable' }
 
     # Commande Maker pour génération automatique
     Sigmasoft\DataTableBundle\Maker\MakeDataTable:

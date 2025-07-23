@@ -10,7 +10,8 @@
       "Bash(git push:*)",
       "Bash(git commit:*)",
       "Bash(mkdir:*)",
-      "Bash(gh:*)"
+      "Bash(gh:*)",
+      "Bash(sed:*)"
     ],
     "deny": []
   }

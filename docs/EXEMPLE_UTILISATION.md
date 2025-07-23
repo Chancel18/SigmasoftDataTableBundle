@@ -54,7 +54,7 @@ php bin/console make:datatable Product --controller --with-actions --with-export
     <h1>🛍️ Gestion des Produits</h1>
     
     {# 🚀 UNE SEULE LIGNE POUR TOUT LE TABLEAU ! #}
-    <twig:SigmasoftDataTableComponent entityClass="App\\Entity\\Product" />
+    <twig:SigmasoftDataTable entityClass="App\\Entity\\Product" />
 {% endblock %}
 ```
 
@@ -62,7 +62,7 @@ php bin/console make:datatable Product --controller --with-actions --with-export
 
 ## 🎨 Utilisation Simple du Composant Twig
 
-Le composant `SigmasoftDataTableComponent` génère automatiquement un tableau Bootstrap complet sans avoir besoin de coder manuellement l'HTML.
+Le composant `SigmasoftDataTable` génère automatiquement un tableau Bootstrap complet sans avoir besoin de coder manuellement l'HTML.
 
 ### ✅ Configuration YAML
 
@@ -191,10 +191,10 @@ sigmasoft_data_table:
                 <h1>👥 Gestion des Utilisateurs</h1>
                 
                 {# 🚀 UNE SEULE LIGNE POUR TOUT LE TABLEAU ! #}
-                <twig:SigmasoftDataTableComponent entityClass="App\\Entity\\User" />
+                <twig:SigmasoftDataTable entityClass="App\\Entity\\User" />
                 
                 {# Optionnel: avec configuration override #}
-                {# <twig:SigmasoftDataTableComponent 
+                {# <twig:SigmasoftDataTable 
                      entityClass="App\\Entity\\User" 
                      :overrideConfig="{ 'items_per_page': 50 }" /> #}
             </div>
@@ -343,7 +343,7 @@ Avec cette configuration, vous obtenez **automatiquement** :
 **🚀 Et tout cela avec UNE SEULE LIGNE dans votre template !**
 
 ```twig
-<twig:SigmasoftDataTableComponent entityClass="App\\Entity\\User" />
+<twig:SigmasoftDataTable entityClass="App\\Entity\\User" />
 ```
 
 ---

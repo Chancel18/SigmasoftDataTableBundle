@@ -57,7 +57,7 @@ php bin/console make:datatable User --controller --with-actions --with-export
 
 ```twig
 {# UNE SEULE LIGNE POUR TOUT LE TABLEAU ! #}
-<twig:SigmasoftDataTableComponent entityClass="App\\Entity\\User" />
+<twig:SigmasoftDataTable entityClass="App\\Entity\\User" />
 ```
 
 ## 🔧 Dépannage
@@ -116,7 +116,7 @@ php bin/console list make
 ### Test du Composant
 ```twig
 {# Dans n'importe quel template #}
-<twig:SigmasoftDataTableComponent entityClass="App\\Entity\\User" />
+<twig:SigmasoftDataTable entityClass="App\\Entity\\User" />
 ```
 
 ## 🎯 Installation depuis GitHub (Développement)

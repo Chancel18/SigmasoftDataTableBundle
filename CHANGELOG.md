@@ -92,7 +92,7 @@ php bin/console make:datatable User --controller --with-actions --with-export
 #### Template généré automatiquement
 ```twig
 {# UNE SEULE LIGNE POUR TOUT LE TABLEAU ! #}
-<twig:SigmasoftDataTableComponent entityClass="App\\Entity\\User" />
+<twig:SigmasoftDataTable entityClass="App\\Entity\\User" />
 ```
 
 #### Résultat obtenu automatiquement
@@ -135,7 +135,7 @@ Avec cette nouvelle version, créer un DataTable complet devient trivial :
 php bin/console make:datatable Product --controller --with-actions
 
 # Template généré avec UNE SEULE LIGNE
-<twig:SigmasoftDataTableComponent entityClass="App\\Entity\\Product" />
+<twig:SigmasoftDataTable entityClass="App\\Entity\\Product" />
 
 # = Interface Bootstrap professionnelle complète automatique !
 ```
@@ -155,7 +155,7 @@ php bin/console make:datatable Product --controller --with-actions
 - Protection contre l'injection via les directions de tri (validation ASC/DESC)
 - Validation stricte des champs avant construction des requêtes DQL
 
-#### SigmasoftDataTableComponent.php - Correction des erreurs critiques
+#### SigmasoftDataTable.php - Correction des erreurs critiques
 - **[CRITIQUE]** Suppression de la méthode `deleteItem()` dupliquée (lignes 345-367)
 - **[SÉCURITÉ]** Correction de la variable `$entity` non définie dans le broadcast temps réel
 - Ajout de récupération sécurisée de l'entité avant suppression pour le broadcast
@@ -230,7 +230,7 @@ php bin/console make:datatable Product --controller --with-actions
    - Constructor modifié (utilise les paramètres nommés)
    - `getPaginationData()` supprimée (utiliser `toArray()`)
 
-2. **SigmasoftDataTableComponent** :
+2. **SigmasoftDataTable** :
    - Méthode `deleteItem()` dupliquée supprimée
    - Comportement du broadcast temps réel modifié
 

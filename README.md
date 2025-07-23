@@ -65,7 +65,7 @@ php bin/console make:datatable User --controller --with-actions --with-export
 ### Utilisation dans le Template
 ```twig
 {# UNE SEULE LIGNE POUR TOUT LE TABLEAU ! #}
-<twig:SigmasoftDataTableComponent entityClass="App\\Entity\\User" />
+<twig:SigmasoftDataTable entityClass="App\\Entity\\User" />
 ```
 
 ### 🎉 Résultat Automatique
