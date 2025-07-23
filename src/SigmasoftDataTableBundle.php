@@ -129,9 +129,14 @@ class SigmasoftDataTableBundle extends AbstractBundle
             ->set('sigmasoft_data_table.global_config', $config['global_config'] ?? [])
             ->set('sigmasoft_data_table.entities', $config['entities'] ?? [])
             ->set('sigmasoft_data_table.templates', $config['templates'] ?? []);
-            
-        // Compiler pass pour la commande Maker
-        $builder->addCompilerPass(new MakerCommandPass());
+    }
+
+    public function preBuild(ContainerBuilder $container): void
+    {
+        parent::preBuild($container);
+        
+        // Ajouter le compiler pass avant la compilation
+        $container->addCompilerPass(new MakerCommandPass());
     }
 
     public function getPath(): string
