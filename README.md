@@ -45,12 +45,12 @@ Générez automatiquement des interfaces DataTable professionnelles avec **UNE S
 composer require sigmasoft/datatable-bundle
 ```
 
-### 🚀 **v2.0.2** - Tests Unitaires & Validation Complète
-- ✅ **14 tests unitaires** : Couverture complète de la commande MakeDataTable
-- ✅ **55 assertions validées** : Stabilité et robustesse confirmées
-- ✅ **Templates skeleton** : Résolution définitive des chemins absolus
-- ✅ **Qualité enterprise** : Validation automatisée avant chaque release
-- ✅ **Zero-defect** : Tests passent à 100% sur toutes fonctionnalités core
+### 🎯 **v2.0.5 STABLE** - Production Ready & Enterprise Quality
+- ✅ **Bundle consolidé** : Toutes corrections v2.0.x intégrées et stabilisées
+- ✅ **Zero-defect** : Tests automatisés garantissent stabilité production
+- ✅ **Architecture moderne** : AbstractBundle Symfony 6+ + Live Components
+- ✅ **Tests complets** : 14 tests unitaires, 55 assertions, 100% passés
+- ✅ **Enterprise ready** : Documentation complète, performance optimisée
 
 ### Configuration Automatique
 Le bundle configure automatiquement les composants Twig. Si vous rencontrez l'erreur "Could not generate a component name", ajoutez :

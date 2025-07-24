@@ -1,6 +1,6 @@
 {
     "name": "sigmasoft/datatable-bundle",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "type": "symfony-bundle",
     "description": "Bundle Symfony pour la création automatique de DataTables Bootstrap avec génération Maker, Live Components temps réel, et compatibilité Doctrine ORM multi-versions",
     "keywords": [
