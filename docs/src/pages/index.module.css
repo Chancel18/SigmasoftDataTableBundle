@@ -1,0 +1,85 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.versionBadge {
+  margin-top: 1rem;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.badges img {
+  height: 20px;
+}
+
+.quickStart {
+  padding: 4rem 0;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.quickStart h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.quickStart h3 {
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.stats {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.stats h3 {
+  font-size: 2.5rem;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.stats p {
+  color: var(--ifm-color-secondary);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .stats {
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+}
+
+[data-theme='dark'] .quickStart {
+  background-color: var(--ifm-background-surface-color);
+}

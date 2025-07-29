@@ -1,0 +1,256 @@
+{# 
+  SigmasoftDataTableBundle - Modern DataTable Template
+  Usage:
+  {{ component('sigmasoft_datatable', { configuration: datatableConfig }) }}
+#}
+<div{{ attributes }} class="sigmasoft-datatable">
+    {% set config = this.getConfiguration() %}
+    {% set data = this.getData() %}
+    
+    {% embed '@components/card_default.html.twig' with { 
+        enable_header: config.isSearchEnabled(), 
+        enable_footer: config.isPaginationEnabled() 
+    } %}
+    
+        {% block header %}
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <!-- Search Input -->
+                {% if config.isSearchEnabled() %}
+                    <div class="input-group input-group-joined input-group-solid w-25">
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input class="form-control ps-0"
+                               placeholder="Rechercher..."
+                               value="{{ this.searchInput }}"
+                               data-model="searchInput"
+                               data-action="input->live#action:1000"
+                               data-live-action-param="search"
+                               aria-label="Search">
+                        <button class="btn btn-success"
+                                data-action="live#action"
+                                data-live-action-param="clearSearch"
+                                type="button">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                {% endif %}
+
+                <!-- Items per page selector -->
+                {% if config.isPaginationEnabled() %}
+                    <div class="d-flex align-items-center">
+                        <label for="items-per-page" class="form-label me-2 mb-0">Éléments par page:</label>
+                        <select id="items-per-page" 
+                                class="form-select form-select-sm w-auto"
+                                data-model="itemsPerPageValue"
+                                data-action="live#action"
+                                data-live-action-param="changeItemsPerPage">
+                            {% for option in [5, 10, 25, 50, 100] %}
+                                <option value="{{ option }}" 
+                                        {% if this.itemsPerPageValue == option %}selected{% endif %}>
+                                    {{ option }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endif %}
+            </div>
+        {% endblock %}
+
+        {% block body %}
+            <!-- Alert Messages -->
+            {% if this.showAlert %}
+                <div class="alert alert-{{ this.alertType == 'error' ? 'danger' : this.alertType }} alert-dismissible fade show" role="alert">
+                    <i class="bi bi-{{ this.alertType == 'success' ? 'check-circle' : 'exclamation-triangle' }}"></i>
+                    {{ this.alertMessage }}
+                    <button type="button" 
+                            class="btn-close" 
+                            data-action="live#action"
+                            data-live-action-param="dismissAlert"
+                            aria-label="Close"></button>
+                </div>
+            {% endif %}
+            
+            <!-- Debug Info -->
+            {% if app.debug %}
+                <div class="alert alert-info small">
+                    <strong>Debug:</strong> Page {{ this.config.page }}/{{ data.getPageCount() }} | 
+                    {{ data.getTotalItemCount() }} éléments | 
+                    Recherche: "{{ this.config.searchQuery }}" | 
+                    Tri: {{ this.config.sortField }} {{ this.config.sortDirection }}
+                </div>
+            {% endif %}
+
+            <!-- Data Table -->
+            <div class="table-responsive">
+                <table class="{{ config.getTableClass() }}" data-loading="addClass(opacity-50)" style="width: auto; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            {% for column in config.getColumns() %}
+                                <th class="{% if column.isSortable() %}sortable-header{% endif %}" style="white-space: nowrap; padding: 8px;">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span>{{ column.getLabel() }}</span>
+                                        {% if column.isSortable() and config.isSortingEnabled() %}
+                                            <button type="button"
+                                                    class="btn btn-link btn-sm p-0 ms-2 sort-button"
+                                                    data-action="live#action"
+                                                    data-live-action-param="sort"
+                                                    data-live-field-param="{{ column.getName() }}"
+                                                    title="Trier par {{ column.getLabel() }}">
+                                                {% if this.config.sortField == column.getName() %}
+                                                    <i class="bi bi-sort-{{ this.config.sortDirection == 'asc' ? 'up' : 'down' }}"></i>
+                                                {% else %}
+                                                    <i class="bi bi-funnel"></i>
+                                                {% endif %}
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data %}
+                            <tr>
+                                {% for column in config.getColumns() %}
+                                    <td style="white-space: nowrap; padding: 8px;">
+                                        {{ this.renderColumn(column.getName(), null, item)|raw }}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="{{ config.getColumns()|length }}" class="text-center text-muted py-4">
+                                    <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+                                    <span>Aucune donnée trouvée</span>
+                                    {% if this.config.searchQuery %}
+                                        <br>
+                                        <small class="text-muted">
+                                            pour la recherche "{{ this.config.searchQuery }}"
+                                        </small>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endblock %}
+
+        {% block footer %}
+            {% if config.isPaginationEnabled() %}
+                <nav aria-label="Navigation des pages">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Results info -->
+                        <div class="text-muted small">
+                            {% set paginationData = data.getPaginationData() %}
+                            Affichage de {{ paginationData.firstItemNumber }} à {{ paginationData.lastItemNumber }} 
+                            sur {{ data.getTotalItemCount }} résultats
+                        </div>
+
+                        <!-- Pagination -->
+                        <ul class="pagination pagination-sm mb-0">
+                            <!-- Previous -->
+                            {% if data.getCurrentPageNumber() > 1 %}
+                                <li class="page-item">
+                                    <button class="page-link"
+                                            data-action="live#action"
+                                            data-live-action-param="changePage"
+                                            data-live-page-param="{{ data.getCurrentPageNumber() - 1 }}"
+                                            title="Page précédente">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </button>
+                                </li>
+                            {% endif %}
+
+                            <!-- Page numbers -->
+                            {% set current = data.getCurrentPageNumber() %}
+                            {% set total = data.getPageCount() %}
+                            {% set range = 2 %}
+
+                            <!-- First page -->
+                            {% if current > range + 2 %}
+                                <li class="page-item">
+                                    <button class="page-link"
+                                            data-action="live#action"
+                                            data-live-action-param="changePage"
+                                            data-live-page-param="1">1</button>
+                                </li>
+                                {% if current > range + 3 %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+
+                            <!-- Pages around current -->
+                            {% for page in max(1, current - range)..min(total, current + range) %}
+                                <li class="page-item {% if page == current %}active{% endif %}">
+                                    <button class="page-link"
+                                            data-action="live#action"
+                                            data-live-action-param="changePage"
+                                            data-live-page-param="{{ page }}"
+                                            {% if page == current %}aria-current="page"{% endif %}>
+                                        {{ page }}
+                                    </button>
+                                </li>
+                            {% endfor %}
+
+                            <!-- Last page -->
+                            {% if current < total - range - 1 %}
+                                {% if current < total - range - 2 %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                {% endif %}
+                                <li class="page-item">
+                                    <button class="page-link"
+                                            data-action="live#action"
+                                            data-live-action-param="changePage"
+                                            data-live-page-param="{{ total }}">{{ total }}</button>
+                                </li>
+                            {% endif %}
+
+                            <!-- Next -->
+                            {% if data.getCurrentPageNumber() < data.getPageCount() %}
+                                <li class="page-item">
+                                    <button class="page-link"
+                                            data-action="live#action"
+                                            data-live-action-param="changePage"
+                                            data-live-page-param="{{ data.getCurrentPageNumber() + 1 }}"
+                                            title="Page suivante">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </button>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            {% endif %}
+        {% endblock %}
+    {% endembed %}
+
+    <style>
+    .sigmasoft-datatable .sortable-header {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .sigmasoft-datatable .sort-button {
+        color: var(--bs-gray-600);
+        border: none !important;
+    }
+
+    .sigmasoft-datatable .sort-button:hover {
+        color: var(--bs-primary);
+    }
+
+    .sigmasoft-datatable .table td {
+        vertical-align: middle;
+    }
+
+    .sigmasoft-datatable [data-loading] {
+        transition: opacity 0.2s ease;
+    }
+    </style>
+</div>
