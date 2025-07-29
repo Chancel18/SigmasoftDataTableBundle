@@ -1,0 +1,68 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/SigmasoftDataTableBundle/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/SigmasoftDataTableBundle/docs",
+          "mainDocId": "introduction",
+          "docs": [
+            {
+              "id": "api/overview",
+              "path": "/SigmasoftDataTableBundle/docs/api/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "deployment/github-pages",
+              "path": "/SigmasoftDataTableBundle/docs/deployment/github-pages",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developer-guide/architecture",
+              "path": "/SigmasoftDataTableBundle/docs/developer-guide/architecture",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "installation",
+              "path": "/SigmasoftDataTableBundle/docs/installation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "introduction",
+              "path": "/SigmasoftDataTableBundle/docs/introduction",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "quick-start",
+              "path": "/SigmasoftDataTableBundle/docs/quick-start",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "user-guide/basic-usage",
+              "path": "/SigmasoftDataTableBundle/docs/user-guide/basic-usage",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "user-guide/customization",
+              "path": "/SigmasoftDataTableBundle/docs/user-guide/customization",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/SigmasoftDataTableBundle/docs/introduction",
+                "label": "introduction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

@@ -22,7 +22,6 @@ const sidebars = {
       items: [
         'installation',
         'quick-start',
-        'configuration',
       ],
     },
     {
@@ -30,8 +29,6 @@ const sidebars = {
       label: '📋 Guide Utilisateur',
       items: [
         'user-guide/basic-usage',
-        'user-guide/maker-command',
-        'user-guide/live-components',
         'user-guide/customization',
       ],
     },
@@ -40,9 +37,6 @@ const sidebars = {
       label: '🏗️ Guide Développeur',
       items: [
         'developer-guide/architecture',
-        'developer-guide/extending',
-        'developer-guide/custom-renderers',
-        'developer-guide/events',
       ],
     },
     {
@@ -50,46 +44,13 @@ const sidebars = {
       label: '📖 API Reference',
       items: [
         'api/overview',
-        'api/datatable-builder',
-        'api/live-component',
-        'api/configuration',
-        'api/services',
-      ],
-    },
-    {
-      type: 'category',
-      label: '🧪 Tests & Qualité',
-      items: [
-        'testing/unit-tests',
-        'testing/integration-tests',
-        'testing/coverage',
       ],
     },
     {
       type: 'category',
       label: '🚢 Déploiement',
       items: [
-        'deployment/production',
-        'deployment/performance',
-        'deployment/monitoring',
-      ],
-    },
-    {
-      type: 'category',
-      label: '📚 Exemples',
-      items: [
-        'examples/basic-table',
-        'examples/advanced-features',
-        'examples/real-world',
-      ],
-    },
-    {
-      type: 'category',
-      label: '🔧 Dépannage',
-      items: [
-        'troubleshooting/common-issues',
-        'troubleshooting/faq',
-        'troubleshooting/migration',
+        'deployment/github-pages',
       ],
     },
   ],
@@ -108,4 +69,4 @@ const sidebars = {
    */
 };
 
-export default sidebars;
+module.exports = sidebars;

@@ -1,0 +1,27 @@
+{
+  "id": "user-guide/basic-usage",
+  "title": "Utilisation de Base",
+  "description": "Guide complet pour utiliser le SigmasoftDataTableBundle dans vos applications Symfony. 📚",
+  "source": "@site/docs/user-guide/basic-usage.md",
+  "sourceDirName": "user-guide",
+  "slug": "/user-guide/basic-usage",
+  "permalink": "/SigmasoftDataTableBundle/docs/user-guide/basic-usage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/user-guide/basic-usage.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Démarrage Rapide",
+    "permalink": "/SigmasoftDataTableBundle/docs/quick-start"
+  },
+  "next": {
+    "title": "Personnalisation Avancée",
+    "permalink": "/SigmasoftDataTableBundle/docs/user-guide/customization"
+  }
+}

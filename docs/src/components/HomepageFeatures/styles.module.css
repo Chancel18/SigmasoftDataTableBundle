@@ -16,6 +16,12 @@
   margin-bottom: 1rem;
 }
 
+.featureIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
 .features .col {
   margin-bottom: 2rem;
 }

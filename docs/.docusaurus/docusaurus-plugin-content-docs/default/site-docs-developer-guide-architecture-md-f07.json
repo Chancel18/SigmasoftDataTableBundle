@@ -1,0 +1,27 @@
+{
+  "id": "developer-guide/architecture",
+  "title": "Architecture du Bundle",
+  "description": "Guide détaillé de l'architecture interne du SigmasoftDataTableBundle. 🏗️",
+  "source": "@site/docs/developer-guide/architecture.md",
+  "sourceDirName": "developer-guide",
+  "slug": "/developer-guide/architecture",
+  "permalink": "/SigmasoftDataTableBundle/docs/developer-guide/architecture",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/developer-guide/architecture.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Personnalisation Avancée",
+    "permalink": "/SigmasoftDataTableBundle/docs/user-guide/customization"
+  },
+  "next": {
+    "title": "API Reference - Vue d'ensemble",
+    "permalink": "/SigmasoftDataTableBundle/docs/api/overview"
+  }
+}

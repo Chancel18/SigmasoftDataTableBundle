@@ -1,0 +1,27 @@
+{
+  "id": "api/overview",
+  "title": "API Reference - Vue d'ensemble",
+  "description": "Référence complète de l'API du SigmasoftDataTableBundle pour développeurs. 🔧",
+  "source": "@site/docs/api/overview.md",
+  "sourceDirName": "api",
+  "slug": "/api/overview",
+  "permalink": "/SigmasoftDataTableBundle/docs/api/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/api/overview.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Architecture du Bundle",
+    "permalink": "/SigmasoftDataTableBundle/docs/developer-guide/architecture"
+  },
+  "next": {
+    "title": "Déploiement GitHub Pages",
+    "permalink": "/SigmasoftDataTableBundle/docs/deployment/github-pages"
+  }
+}

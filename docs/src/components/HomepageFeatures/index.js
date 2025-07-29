@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: '🚀 Génération Automatique',
-    Svg: require('@site/static/img/undraw_code_thinking.svg').default,
+    icon: '📦',
     description: (
       <>
         Commande <code>make:datatable</code> qui génère automatiquement
@@ -15,7 +15,7 @@ const FeatureList = [
   },
   {
     title: '⚡ Live Components',
-    Svg: require('@site/static/img/undraw_real_time_sync.svg').default,
+    icon: '🔄',
     description: (
       <>
         Interactions temps réel avec Symfony UX Live Components.
@@ -26,7 +26,7 @@ const FeatureList = [
   },
   {
     title: '🎯 Une Ligne de Code',
-    Svg: require('@site/static/img/undraw_programming.svg').default,
+    icon: '✨',
     description: (
       <>
         <code>{'<twig:SigmasoftDataTable entityClass="App\\Entity\\User" />'}</code>
@@ -38,7 +38,7 @@ const FeatureList = [
   },
   {
     title: '🧪 Qualité Enterprise',
-    Svg: require('@site/static/img/undraw_bug_fixing.svg').default,
+    icon: '🔬',
     description: (
       <>
         14 tests unitaires, 100% de réussite. Bundle testé et validé
@@ -49,7 +49,7 @@ const FeatureList = [
   },
   {
     title: '🔧 Personnalisable',
-    Svg: require('@site/static/img/undraw_settings.svg').default,
+    icon: '🛠️',
     description: (
       <>
         Templates Twig customisables, renderers extensibles,
@@ -60,7 +60,7 @@ const FeatureList = [
   },
   {
     title: '📊 Performance Optimisée',
-    Svg: require('@site/static/img/undraw_speed_test.svg').default,
+    icon: '⚡',
     description: (
       <>
         Requêtes Doctrine optimisées, cache intelligent,
@@ -71,11 +71,11 @@ const FeatureList = [
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({icon, title, description}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <div className={styles.featureIcon}>{icon}</div>
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>

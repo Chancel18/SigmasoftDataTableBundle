@@ -1,0 +1,23 @@
+{
+  "id": "deployment/github-pages",
+  "title": "Déploiement GitHub Pages",
+  "description": "Guide complet pour déployer la documentation Docusaurus sur GitHub Pages. 🚀",
+  "source": "@site/docs/deployment/github-pages.md",
+  "sourceDirName": "deployment",
+  "slug": "/deployment/github-pages",
+  "permalink": "/SigmasoftDataTableBundle/docs/deployment/github-pages",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/deployment/github-pages.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "API Reference - Vue d'ensemble",
+    "permalink": "/SigmasoftDataTableBundle/docs/api/overview"
+  }
+}

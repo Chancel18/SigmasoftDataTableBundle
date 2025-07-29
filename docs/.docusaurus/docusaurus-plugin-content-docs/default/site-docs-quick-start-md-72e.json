@@ -1,0 +1,27 @@
+{
+  "id": "quick-start",
+  "title": "Démarrage Rapide",
+  "description": "Créons votre premier DataTable en 5 minutes ! 🚀",
+  "source": "@site/docs/quick-start.md",
+  "sourceDirName": ".",
+  "slug": "/quick-start",
+  "permalink": "/SigmasoftDataTableBundle/docs/quick-start",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/quick-start.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installation",
+    "permalink": "/SigmasoftDataTableBundle/docs/installation"
+  },
+  "next": {
+    "title": "Utilisation de Base",
+    "permalink": "/SigmasoftDataTableBundle/docs/user-guide/basic-usage"
+  }
+}

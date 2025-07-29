@@ -1,0 +1,97 @@
+{
+  "/SigmasoftDataTableBundle/__docusaurus/debug-e7f": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
+    }
+  },
+  "/SigmasoftDataTableBundle/__docusaurus/debug/config-898": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
+    }
+  },
+  "/SigmasoftDataTableBundle/__docusaurus/debug/content-da0": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
+    },
+    "__props": "__props---sigmasoft-data-table-bundle-docusaurus-debug-content-5-de-93f"
+  },
+  "/SigmasoftDataTableBundle/__docusaurus/debug/globalData-6e7": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
+    }
+  },
+  "/SigmasoftDataTableBundle/__docusaurus/debug/metadata-030": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
+    }
+  },
+  "/SigmasoftDataTableBundle/__docusaurus/debug/registry-aa6": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
+    }
+  },
+  "/SigmasoftDataTableBundle/__docusaurus/debug/routes-870": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
+    }
+  },
+  "/SigmasoftDataTableBundle/docs-620": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---sigmasoft-data-table-bundle-docsaba-70b"
+    }
+  },
+  "/SigmasoftDataTableBundle/docs-4da": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---sigmasoft-data-table-bundle-docs-26-b-81e"
+  },
+  "/SigmasoftDataTableBundle/docs-e58": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/SigmasoftDataTableBundle/docs/api/overview-bc0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---sigmasoft-data-table-bundle-docs-api-overview-65-d-377"
+  },
+  "/SigmasoftDataTableBundle/docs/deployment/github-pages-35e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---sigmasoft-data-table-bundle-docs-deployment-github-pages-065-043"
+  },
+  "/SigmasoftDataTableBundle/docs/developer-guide/architecture-b5a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---sigmasoft-data-table-bundle-docs-developer-guide-architecturef-07-903"
+  },
+  "/SigmasoftDataTableBundle/docs/installation-029": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---sigmasoft-data-table-bundle-docs-installation-3-b-8-247"
+  },
+  "/SigmasoftDataTableBundle/docs/introduction-cf0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---sigmasoft-data-table-bundle-docs-introductiona-09-747"
+  },
+  "/SigmasoftDataTableBundle/docs/quick-start-6c5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---sigmasoft-data-table-bundle-docs-quick-start-72-e-cad"
+  },
+  "/SigmasoftDataTableBundle/docs/user-guide/basic-usage-1c6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---sigmasoft-data-table-bundle-docs-user-guide-basic-usageb-99-77c"
+  },
+  "/SigmasoftDataTableBundle/docs/user-guide/customization-a4a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---sigmasoft-data-table-bundle-docs-user-guide-customization-01-a-b49"
+  },
+  "/SigmasoftDataTableBundle/-6a2": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---sigmasoft-data-table-bundle-a-74-bd5"
+    },
+    "config": "config---sigmasoft-data-table-bundle-5-e-9-3ff"
+  }
+}

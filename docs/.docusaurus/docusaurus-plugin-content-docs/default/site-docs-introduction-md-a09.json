@@ -1,0 +1,23 @@
+{
+  "id": "introduction",
+  "title": "Introduction",
+  "description": "Bienvenue dans la documentation du SigmasoftDataTableBundle ! 🎉",
+  "source": "@site/docs/introduction.md",
+  "sourceDirName": ".",
+  "slug": "/introduction",
+  "permalink": "/SigmasoftDataTableBundle/docs/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/introduction.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Installation",
+    "permalink": "/SigmasoftDataTableBundle/docs/installation"
+  }
+}

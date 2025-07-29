@@ -1,0 +1,27 @@
+{
+  "id": "user-guide/customization",
+  "title": "Personnalisation Avancée",
+  "description": "Guide complet pour personnaliser et étendre le SigmasoftDataTableBundle selon vos besoins spécifiques. 🎨",
+  "source": "@site/docs/user-guide/customization.md",
+  "sourceDirName": "user-guide",
+  "slug": "/user-guide/customization",
+  "permalink": "/SigmasoftDataTableBundle/docs/user-guide/customization",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/user-guide/customization.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Utilisation de Base",
+    "permalink": "/SigmasoftDataTableBundle/docs/user-guide/basic-usage"
+  },
+  "next": {
+    "title": "Architecture du Bundle",
+    "permalink": "/SigmasoftDataTableBundle/docs/developer-guide/architecture"
+  }
+}

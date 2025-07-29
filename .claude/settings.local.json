@@ -5,7 +5,14 @@
       "Bash(git config:*)",
       "Bash(git init:*)",
       "Bash(git remote add:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git tag:*)",
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "Bash(npm run clear:*)",
+      "Bash(timeout 10 npm start)",
+      "Bash(timeout 10 npm start -- --port 3001)"
     ],
     "deny": []
   }
