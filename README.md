@@ -286,3 +286,4 @@ Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de
 ---
 
 ⭐ **N'hésitez pas à mettre une étoile si ce bundle vous aide !**
+# Force GitHub Pages deployment
