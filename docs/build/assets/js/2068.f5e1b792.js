@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksigmasoft_datatable_bundle_docs=self.webpackChunksigmasoft_datatable_bundle_docs||[]).push([[2068],{2068:(e,a,s)=>{s.d(a,{createInfoServices:()=>t.v});var t=s(1366);s(8198)}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksigmasoft_datatable_bundle_docs=self.webpackChunksigmasoft_datatable_bundle_docs||[]).push([[3956],{3956:(a,e,s)=>{s.d(e,{createRadarServices:()=>t.f});var t=s(2852);s(8198)}}]);

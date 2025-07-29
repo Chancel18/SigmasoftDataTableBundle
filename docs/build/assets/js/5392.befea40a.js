@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksigmasoft_datatable_bundle_docs=self.webpackChunksigmasoft_datatable_bundle_docs||[]).push([[5392],{5392:(a,e,s)=>{s.d(e,{createGitGraphServices:()=>t.b});var t=s(4087);s(8198)}}]);

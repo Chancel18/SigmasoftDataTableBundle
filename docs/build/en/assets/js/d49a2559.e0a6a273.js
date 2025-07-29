@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksigmasoft_datatable_bundle_docs=self.webpackChunksigmasoft_datatable_bundle_docs||[]).push([[7728],{1813:a=>{a.exports=JSON.parse('{"metadata":{"permalink":"/SigmasoftDataTableBundle/en/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

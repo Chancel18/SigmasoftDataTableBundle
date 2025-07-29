@@ -5,7 +5,7 @@
   "source": "@site/docs/installation.md",
   "sourceDirName": ".",
   "slug": "/installation",
-  "permalink": "/SigmasoftDataTableBundle/docs/installation",
+  "permalink": "/SigmasoftDataTableBundle/en/docs/installation",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/installation.md",
@@ -18,10 +18,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Introduction",
-    "permalink": "/SigmasoftDataTableBundle/docs/introduction"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/introduction"
   },
   "next": {
     "title": "Démarrage Rapide",
-    "permalink": "/SigmasoftDataTableBundle/docs/quick-start"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/quick-start"
   }
 }

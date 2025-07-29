@@ -5,7 +5,7 @@
   "source": "@site/docs/user-guide/customization.md",
   "sourceDirName": "user-guide",
   "slug": "/user-guide/customization",
-  "permalink": "/SigmasoftDataTableBundle/docs/user-guide/customization",
+  "permalink": "/SigmasoftDataTableBundle/en/docs/user-guide/customization",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/user-guide/customization.md",
@@ -18,10 +18,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Utilisation de Base",
-    "permalink": "/SigmasoftDataTableBundle/docs/user-guide/basic-usage"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/user-guide/basic-usage"
   },
   "next": {
     "title": "Architecture du Bundle",
-    "permalink": "/SigmasoftDataTableBundle/docs/developer-guide/architecture"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/developer-guide/architecture"
   }
 }

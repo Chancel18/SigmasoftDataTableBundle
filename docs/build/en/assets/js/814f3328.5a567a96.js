@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksigmasoft_datatable_bundle_docs=self.webpackChunksigmasoft_datatable_bundle_docs||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Bienvenue sur SigmasoftDataTableBundle","permalink":"/SigmasoftDataTableBundle/en/blog/welcome","unlisted":false,"date":"2025-01-29T00:00:00.000Z"}]}')}}]);

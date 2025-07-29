@@ -5,7 +5,7 @@
   "source": "@site/docs/introduction.md",
   "sourceDirName": ".",
   "slug": "/introduction",
-  "permalink": "/SigmasoftDataTableBundle/docs/introduction",
+  "permalink": "/SigmasoftDataTableBundle/en/docs/introduction",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/introduction.md",
@@ -18,6 +18,6 @@
   "sidebar": "tutorialSidebar",
   "next": {
     "title": "Installation",
-    "permalink": "/SigmasoftDataTableBundle/docs/installation"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/installation"
   }
 }

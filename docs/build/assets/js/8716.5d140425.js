@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksigmasoft_datatable_bundle_docs=self.webpackChunksigmasoft_datatable_bundle_docs||[]).push([[8716],{8716:(e,a,s)=>{s.d(a,{createPacketServices:()=>t.$});var t=s(9811);s(8198)}}]);

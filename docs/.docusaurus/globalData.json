@@ -1,53 +1,53 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/SigmasoftDataTableBundle/docs",
+      "path": "/SigmasoftDataTableBundle/en/docs",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/SigmasoftDataTableBundle/docs",
+          "path": "/SigmasoftDataTableBundle/en/docs",
           "mainDocId": "introduction",
           "docs": [
             {
               "id": "api/overview",
-              "path": "/SigmasoftDataTableBundle/docs/api/overview",
+              "path": "/SigmasoftDataTableBundle/en/docs/api/overview",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "deployment/github-pages",
-              "path": "/SigmasoftDataTableBundle/docs/deployment/github-pages",
+              "path": "/SigmasoftDataTableBundle/en/docs/deployment/github-pages",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "developer-guide/architecture",
-              "path": "/SigmasoftDataTableBundle/docs/developer-guide/architecture",
+              "path": "/SigmasoftDataTableBundle/en/docs/developer-guide/architecture",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "installation",
-              "path": "/SigmasoftDataTableBundle/docs/installation",
+              "path": "/SigmasoftDataTableBundle/en/docs/installation",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "introduction",
-              "path": "/SigmasoftDataTableBundle/docs/introduction",
+              "path": "/SigmasoftDataTableBundle/en/docs/introduction",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "quick-start",
-              "path": "/SigmasoftDataTableBundle/docs/quick-start",
+              "path": "/SigmasoftDataTableBundle/en/docs/quick-start",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "user-guide/basic-usage",
-              "path": "/SigmasoftDataTableBundle/docs/user-guide/basic-usage",
+              "path": "/SigmasoftDataTableBundle/en/docs/user-guide/basic-usage",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "user-guide/customization",
-              "path": "/SigmasoftDataTableBundle/docs/user-guide/customization",
+              "path": "/SigmasoftDataTableBundle/en/docs/user-guide/customization",
               "sidebar": "tutorialSidebar"
             }
           ],
@@ -55,7 +55,7 @@
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/SigmasoftDataTableBundle/docs/introduction",
+                "path": "/SigmasoftDataTableBundle/en/docs/introduction",
                 "label": "introduction"
               }
             }

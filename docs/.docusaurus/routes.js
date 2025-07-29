@@ -3,97 +3,97 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/SigmasoftDataTableBundle/__docusaurus/debug',
-    component: ComponentCreator('/SigmasoftDataTableBundle/__docusaurus/debug', 'e7f'),
+    path: '/SigmasoftDataTableBundle/en/blog',
+    component: ComponentCreator('/SigmasoftDataTableBundle/en/blog', 'f1f'),
     exact: true
   },
   {
-    path: '/SigmasoftDataTableBundle/__docusaurus/debug/config',
-    component: ComponentCreator('/SigmasoftDataTableBundle/__docusaurus/debug/config', '898'),
+    path: '/SigmasoftDataTableBundle/en/blog/archive',
+    component: ComponentCreator('/SigmasoftDataTableBundle/en/blog/archive', 'd7b'),
     exact: true
   },
   {
-    path: '/SigmasoftDataTableBundle/__docusaurus/debug/content',
-    component: ComponentCreator('/SigmasoftDataTableBundle/__docusaurus/debug/content', 'da0'),
+    path: '/SigmasoftDataTableBundle/en/blog/tags',
+    component: ComponentCreator('/SigmasoftDataTableBundle/en/blog/tags', '92d'),
     exact: true
   },
   {
-    path: '/SigmasoftDataTableBundle/__docusaurus/debug/globalData',
-    component: ComponentCreator('/SigmasoftDataTableBundle/__docusaurus/debug/globalData', '6e7'),
+    path: '/SigmasoftDataTableBundle/en/blog/tags/annonce',
+    component: ComponentCreator('/SigmasoftDataTableBundle/en/blog/tags/annonce', 'd84'),
     exact: true
   },
   {
-    path: '/SigmasoftDataTableBundle/__docusaurus/debug/metadata',
-    component: ComponentCreator('/SigmasoftDataTableBundle/__docusaurus/debug/metadata', '030'),
+    path: '/SigmasoftDataTableBundle/en/blog/tags/datatable',
+    component: ComponentCreator('/SigmasoftDataTableBundle/en/blog/tags/datatable', '33c'),
     exact: true
   },
   {
-    path: '/SigmasoftDataTableBundle/__docusaurus/debug/registry',
-    component: ComponentCreator('/SigmasoftDataTableBundle/__docusaurus/debug/registry', 'aa6'),
+    path: '/SigmasoftDataTableBundle/en/blog/tags/symfony',
+    component: ComponentCreator('/SigmasoftDataTableBundle/en/blog/tags/symfony', '621'),
     exact: true
   },
   {
-    path: '/SigmasoftDataTableBundle/__docusaurus/debug/routes',
-    component: ComponentCreator('/SigmasoftDataTableBundle/__docusaurus/debug/routes', '870'),
+    path: '/SigmasoftDataTableBundle/en/blog/welcome',
+    component: ComponentCreator('/SigmasoftDataTableBundle/en/blog/welcome', '9f7'),
     exact: true
   },
   {
-    path: '/SigmasoftDataTableBundle/docs',
-    component: ComponentCreator('/SigmasoftDataTableBundle/docs', '620'),
+    path: '/SigmasoftDataTableBundle/en/docs',
+    component: ComponentCreator('/SigmasoftDataTableBundle/en/docs', 'c0f'),
     routes: [
       {
-        path: '/SigmasoftDataTableBundle/docs',
-        component: ComponentCreator('/SigmasoftDataTableBundle/docs', '4da'),
+        path: '/SigmasoftDataTableBundle/en/docs',
+        component: ComponentCreator('/SigmasoftDataTableBundle/en/docs', 'e27'),
         routes: [
           {
-            path: '/SigmasoftDataTableBundle/docs',
-            component: ComponentCreator('/SigmasoftDataTableBundle/docs', 'e58'),
+            path: '/SigmasoftDataTableBundle/en/docs',
+            component: ComponentCreator('/SigmasoftDataTableBundle/en/docs', 'fcf'),
             routes: [
               {
-                path: '/SigmasoftDataTableBundle/docs/api/overview',
-                component: ComponentCreator('/SigmasoftDataTableBundle/docs/api/overview', 'bc0'),
+                path: '/SigmasoftDataTableBundle/en/docs/api/overview',
+                component: ComponentCreator('/SigmasoftDataTableBundle/en/docs/api/overview', '70f'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/SigmasoftDataTableBundle/docs/deployment/github-pages',
-                component: ComponentCreator('/SigmasoftDataTableBundle/docs/deployment/github-pages', '35e'),
+                path: '/SigmasoftDataTableBundle/en/docs/deployment/github-pages',
+                component: ComponentCreator('/SigmasoftDataTableBundle/en/docs/deployment/github-pages', 'd55'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/SigmasoftDataTableBundle/docs/developer-guide/architecture',
-                component: ComponentCreator('/SigmasoftDataTableBundle/docs/developer-guide/architecture', 'b5a'),
+                path: '/SigmasoftDataTableBundle/en/docs/developer-guide/architecture',
+                component: ComponentCreator('/SigmasoftDataTableBundle/en/docs/developer-guide/architecture', '67d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/SigmasoftDataTableBundle/docs/installation',
-                component: ComponentCreator('/SigmasoftDataTableBundle/docs/installation', '029'),
+                path: '/SigmasoftDataTableBundle/en/docs/installation',
+                component: ComponentCreator('/SigmasoftDataTableBundle/en/docs/installation', 'f8c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/SigmasoftDataTableBundle/docs/introduction',
-                component: ComponentCreator('/SigmasoftDataTableBundle/docs/introduction', 'cf0'),
+                path: '/SigmasoftDataTableBundle/en/docs/introduction',
+                component: ComponentCreator('/SigmasoftDataTableBundle/en/docs/introduction', '61e'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/SigmasoftDataTableBundle/docs/quick-start',
-                component: ComponentCreator('/SigmasoftDataTableBundle/docs/quick-start', '6c5'),
+                path: '/SigmasoftDataTableBundle/en/docs/quick-start',
+                component: ComponentCreator('/SigmasoftDataTableBundle/en/docs/quick-start', '30e'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/SigmasoftDataTableBundle/docs/user-guide/basic-usage',
-                component: ComponentCreator('/SigmasoftDataTableBundle/docs/user-guide/basic-usage', '1c6'),
+                path: '/SigmasoftDataTableBundle/en/docs/user-guide/basic-usage',
+                component: ComponentCreator('/SigmasoftDataTableBundle/en/docs/user-guide/basic-usage', 'bae'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/SigmasoftDataTableBundle/docs/user-guide/customization',
-                component: ComponentCreator('/SigmasoftDataTableBundle/docs/user-guide/customization', 'a4a'),
+                path: '/SigmasoftDataTableBundle/en/docs/user-guide/customization',
+                component: ComponentCreator('/SigmasoftDataTableBundle/en/docs/user-guide/customization', '563'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }
@@ -104,8 +104,8 @@ export default [
     ]
   },
   {
-    path: '/SigmasoftDataTableBundle/',
-    component: ComponentCreator('/SigmasoftDataTableBundle/', '6a2'),
+    path: '/SigmasoftDataTableBundle/en/',
+    component: ComponentCreator('/SigmasoftDataTableBundle/en/', '0ca'),
     exact: true
   },
   {

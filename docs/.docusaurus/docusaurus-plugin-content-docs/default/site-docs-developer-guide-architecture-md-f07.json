@@ -5,7 +5,7 @@
   "source": "@site/docs/developer-guide/architecture.md",
   "sourceDirName": "developer-guide",
   "slug": "/developer-guide/architecture",
-  "permalink": "/SigmasoftDataTableBundle/docs/developer-guide/architecture",
+  "permalink": "/SigmasoftDataTableBundle/en/docs/developer-guide/architecture",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/developer-guide/architecture.md",
@@ -18,10 +18,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Personnalisation Avancée",
-    "permalink": "/SigmasoftDataTableBundle/docs/user-guide/customization"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/user-guide/customization"
   },
   "next": {
     "title": "API Reference - Vue d'ensemble",
-    "permalink": "/SigmasoftDataTableBundle/docs/api/overview"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/api/overview"
   }
 }

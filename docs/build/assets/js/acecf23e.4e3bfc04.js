@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksigmasoft_datatable_bundle_docs=self.webpackChunksigmasoft_datatable_bundle_docs||[]).push([[1903],{1912:a=>{a.exports=JSON.parse('{"blogBasePath":"/SigmasoftDataTableBundle/blog","blogTitle":"Blog","authorsListPath":"/SigmasoftDataTableBundle/blog/authors"}')}}]);

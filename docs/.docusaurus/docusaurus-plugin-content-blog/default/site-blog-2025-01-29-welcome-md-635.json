@@ -1,0 +1,58 @@
+{
+  "permalink": "/SigmasoftDataTableBundle/en/blog/welcome",
+  "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/blog/2025-01-29-welcome.md",
+  "source": "@site/blog/2025-01-29-welcome.md",
+  "title": "Bienvenue sur SigmasoftDataTableBundle",
+  "description": "Nous sommes ravis de vous présenter la version 2.0.5 de SigmasoftDataTableBundle, un bundle Symfony moderne et puissant pour créer des tables de données interactives.",
+  "date": "2025-01-29T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": true,
+      "label": "symfony",
+      "permalink": "/SigmasoftDataTableBundle/en/blog/tags/symfony"
+    },
+    {
+      "inline": true,
+      "label": "datatable",
+      "permalink": "/SigmasoftDataTableBundle/en/blog/tags/datatable"
+    },
+    {
+      "inline": true,
+      "label": "annonce",
+      "permalink": "/SigmasoftDataTableBundle/en/blog/tags/annonce"
+    }
+  ],
+  "readingTime": 0.97,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Gédéon MAKELA",
+      "title": "Développeur Principal",
+      "url": "https://github.com/Chancel18",
+      "image_url": "https://github.com/Chancel18.png",
+      "imageURL": "https://github.com/Chancel18.png",
+      "socials": {},
+      "key": null,
+      "page": null
+    }
+  ],
+  "frontMatter": {
+    "slug": "welcome",
+    "title": "Bienvenue sur SigmasoftDataTableBundle",
+    "authors": [
+      {
+        "name": "Gédéon MAKELA",
+        "title": "Développeur Principal",
+        "url": "https://github.com/Chancel18",
+        "image_url": "https://github.com/Chancel18.png",
+        "imageURL": "https://github.com/Chancel18.png"
+      }
+    ],
+    "tags": [
+      "symfony",
+      "datatable",
+      "annonce"
+    ]
+  },
+  "unlisted": false
+}

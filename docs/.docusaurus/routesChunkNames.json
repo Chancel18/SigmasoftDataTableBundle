@@ -1,97 +1,132 @@
 {
-  "/SigmasoftDataTableBundle/__docusaurus/debug-e7f": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
+  "/SigmasoftDataTableBundle/en/blog-f1f": {
+    "__comp": "a6aa9e1f",
     "__context": {
-      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
-    }
-  },
-  "/SigmasoftDataTableBundle/__docusaurus/debug/config-898": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
-    }
-  },
-  "/SigmasoftDataTableBundle/__docusaurus/debug/content-da0": {
-    "__comp": "__comp---theme-debug-contentba-8-ce7",
-    "__context": {
-      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
+      "plugin": "36994c47"
     },
-    "__props": "__props---sigmasoft-data-table-bundle-docusaurus-debug-content-5-de-93f"
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "207631c8"
+      }
+    ],
+    "__props": "d49a2559"
   },
-  "/SigmasoftDataTableBundle/__docusaurus/debug/globalData-6e7": {
-    "__comp": "__comp---theme-debug-global-dataede-0fa",
+  "/SigmasoftDataTableBundle/en/blog/archive-d7b": {
+    "__comp": "9e4087bc",
     "__context": {
-      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
-    }
-  },
-  "/SigmasoftDataTableBundle/__docusaurus/debug/metadata-030": {
-    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
-    "__context": {
-      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
-    }
-  },
-  "/SigmasoftDataTableBundle/__docusaurus/debug/registry-aa6": {
-    "__comp": "__comp---theme-debug-registry-679-501",
-    "__context": {
-      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
-    }
-  },
-  "/SigmasoftDataTableBundle/__docusaurus/debug/routes-870": {
-    "__comp": "__comp---theme-debug-routes-946-699",
-    "__context": {
-      "plugin": "plugin---sigmasoft-data-table-bundle-docusaurus-debugb-38-d64"
-    }
-  },
-  "/SigmasoftDataTableBundle/docs-620": {
-    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
-    "__context": {
-      "plugin": "plugin---sigmasoft-data-table-bundle-docsaba-70b"
-    }
-  },
-  "/SigmasoftDataTableBundle/docs-4da": {
-    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
-    "__props": "__props---sigmasoft-data-table-bundle-docs-26-b-81e"
-  },
-  "/SigmasoftDataTableBundle/docs-e58": {
-    "__comp": "__comp---theme-doc-roota-94-67a"
-  },
-  "/SigmasoftDataTableBundle/docs/api/overview-bc0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---sigmasoft-data-table-bundle-docs-api-overview-65-d-377"
-  },
-  "/SigmasoftDataTableBundle/docs/deployment/github-pages-35e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---sigmasoft-data-table-bundle-docs-deployment-github-pages-065-043"
-  },
-  "/SigmasoftDataTableBundle/docs/developer-guide/architecture-b5a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---sigmasoft-data-table-bundle-docs-developer-guide-architecturef-07-903"
-  },
-  "/SigmasoftDataTableBundle/docs/installation-029": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---sigmasoft-data-table-bundle-docs-installation-3-b-8-247"
-  },
-  "/SigmasoftDataTableBundle/docs/introduction-cf0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---sigmasoft-data-table-bundle-docs-introductiona-09-747"
-  },
-  "/SigmasoftDataTableBundle/docs/quick-start-6c5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---sigmasoft-data-table-bundle-docs-quick-start-72-e-cad"
-  },
-  "/SigmasoftDataTableBundle/docs/user-guide/basic-usage-1c6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---sigmasoft-data-table-bundle-docs-user-guide-basic-usageb-99-77c"
-  },
-  "/SigmasoftDataTableBundle/docs/user-guide/customization-a4a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---sigmasoft-data-table-bundle-docs-user-guide-customization-01-a-b49"
-  },
-  "/SigmasoftDataTableBundle/-6a2": {
-    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
-    "__context": {
-      "plugin": "plugin---sigmasoft-data-table-bundle-a-74-bd5"
+      "plugin": "36994c47"
     },
-    "config": "config---sigmasoft-data-table-bundle-5-e-9-3ff"
+    "__props": "24d2f068"
+  },
+  "/SigmasoftDataTableBundle/en/blog/tags-92d": {
+    "__comp": "01a85c17",
+    "__context": {
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "__props": "e8dc9167"
+  },
+  "/SigmasoftDataTableBundle/en/blog/tags/annonce-d84": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "207631c8"
+      }
+    ],
+    "__props": "8609875d"
+  },
+  "/SigmasoftDataTableBundle/en/blog/tags/datatable-33c": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "207631c8"
+      }
+    ],
+    "__props": "427467bc"
+  },
+  "/SigmasoftDataTableBundle/en/blog/tags/symfony-621": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "207631c8"
+      }
+    ],
+    "__props": "4de85a14"
+  },
+  "/SigmasoftDataTableBundle/en/blog/welcome-9f7": {
+    "__comp": "ccc49370",
+    "__context": {
+      "data": {
+        "blogMetadata": "acecf23e"
+      },
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "content": "6350f722"
+  },
+  "/SigmasoftDataTableBundle/en/docs-c0f": {
+    "__comp": "5e95c892",
+    "__context": {
+      "plugin": "aba21aa0"
+    }
+  },
+  "/SigmasoftDataTableBundle/en/docs-e27": {
+    "__comp": "a7bd4aaa",
+    "__props": "51c186d8"
+  },
+  "/SigmasoftDataTableBundle/en/docs-fcf": {
+    "__comp": "a94703ab"
+  },
+  "/SigmasoftDataTableBundle/en/docs/api/overview-70f": {
+    "__comp": "17896441",
+    "content": "65df3d35"
+  },
+  "/SigmasoftDataTableBundle/en/docs/deployment/github-pages-d55": {
+    "__comp": "17896441",
+    "content": "065d9343"
+  },
+  "/SigmasoftDataTableBundle/en/docs/developer-guide/architecture-67d": {
+    "__comp": "17896441",
+    "content": "f078c7d5"
+  },
+  "/SigmasoftDataTableBundle/en/docs/installation-f8c": {
+    "__comp": "17896441",
+    "content": "3b8c55ea"
+  },
+  "/SigmasoftDataTableBundle/en/docs/introduction-61e": {
+    "__comp": "17896441",
+    "content": "a09c2993"
+  },
+  "/SigmasoftDataTableBundle/en/docs/quick-start-30e": {
+    "__comp": "17896441",
+    "content": "72e14192"
+  },
+  "/SigmasoftDataTableBundle/en/docs/user-guide/basic-usage-bae": {
+    "__comp": "17896441",
+    "content": "b9978a27"
+  },
+  "/SigmasoftDataTableBundle/en/docs/user-guide/customization-563": {
+    "__comp": "17896441",
+    "content": "01a5bde2"
+  },
+  "/SigmasoftDataTableBundle/en/-0ca": {
+    "__comp": "c4f5d8e4",
+    "__context": {
+      "plugin": "a7456010"
+    },
+    "config": "5e9f5e1a"
   }
 }

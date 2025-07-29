@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksigmasoft_datatable_bundle_docs=self.webpackChunksigmasoft_datatable_bundle_docs||[]).push([[4504],{4504:(e,a,s)=>{s.d(a,{createTreemapServices:()=>t.d});var t=s(3758);s(8198)}}]);

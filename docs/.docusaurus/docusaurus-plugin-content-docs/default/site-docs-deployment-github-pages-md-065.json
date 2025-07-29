@@ -5,7 +5,7 @@
   "source": "@site/docs/deployment/github-pages.md",
   "sourceDirName": "deployment",
   "slug": "/deployment/github-pages",
-  "permalink": "/SigmasoftDataTableBundle/docs/deployment/github-pages",
+  "permalink": "/SigmasoftDataTableBundle/en/docs/deployment/github-pages",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/deployment/github-pages.md",
@@ -18,6 +18,6 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "API Reference - Vue d'ensemble",
-    "permalink": "/SigmasoftDataTableBundle/docs/api/overview"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/api/overview"
   }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="rss.xsl"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>SigmasoftDataTableBundle Blog</title>
+        <link>https://chancel18.github.io/SigmasoftDataTableBundle/en/blog</link>
+        <description>SigmasoftDataTableBundle Blog</description>
+        <lastBuildDate>Wed, 29 Jan 2025 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Bienvenue sur SigmasoftDataTableBundle]]></title>
+            <link>https://chancel18.github.io/SigmasoftDataTableBundle/en/blog/welcome</link>
+            <guid>https://chancel18.github.io/SigmasoftDataTableBundle/en/blog/welcome</guid>
+            <pubDate>Wed, 29 Jan 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Nous sommes ravis de vous présenter la version 2.0.5 de SigmasoftDataTableBundle, un bundle Symfony moderne et puissant pour créer des tables de données interactives.]]></description>
+            <content:encoded><![CDATA[<p>Nous sommes ravis de vous présenter la <strong>version 2.0.5</strong> de SigmasoftDataTableBundle, un bundle Symfony moderne et puissant pour créer des tables de données interactives.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-quoi-de-neuf-dans-la-v205-">🚀 Quoi de neuf dans la v2.0.5 ?<a href="https://chancel18.github.io/SigmasoftDataTableBundle/en/blog/welcome#-quoi-de-neuf-dans-la-v205-" class="hash-link" aria-label="Direct link to 🚀 Quoi de neuf dans la v2.0.5 ?" title="Direct link to 🚀 Quoi de neuf dans la v2.0.5 ?">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-fonctionnalités-principales">✨ Fonctionnalités principales<a href="https://chancel18.github.io/SigmasoftDataTableBundle/en/blog/welcome#-fonctionnalit%C3%A9s-principales" class="hash-link" aria-label="Direct link to ✨ Fonctionnalités principales" title="Direct link to ✨ Fonctionnalités principales">​</a></h3>
+<ul>
+<li><strong>Live Components</strong> avec Symfony UX pour des interactions temps réel</li>
+<li><strong>Édition inline avancée</strong> avec architecture modulaire V2</li>
+<li><strong>Commande Maker</strong> pour génération automatique de DataTables</li>
+<li><strong>Export CSV/Excel</strong> intégré et personnalisable</li>
+<li><strong>Tests unitaires</strong> complets avec 98.5% de réussite</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-technologies-modernes">🛠️ Technologies modernes<a href="https://chancel18.github.io/SigmasoftDataTableBundle/en/blog/welcome#%EF%B8%8F-technologies-modernes" class="hash-link" aria-label="Direct link to 🛠️ Technologies modernes" title="Direct link to 🛠️ Technologies modernes">​</a></h3>
+<ul>
+<li>PHP 8.1+ avec typage strict</li>
+<li>Symfony 6.4+ / 7.0+ compatibility</li>
+<li>Bootstrap 5 responsive design</li>
+<li>JavaScript ES6 pour les interactions client</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-documentation-complète">📚 Documentation complète<a href="https://chancel18.github.io/SigmasoftDataTableBundle/en/blog/welcome#-documentation-compl%C3%A8te" class="hash-link" aria-label="Direct link to 📚 Documentation complète" title="Direct link to 📚 Documentation complète">​</a></h3>
+<p>Cette nouvelle documentation Docusaurus vous offre :</p>
+<ul>
+<li>Guide d'installation pas-à-pas</li>
+<li>API Reference complète</li>
+<li>Exemples pratiques</li>
+<li>Guide de personnalisation avancée</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-installation-rapide">🎯 Installation rapide<a href="https://chancel18.github.io/SigmasoftDataTableBundle/en/blog/welcome#-installation-rapide" class="hash-link" aria-label="Direct link to 🎯 Installation rapide" title="Direct link to 🎯 Installation rapide">​</a></h2>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">composer</span><span class="token plain"> require sigmasoft/datatable-bundle</span><br></span></code></pre></div></div>
+<p>Une seule ligne de code pour afficher un tableau complet :</p>
+<div class="language-twig codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-twig codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;twig:SigmasoftDataTable entityClass="App\Entity\User" /&gt;</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-liens-utiles">🔗 Liens utiles<a href="https://chancel18.github.io/SigmasoftDataTableBundle/en/blog/welcome#-liens-utiles" class="hash-link" aria-label="Direct link to 🔗 Liens utiles" title="Direct link to 🔗 Liens utiles">​</a></h2>
+<ul>
+<li><strong>GitHub</strong> : <a href="https://github.com/Chancel18/SigmasoftDataTableBundle" target="_blank" rel="noopener noreferrer">https://github.com/Chancel18/SigmasoftDataTableBundle</a></li>
+<li><strong>Packagist</strong> : <a href="https://packagist.org/packages/sigmasoft/datatable-bundle" target="_blank" rel="noopener noreferrer">https://packagist.org/packages/sigmasoft/datatable-bundle</a></li>
+<li><strong>Documentation</strong> : <a href="https://chancel18.github.io/SigmasoftDataTableBundle/" target="_blank" rel="noopener noreferrer">https://chancel18.github.io/SigmasoftDataTableBundle/</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-support-et-contact">📧 Support et contact<a href="https://chancel18.github.io/SigmasoftDataTableBundle/en/blog/welcome#-support-et-contact" class="hash-link" aria-label="Direct link to 📧 Support et contact" title="Direct link to 📧 Support et contact">​</a></h2>
+<ul>
+<li><strong>Support technique</strong> : <a href="mailto:support@sigmasoft-solution.com" target="_blank" rel="noopener noreferrer">support@sigmasoft-solution.com</a></li>
+<li><strong>Auteur</strong> : Gédéon MAKELA (<a href="mailto:g.makela@sigmasoft-solution.com" target="_blank" rel="noopener noreferrer">g.makela@sigmasoft-solution.com</a>)</li>
+</ul>
+<p>Merci de votre confiance et n'hésitez pas à contribuer au projet ! 🚀</p>
+<hr>
+<p><em>Publié par <a href="mailto:g.makela@sigmasoft-solution.com" target="_blank" rel="noopener noreferrer">Gédéon MAKELA</a> - <a href="https://sigmasoft-solution.com/" target="_blank" rel="noopener noreferrer">Sigmasoft Solutions</a></em></p>]]></content:encoded>
+            <category>symfony</category>
+            <category>datatable</category>
+            <category>annonce</category>
+        </item>
+    </channel>
+</rss>

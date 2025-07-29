@@ -12,7 +12,9 @@
       "Bash(npm run build:*)",
       "Bash(npm run clear:*)",
       "Bash(timeout 10 npm start)",
-      "Bash(timeout 10 npm start -- --port 3001)"
+      "Bash(timeout 10 npm start -- --port 3001)",
+      "Bash(git commit:*)",
+      "Bash(npm run serve:*)"
     ],
     "deny": []
   }

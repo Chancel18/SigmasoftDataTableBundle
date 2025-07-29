@@ -1,5 +1,5 @@
 {
-  "blogBasePath": "/SigmasoftDataTableBundle/blog",
+  "blogBasePath": "/SigmasoftDataTableBundle/en/blog",
   "blogTitle": "Blog",
-  "authorsListPath": "/SigmasoftDataTableBundle/blog/authors"
+  "authorsListPath": "/SigmasoftDataTableBundle/en/blog/authors"
 }

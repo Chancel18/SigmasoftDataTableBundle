@@ -1,0 +1,1095 @@
+{
+  "entrypoints": [
+    "main"
+  ],
+  "origins": {
+    "165": [
+      725,
+      2076,
+      6433,
+      8731,
+      165
+    ],
+    "310": [
+      2076,
+      8379,
+      310
+    ],
+    "375": [
+      2076,
+      8731,
+      375
+    ],
+    "725": [
+      165,
+      2076,
+      8731,
+      725
+    ],
+    "1039": [
+      1039
+    ],
+    "2068": [
+      2068
+    ],
+    "2130": [
+      2130
+    ],
+    "2159": [
+      2076,
+      8583,
+      2159
+    ],
+    "2237": [
+      2237
+    ],
+    "2334": [
+      2076,
+      5759,
+      8583,
+      8665,
+      2334
+    ],
+    "2498": [
+      2498
+    ],
+    "2822": [
+      2076,
+      2822
+    ],
+    "3736": [
+      3736
+    ],
+    "3956": [
+      3956
+    ],
+    "4458": [
+      4458
+    ],
+    "4504": [
+      4504
+    ],
+    "4866": [
+      2076,
+      8731,
+      4866
+    ],
+    "4914": [
+      2076,
+      4914
+    ],
+    "5388": [
+      2076,
+      8731,
+      5388
+    ],
+    "5392": [
+      5392
+    ],
+    "5759": [
+      2076,
+      2334,
+      8583,
+      5759
+    ],
+    "5775": [
+      2076,
+      8731,
+      5775
+    ],
+    "5864": [
+      5864
+    ],
+    "6143": [
+      6143
+    ],
+    "6321": [
+      1869,
+      2076,
+      3249,
+      4813,
+      7643,
+      7733,
+      6321
+    ],
+    "6433": [
+      165,
+      6433
+    ],
+    "6795": [
+      2076,
+      8731,
+      6795
+    ],
+    "6796": [
+      2076,
+      8731,
+      6796
+    ],
+    "7340": [
+      7340
+    ],
+    "7733": [
+      1869,
+      2076,
+      3249,
+      4813,
+      6321,
+      7643,
+      8401,
+      7733
+    ],
+    "7835": [
+      2076,
+      7835
+    ],
+    "7900": [
+      7900
+    ],
+    "8188": [
+      8188
+    ],
+    "8379": [
+      310,
+      2076,
+      9695,
+      8379
+    ],
+    "8583": [
+      2076,
+      2159,
+      2334,
+      5759,
+      8583
+    ],
+    "8665": [
+      2076,
+      2334,
+      8665
+    ],
+    "8716": [
+      8716
+    ],
+    "8731": [
+      165,
+      375,
+      725,
+      2076,
+      4866,
+      5388,
+      5775,
+      6795,
+      6796,
+      8731
+    ],
+    "9107": [
+      2076,
+      9107
+    ],
+    "9157": [
+      9157
+    ],
+    "9349": [
+      9349
+    ],
+    "9695": [
+      2076,
+      8379,
+      9695
+    ],
+    "17896441": [
+      1869,
+      2076,
+      7733,
+      8401
+    ],
+    "main": [
+      1869,
+      5354,
+      8792
+    ],
+    "runtime~main": [
+      1869,
+      8792,
+      5354
+    ],
+    "01a5bde2": [
+      2076,
+      1623
+    ],
+    "01a85c17": [
+      1869,
+      8209
+    ],
+    "065d9343": [
+      2076,
+      7381
+    ],
+    "207631c8": [
+      2076,
+      5015
+    ],
+    "24d2f068": [
+      4679
+    ],
+    "36994c47": [
+      9858
+    ],
+    "3b8c55ea": [
+      2076,
+      6803
+    ],
+    "427467bc": [
+      3436
+    ],
+    "4de85a14": [
+      8101
+    ],
+    "51c186d8": [
+      67
+    ],
+    "5e95c892": [
+      9647
+    ],
+    "6350f722": [
+      2076,
+      5276
+    ],
+    "65df3d35": [
+      2076,
+      8559
+    ],
+    "6875c492": [
+      1869,
+      2076,
+      6321,
+      7733,
+      4813
+    ],
+    "72e14192": [
+      2076,
+      2814
+    ],
+    "814f3328": [
+      7472
+    ],
+    "8609875d": [
+      5036
+    ],
+    "9e4087bc": [
+      2711
+    ],
+    "a09c2993": [
+      2076,
+      5899
+    ],
+    "a6aa9e1f": [
+      1869,
+      2076,
+      6321,
+      7733,
+      7643
+    ],
+    "a7456010": [
+      1235
+    ],
+    "a7bd4aaa": [
+      7098
+    ],
+    "a94703ab": [
+      1869,
+      9048
+    ],
+    "aba21aa0": [
+      5742
+    ],
+    "acecf23e": [
+      1903
+    ],
+    "b9978a27": [
+      2076,
+      4380
+    ],
+    "c4f5d8e4": [
+      1869,
+      2634
+    ],
+    "ccc49370": [
+      1869,
+      2076,
+      6321,
+      7733,
+      3249
+    ],
+    "d49a2559": [
+      7728
+    ],
+    "e8dc9167": [
+      2764
+    ],
+    "f078c7d5": [
+      2076,
+      6155
+    ],
+    "styles": [
+      2076,
+      2634,
+      3249,
+      4813,
+      5354,
+      6321,
+      7643,
+      7733,
+      8209,
+      8401,
+      8792,
+      9048,
+      1869
+    ],
+    "common": [
+      165,
+      310,
+      375,
+      725,
+      1623,
+      1869,
+      2159,
+      2334,
+      2814,
+      2822,
+      3249,
+      4380,
+      4813,
+      4866,
+      4914,
+      5015,
+      5276,
+      5388,
+      5759,
+      5775,
+      5899,
+      6155,
+      6321,
+      6795,
+      6796,
+      6803,
+      7381,
+      7643,
+      7733,
+      7835,
+      8379,
+      8401,
+      8559,
+      8583,
+      8665,
+      8731,
+      9107,
+      9695,
+      2076
+    ]
+  },
+  "assets": {
+    "67": {
+      "js": [
+        {
+          "file": "assets/js/51c186d8.25bf54f0.js",
+          "hash": "02c4c02fc54441da",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/51c186d8.25bf54f0.js"
+        }
+      ]
+    },
+    "165": {
+      "js": [
+        {
+          "file": "assets/js/165.840fbf7d.js",
+          "hash": "9d7bb2ec8f9935d1",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/165.840fbf7d.js"
+        }
+      ]
+    },
+    "310": {
+      "js": [
+        {
+          "file": "assets/js/310.55fc7d31.js",
+          "hash": "8d1db0202a2f17a2",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/310.55fc7d31.js"
+        }
+      ]
+    },
+    "375": {
+      "js": [
+        {
+          "file": "assets/js/375.feafed50.js",
+          "hash": "12fd10ee76bee9d7",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/375.feafed50.js"
+        }
+      ]
+    },
+    "725": {
+      "js": [
+        {
+          "file": "assets/js/725.25b134c1.js",
+          "hash": "73718eb9972dfe71",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/725.25b134c1.js"
+        }
+      ]
+    },
+    "1039": {
+      "js": [
+        {
+          "file": "assets/js/1039.8946c149.js",
+          "hash": "f7e2b1d689877e88",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/1039.8946c149.js"
+        }
+      ]
+    },
+    "1235": {
+      "js": [
+        {
+          "file": "assets/js/a7456010.807e90fa.js",
+          "hash": "1871a30b484b3c30",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/a7456010.807e90fa.js"
+        }
+      ]
+    },
+    "1623": {
+      "js": [
+        {
+          "file": "assets/js/01a5bde2.67d27dd9.js",
+          "hash": "10907e35a90b7f7c",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/01a5bde2.67d27dd9.js"
+        }
+      ]
+    },
+    "1869": {
+      "css": [
+        {
+          "file": "assets/css/styles.0f5a40d0.css",
+          "hash": "1c04f27199e97956",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/css/styles.0f5a40d0.css"
+        }
+      ]
+    },
+    "1903": {
+      "js": [
+        {
+          "file": "assets/js/acecf23e.49168ae8.js",
+          "hash": "ba3b5972a0e284ba",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/acecf23e.49168ae8.js"
+        }
+      ]
+    },
+    "2068": {
+      "js": [
+        {
+          "file": "assets/js/2068.f5e1b792.js",
+          "hash": "a9f3c67116c410dd",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/2068.f5e1b792.js"
+        }
+      ]
+    },
+    "2076": {
+      "js": [
+        {
+          "file": "assets/js/common.a825199f.js",
+          "hash": "7ae923bcaa1f842e",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/common.a825199f.js"
+        }
+      ]
+    },
+    "2130": {
+      "js": [
+        {
+          "file": "assets/js/2130.674d5d28.js",
+          "hash": "fa8ab2bea763e088",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/2130.674d5d28.js"
+        }
+      ]
+    },
+    "2159": {
+      "js": [
+        {
+          "file": "assets/js/2159.93d4c71e.js",
+          "hash": "5aa05f3967e69880",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/2159.93d4c71e.js"
+        }
+      ]
+    },
+    "2237": {
+      "js": [
+        {
+          "file": "assets/js/2237.f2bcbef7.js",
+          "hash": "ec33cf7d3ecbc34b",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/2237.f2bcbef7.js"
+        }
+      ]
+    },
+    "2334": {
+      "js": [
+        {
+          "file": "assets/js/2334.540b6d08.js",
+          "hash": "292bc46036be8ec7",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/2334.540b6d08.js"
+        }
+      ]
+    },
+    "2498": {
+      "js": [
+        {
+          "file": "assets/js/2498.9af33205.js",
+          "hash": "db25bc2bb92aa8dc",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/2498.9af33205.js"
+        }
+      ]
+    },
+    "2634": {
+      "js": [
+        {
+          "file": "assets/js/c4f5d8e4.aa41062b.js",
+          "hash": "23ffd984657b1077",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/c4f5d8e4.aa41062b.js"
+        }
+      ]
+    },
+    "2711": {
+      "js": [
+        {
+          "file": "assets/js/9e4087bc.f6ee9472.js",
+          "hash": "2d66091066e5c11b",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/9e4087bc.f6ee9472.js"
+        }
+      ]
+    },
+    "2764": {
+      "js": [
+        {
+          "file": "assets/js/e8dc9167.b1f0298d.js",
+          "hash": "d4c04cb16ef7876a",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/e8dc9167.b1f0298d.js"
+        }
+      ]
+    },
+    "2814": {
+      "js": [
+        {
+          "file": "assets/js/72e14192.ab53b5b1.js",
+          "hash": "06bd52adfc4e6b1f",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/72e14192.ab53b5b1.js"
+        }
+      ]
+    },
+    "2822": {
+      "js": [
+        {
+          "file": "assets/js/2822.06c36414.js",
+          "hash": "189220aa7e995603",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/2822.06c36414.js"
+        }
+      ]
+    },
+    "3249": {
+      "js": [
+        {
+          "file": "assets/js/ccc49370.302fb4ff.js",
+          "hash": "f7001087265f46f2",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/ccc49370.302fb4ff.js"
+        }
+      ]
+    },
+    "3436": {
+      "js": [
+        {
+          "file": "assets/js/427467bc.37937cff.js",
+          "hash": "843f0b345a229439",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/427467bc.37937cff.js"
+        }
+      ]
+    },
+    "3736": {
+      "js": [
+        {
+          "file": "assets/js/3736.1ddd9139.js",
+          "hash": "de41271b2b5782df",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/3736.1ddd9139.js"
+        }
+      ]
+    },
+    "3956": {
+      "js": [
+        {
+          "file": "assets/js/3956.94e34acd.js",
+          "hash": "4fb27d1fc8cc3277",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/3956.94e34acd.js"
+        }
+      ]
+    },
+    "4380": {
+      "js": [
+        {
+          "file": "assets/js/b9978a27.f599a770.js",
+          "hash": "4be9fe2462bc9514",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/b9978a27.f599a770.js"
+        }
+      ]
+    },
+    "4458": {
+      "js": [
+        {
+          "file": "assets/js/4458.cd432f8a.js",
+          "hash": "70165cb5e961bbd4",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/4458.cd432f8a.js"
+        }
+      ]
+    },
+    "4504": {
+      "js": [
+        {
+          "file": "assets/js/4504.24f55522.js",
+          "hash": "549fd3a1430c98b2",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/4504.24f55522.js"
+        }
+      ]
+    },
+    "4679": {
+      "js": [
+        {
+          "file": "assets/js/24d2f068.fab55760.js",
+          "hash": "edcd19f8e295b130",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/24d2f068.fab55760.js"
+        }
+      ]
+    },
+    "4813": {
+      "js": [
+        {
+          "file": "assets/js/6875c492.74b7741c.js",
+          "hash": "cf5f6e3b3e3cae48",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/6875c492.74b7741c.js"
+        }
+      ]
+    },
+    "4866": {
+      "js": [
+        {
+          "file": "assets/js/4866.395fde49.js",
+          "hash": "c6d648473686bf36",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/4866.395fde49.js"
+        }
+      ]
+    },
+    "4914": {
+      "js": [
+        {
+          "file": "assets/js/4914.b61e2c04.js",
+          "hash": "68756ddbf9f5fee4",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/4914.b61e2c04.js"
+        }
+      ]
+    },
+    "5015": {
+      "js": [
+        {
+          "file": "assets/js/207631c8.a5882034.js",
+          "hash": "9380a750c0da56c3",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/207631c8.a5882034.js"
+        }
+      ]
+    },
+    "5036": {
+      "js": [
+        {
+          "file": "assets/js/8609875d.efffc357.js",
+          "hash": "6e6c9276d77a052a",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/8609875d.efffc357.js"
+        }
+      ]
+    },
+    "5276": {
+      "js": [
+        {
+          "file": "assets/js/6350f722.d7ce5e82.js",
+          "hash": "7b334ee2cf8a6d32",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/6350f722.d7ce5e82.js"
+        }
+      ]
+    },
+    "5354": {
+      "js": [
+        {
+          "file": "assets/js/runtime~main.1079cfa6.js",
+          "hash": "f7fcaeac36fcbb55",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/runtime~main.1079cfa6.js"
+        }
+      ]
+    },
+    "5388": {
+      "js": [
+        {
+          "file": "assets/js/5388.f79c8572.js",
+          "hash": "5d391e39ca42c0d4",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/5388.f79c8572.js"
+        }
+      ]
+    },
+    "5392": {
+      "js": [
+        {
+          "file": "assets/js/5392.befea40a.js",
+          "hash": "ebdab5ec38e4be73",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/5392.befea40a.js"
+        }
+      ]
+    },
+    "5742": {
+      "js": [
+        {
+          "file": "assets/js/aba21aa0.7e48b923.js",
+          "hash": "e11d89958a8660bb",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/aba21aa0.7e48b923.js"
+        }
+      ]
+    },
+    "5759": {
+      "js": [
+        {
+          "file": "assets/js/5759.0387e5fe.js",
+          "hash": "c58f166d8f468075",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/5759.0387e5fe.js"
+        }
+      ]
+    },
+    "5775": {
+      "js": [
+        {
+          "file": "assets/js/5775.753ffc52.js",
+          "hash": "300ef6f9ce2edf5a",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/5775.753ffc52.js"
+        }
+      ]
+    },
+    "5864": {
+      "js": [
+        {
+          "file": "assets/js/5864.4d4bcac1.js",
+          "hash": "d67a294ef5ee7e96",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/5864.4d4bcac1.js"
+        }
+      ]
+    },
+    "5899": {
+      "js": [
+        {
+          "file": "assets/js/a09c2993.f8668557.js",
+          "hash": "3b440cff6ab937f0",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/a09c2993.f8668557.js"
+        }
+      ]
+    },
+    "6143": {
+      "js": [
+        {
+          "file": "assets/js/6143.6ca1ff5d.js",
+          "hash": "4be4a14713d0e720",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/6143.6ca1ff5d.js"
+        }
+      ]
+    },
+    "6155": {
+      "js": [
+        {
+          "file": "assets/js/f078c7d5.92ea1763.js",
+          "hash": "abcc37abcc127790",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/f078c7d5.92ea1763.js"
+        }
+      ]
+    },
+    "6321": {
+      "js": [
+        {
+          "file": "assets/js/6321.45b1bfbf.js",
+          "hash": "957ba287a35d847e",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/6321.45b1bfbf.js"
+        }
+      ]
+    },
+    "6433": {
+      "js": [
+        {
+          "file": "assets/js/6433.5d5d42ca.js",
+          "hash": "093391f5b1fbdd9b",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/6433.5d5d42ca.js"
+        }
+      ]
+    },
+    "6795": {
+      "js": [
+        {
+          "file": "assets/js/6795.d5140235.js",
+          "hash": "72e49d4690714916",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/6795.d5140235.js"
+        }
+      ]
+    },
+    "6796": {
+      "js": [
+        {
+          "file": "assets/js/6796.b4030e0a.js",
+          "hash": "25cf912438ee5b89",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/6796.b4030e0a.js"
+        }
+      ]
+    },
+    "6803": {
+      "js": [
+        {
+          "file": "assets/js/3b8c55ea.715d3a39.js",
+          "hash": "3650d116acc03f8e",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/3b8c55ea.715d3a39.js"
+        }
+      ]
+    },
+    "7098": {
+      "js": [
+        {
+          "file": "assets/js/a7bd4aaa.db961479.js",
+          "hash": "78bb9613dbff601a",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/a7bd4aaa.db961479.js"
+        }
+      ]
+    },
+    "7340": {
+      "js": [
+        {
+          "file": "assets/js/7340.fd3afadc.js",
+          "hash": "cbbd6552d456bf28",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/7340.fd3afadc.js"
+        }
+      ]
+    },
+    "7381": {
+      "js": [
+        {
+          "file": "assets/js/065d9343.e198e935.js",
+          "hash": "1c9b3606f6397e21",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/065d9343.e198e935.js"
+        }
+      ]
+    },
+    "7472": {
+      "js": [
+        {
+          "file": "assets/js/814f3328.5a567a96.js",
+          "hash": "012e3d152ee6c871",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/814f3328.5a567a96.js"
+        }
+      ]
+    },
+    "7643": {
+      "js": [
+        {
+          "file": "assets/js/a6aa9e1f.70328f34.js",
+          "hash": "c10b1ecc6408fa52",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/a6aa9e1f.70328f34.js"
+        }
+      ]
+    },
+    "7728": {
+      "js": [
+        {
+          "file": "assets/js/d49a2559.e0a6a273.js",
+          "hash": "0a8ad9bec014a62c",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/d49a2559.e0a6a273.js"
+        }
+      ]
+    },
+    "7733": {
+      "js": [
+        {
+          "file": "assets/js/7733.2070be97.js",
+          "hash": "033b4d987ad928c0",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/7733.2070be97.js"
+        }
+      ]
+    },
+    "7835": {
+      "js": [
+        {
+          "file": "assets/js/7835.07e9b9ac.js",
+          "hash": "e025686176bf7458",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/7835.07e9b9ac.js"
+        }
+      ]
+    },
+    "7900": {
+      "js": [
+        {
+          "file": "assets/js/7900.e920ae0c.js",
+          "hash": "215d49157773855c",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/7900.e920ae0c.js"
+        }
+      ]
+    },
+    "8101": {
+      "js": [
+        {
+          "file": "assets/js/4de85a14.d3f2dc4b.js",
+          "hash": "56f037eabdc10be9",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/4de85a14.d3f2dc4b.js"
+        }
+      ]
+    },
+    "8188": {
+      "js": [
+        {
+          "file": "assets/js/8188.aa053609.js",
+          "hash": "ce53732957077da3",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/8188.aa053609.js"
+        }
+      ]
+    },
+    "8209": {
+      "js": [
+        {
+          "file": "assets/js/01a85c17.1e1f478c.js",
+          "hash": "f21bb80219282a7e",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/01a85c17.1e1f478c.js"
+        }
+      ]
+    },
+    "8379": {
+      "js": [
+        {
+          "file": "assets/js/8379.884d8325.js",
+          "hash": "439c517e63ecaa0c",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/8379.884d8325.js"
+        }
+      ]
+    },
+    "8401": {
+      "js": [
+        {
+          "file": "assets/js/17896441.a21d3a56.js",
+          "hash": "34ea4bb312c462cc",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/17896441.a21d3a56.js"
+        }
+      ]
+    },
+    "8559": {
+      "js": [
+        {
+          "file": "assets/js/65df3d35.a0f8755f.js",
+          "hash": "7af8b8657e810d26",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/65df3d35.a0f8755f.js"
+        }
+      ]
+    },
+    "8583": {
+      "js": [
+        {
+          "file": "assets/js/8583.f3dabe97.js",
+          "hash": "a42ffbcde7990cff",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/8583.f3dabe97.js"
+        }
+      ]
+    },
+    "8665": {
+      "js": [
+        {
+          "file": "assets/js/8665.324b48c6.js",
+          "hash": "0cec082bb8abe96d",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/8665.324b48c6.js"
+        }
+      ]
+    },
+    "8716": {
+      "js": [
+        {
+          "file": "assets/js/8716.5d140425.js",
+          "hash": "8a1a02a423ce6384",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/8716.5d140425.js"
+        }
+      ]
+    },
+    "8731": {
+      "js": [
+        {
+          "file": "assets/js/8731.7a57847a.js",
+          "hash": "f968b761fa3fcfed",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/8731.7a57847a.js"
+        }
+      ]
+    },
+    "8792": {
+      "js": [
+        {
+          "file": "assets/js/main.d45efb73.js",
+          "hash": "efb0796c5003a07d",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/main.d45efb73.js"
+        }
+      ]
+    },
+    "9048": {
+      "js": [
+        {
+          "file": "assets/js/a94703ab.8a1f7127.js",
+          "hash": "80dcaf777f7fb3f2",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/a94703ab.8a1f7127.js"
+        }
+      ]
+    },
+    "9107": {
+      "js": [
+        {
+          "file": "assets/js/9107.ca44ba58.js",
+          "hash": "38c42037c2a42ed4",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/9107.ca44ba58.js"
+        }
+      ]
+    },
+    "9157": {
+      "js": [
+        {
+          "file": "assets/js/9157.a36a9064.js",
+          "hash": "0cc6b25885b73c6c",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/9157.a36a9064.js"
+        }
+      ]
+    },
+    "9349": {
+      "js": [
+        {
+          "file": "assets/js/9349.6c58c79a.js",
+          "hash": "cb3851de3d639604",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/9349.6c58c79a.js"
+        }
+      ]
+    },
+    "9647": {
+      "js": [
+        {
+          "file": "assets/js/5e95c892.13ff741a.js",
+          "hash": "3bcfbade6fc7a087",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/5e95c892.13ff741a.js"
+        }
+      ]
+    },
+    "9695": {
+      "js": [
+        {
+          "file": "assets/js/9695.0b950075.js",
+          "hash": "e472e2d8b81332c7",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/9695.0b950075.js"
+        }
+      ]
+    },
+    "9858": {
+      "js": [
+        {
+          "file": "assets/js/36994c47.4b2d9ff6.js",
+          "hash": "65831d5ff35963a2",
+          "publicPath": "/SigmasoftDataTableBundle/en/assets/js/36994c47.4b2d9ff6.js"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksigmasoft_datatable_bundle_docs=self.webpackChunksigmasoft_datatable_bundle_docs||[]).push([[8188],{8188:(e,a,s)=>{s.d(a,{createPieServices:()=>t.f});var t=s(9786);s(8198)}}]);

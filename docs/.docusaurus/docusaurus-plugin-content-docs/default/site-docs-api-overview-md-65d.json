@@ -5,7 +5,7 @@
   "source": "@site/docs/api/overview.md",
   "sourceDirName": "api",
   "slug": "/api/overview",
-  "permalink": "/SigmasoftDataTableBundle/docs/api/overview",
+  "permalink": "/SigmasoftDataTableBundle/en/docs/api/overview",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/Chancel18/SigmasoftDataTableBundle/tree/master/docs/docs/api/overview.md",
@@ -18,10 +18,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Architecture du Bundle",
-    "permalink": "/SigmasoftDataTableBundle/docs/developer-guide/architecture"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/developer-guide/architecture"
   },
   "next": {
     "title": "Déploiement GitHub Pages",
-    "permalink": "/SigmasoftDataTableBundle/docs/deployment/github-pages"
+    "permalink": "/SigmasoftDataTableBundle/en/docs/deployment/github-pages"
   }
 }
