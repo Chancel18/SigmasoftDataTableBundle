@@ -8,10 +8,8 @@ use Sigmasoft\DataTableBundle\Builder\DataTableBuilder;
 use Sigmasoft\DataTableBundle\Component\DataTableComponent;
 use Sigmasoft\DataTableBundle\DataProvider\DataProviderInterface;
 use Sigmasoft\DataTableBundle\DataProvider\DoctrineDataProvider;
-use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 
 final class SigmasoftDataTableExtension extends Extension
@@ -21,10 +19,7 @@ final class SigmasoftDataTableExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        // Load services
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        
-        // Register services manually since we don't have a services.yaml file yet
+        // Register services manually
         $this->registerServices($container, $config);
     }
 

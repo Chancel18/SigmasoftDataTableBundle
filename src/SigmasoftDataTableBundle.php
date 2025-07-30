@@ -7,7 +7,7 @@
  * @copyright 2025 Sigmasoft Solutions
  * @license MIT
  * @package Sigmasoft\DataTableBundle
- * @version 2.0.8
+ * @version 2.0.9
  * @link https://github.com/Chancel18/SigmasoftDataTableBundle
  * @support support@sigmasoft-solution.com
  */

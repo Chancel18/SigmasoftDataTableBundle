@@ -5,6 +5,20 @@ Toutes les modifications importantes de ce projet seront documentées dans ce fi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet respecte le [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.9] - 2025-07-30
+
+### 🚨 FIX CRITIQUE Extension Loading
+
+#### Extension SigmasoftDataTableExtension
+- **RÉSOLU** : Suppression YamlFileLoader inutile causant erreur silencieuse
+- **RÉSOLU** : Extension maintenant chargée correctement par Symfony
+- **RÉSOLU** : Services du bundle maintenant enregistrés et visibles
+- **RÉSOLU** : Alias `sigmasoft_data_table` maintenant disponible
+
+#### Stabilité Bundle
+- **NETTOYAGE** : Suppression imports inutiles (FileLocator, YamlFileLoader)
+- **OPTIMISATION** : Enregistrement direct des services sans fichier config
+
 ## [2.0.8] - 2025-07-30
 
 ### 🔧 Corrections Critiques
