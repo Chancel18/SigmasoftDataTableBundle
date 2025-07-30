@@ -20,7 +20,8 @@
       "WebFetch(domain:chancel18.github.io)",
       "Bash(php:*)",
       "Bash(composer show:*)",
-      "Bash(composer:*)"
+      "Bash(composer:*)",
+      "Bash(mv:*)"
     ],
     "deny": []
   }

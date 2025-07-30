@@ -5,6 +5,23 @@ Toutes les modifications importantes de ce projet seront documentées dans ce fi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet respecte le [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1] - 2025-07-30
+
+### 🚨 FIX ULTIME - Structure Autoloading PSR-4
+
+#### Correction Structure Bundle
+- **CRITIQUE** : `SigmasoftDataTableBundle.php` déplacé à la racine (PSR-4 compliance)
+- **RÉSOLU** : Structure d'autoloading maintenant correcte selon PSR-4
+- **NETTOYAGE** : Suppression fichiers dupliqués dans src/ (DataTableBuilder.php, README.md)
+- **FIX** : Ajustement getPath() pour pointer vers src/SigmasoftDataTableBundle
+
+#### Impact
+- **Bundle** : Maintenant correctement chargé par l'autoloader Composer
+- **Extension** : Services maintenant enregistrés correctement
+- **Maker** : Commande make:datatable maintenant visible et fonctionnelle
+
+Cette correction résout définitivement le problème de chargement du bundle !
+
 ## [2.1.0] - 2025-07-30
 
 ### 🎯 CORRECTIONS MAJEURES - Bundle Audit Complet
