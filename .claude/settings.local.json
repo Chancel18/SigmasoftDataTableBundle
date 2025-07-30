@@ -14,7 +14,9 @@
       "Bash(timeout 10 npm start)",
       "Bash(timeout 10 npm start -- --port 3001)",
       "Bash(git commit:*)",
-      "Bash(npm run serve:*)"
+      "Bash(npm run serve:*)",
+      "Bash(find:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }
