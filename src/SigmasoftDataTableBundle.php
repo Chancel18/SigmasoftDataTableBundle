@@ -16,7 +16,6 @@ declare(strict_types=1);
 
 namespace Sigmasoft\DataTableBundle;
 
-use Sigmasoft\DataTableBundle\DependencyInjection\Compiler\FieldRendererPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -26,7 +25,11 @@ final class SigmasoftDataTableBundle extends Bundle
     {
         parent::build($container);
         
-        $container->addCompilerPass(new FieldRendererPass());
+        // FieldRendererPass sera ajouté dans une version ultérieure
+        // pour éviter les erreurs ClassNotFoundError lors de l'installation
+        if (class_exists('Sigmasoft\DataTableBundle\DependencyInjection\Compiler\FieldRendererPass')) {
+            $container->addCompilerPass(new \Sigmasoft\DataTableBundle\DependencyInjection\Compiler\FieldRendererPass());
+        }
     }
 
     public function getPath(): string
