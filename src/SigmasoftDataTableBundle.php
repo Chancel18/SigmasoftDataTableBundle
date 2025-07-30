@@ -7,7 +7,7 @@
  * @copyright 2025 Sigmasoft Solutions
  * @license MIT
  * @package Sigmasoft\DataTableBundle
- * @version 2.0.5
+ * @version 2.0.8
  * @link https://github.com/Chancel18/SigmasoftDataTableBundle
  * @support support@sigmasoft-solution.com
  */
@@ -34,7 +34,7 @@ final class SigmasoftDataTableBundle extends Bundle
 
     public function getPath(): string
     {
-        return \dirname(__DIR__, 1) . '/SigmasoftDataTableBundle';
+        return \dirname(__DIR__) . '/SigmasoftDataTableBundle';
     }
 }
 

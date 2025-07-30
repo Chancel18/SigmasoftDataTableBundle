@@ -16,7 +16,11 @@
       "Bash(git commit:*)",
       "Bash(npm run serve:*)",
       "Bash(find:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "WebFetch(domain:chancel18.github.io)",
+      "Bash(php:*)",
+      "Bash(composer show:*)",
+      "Bash(composer:*)"
     ],
     "deny": []
   }

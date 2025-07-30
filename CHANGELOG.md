@@ -5,6 +5,40 @@ Toutes les modifications importantes de ce projet seront documentées dans ce fi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet respecte le [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.8] - 2025-07-30
+
+### 🔧 Corrections Critiques
+
+#### Maker Command `make:datatable`
+- **RÉSOLU** : Suppression du fichier bundle en double `src/SigmasoftDataTableBundle/SigmasoftDataTableBundle.php`
+- **RÉSOLU** : Correction du chemin `getPath()` dans le bundle principal
+- **RÉSOLU** : Extension et services maintenant correctement chargés
+- **RÉSOLU** : Commande `make:datatable` maintenant visible dans `php bin/console list make`
+
+#### Amélioration de la Stabilité
+- **Autoload** : Structure de fichiers corrigée pour éviter les conflits
+- **Bundle Loading** : Extension `SigmasoftDataTableExtension` maintenant fonctionnelle
+- **Services** : Tous les services du bundle correctement enregistrés
+
+## [2.0.7] - 2025-07-30
+
+### 🚨 HOTFIX ClassNotFoundError
+- **RÉSOLU** : Vérification `class_exists()` avant utilisation de `FieldRendererPass`
+- **SÉCURITÉ** : Installation du bundle sans erreur garantie
+
+## [2.0.6] - 2025-07-30
+
+### 🔧 Correction Critique Production
+- **RÉSOLU** : ClassNotFoundError lors du `cache:clear` en production
+- **AMÉLIORATION** : Gestion conditionnelle des compiler passes
+
+## [2.0.5] - 2025-07-30
+
+### 📚 Documentation Complète
+- **NOUVEAU** : Documentation Docusaurus complète avec GitHub Pages
+- **NOUVEAU** : Guide complet d'installation et utilisation  
+- **NOUVEAU** : Exemples d'intégration détaillés
+
 ## [2.0.0] - 2025-07-29
 
 ### 🎯 Nouvelles Fonctionnalités Majeures
