@@ -28,7 +28,7 @@ use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
-#[AsLiveComponent(name: 'sigmasoft_datatable', template: 'bundles/SigmasoftDataTableBundle/datatable.html.twig')]
+#[AsLiveComponent(name: 'sigmasoft_datatable', template: '@SigmasoftDataTable/datatable.html.twig')]
 final class DataTableComponent
 {
     use DefaultActionTrait;

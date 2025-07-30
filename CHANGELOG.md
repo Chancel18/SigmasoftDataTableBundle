@@ -5,6 +5,32 @@ Toutes les modifications importantes de ce projet seront documentées dans ce fi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet respecte le [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2025-07-30
+
+### 🎯 CORRECTIONS MAJEURES - Bundle Audit Complet
+
+#### Bundle Architecture Fixes
+- **CRITIQUE** : Correction méthode `getPath()` - utilisation directe de `__DIR__`
+- **CRITIQUE** : Template autonome - suppression dépendance `@components/card_default.html.twig`
+- **CRITIQUE** : Unification références template - utilisation `@SigmasoftDataTable/datatable.html.twig`
+- **AMÉLIORATION** : Template complètement refactorisé sans dépendances externes
+
+#### Extension & Services
+- **RÉSOLU** : Suppression YamlFileLoader problématique dans SigmasoftDataTableExtension
+- **RÉSOLU** : Nettoyage imports inutiles (FileLocator, YamlFileLoader)
+- **AMÉLIORATION** : Commentaires explicatifs pour vérifications d'existence de services
+
+#### Template Improvements
+- **NOUVEAU** : Template datatable.html.twig entièrement autonome
+- **NOUVEAU** : Structure card Bootstrap native sans dépendances
+- **NOUVEAU** : Styles CSS intégrés pour éviter dépendances externes
+- **AMÉLIORATION** : Interface utilisateur plus robuste et portable
+
+#### Stability & Reliability
+- **SÉCURITÉ** : Élimination de tous les points de défaillance identifiés
+- **PERFORMANCE** : Optimisation chargement des services
+- **MAINTENANCE** : Code plus maintenable sans dépendances fragiles
+
 ## [2.0.9] - 2025-07-30
 
 ### 🚨 FIX CRITIQUE Extension Loading

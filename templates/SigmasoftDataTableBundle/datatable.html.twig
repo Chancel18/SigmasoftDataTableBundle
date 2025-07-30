@@ -1,5 +1,5 @@
 {# 
-  SigmasoftDataTableBundle - Modern DataTable Template
+  SigmasoftDataTableBundle - Modern DataTable Template (Autonomous)
   Usage:
   {{ component('sigmasoft_datatable', { configuration: datatableConfig }) }}
 #}
@@ -7,60 +7,59 @@
     {% set config = this.getConfiguration() %}
     {% set data = this.getData() %}
     
-    {% embed '@components/card_default.html.twig' with { 
-        enable_header: config.isSearchEnabled(), 
-        enable_footer: config.isPaginationEnabled() 
-    } %}
-    
-        {% block header %}
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <!-- Search Input -->
-                {% if config.isSearchEnabled() %}
-                    <div class="input-group input-group-joined input-group-solid w-25">
-                        <span class="input-group-text">
-                            <i class="bi bi-search"></i>
-                        </span>
-                        <input class="form-control ps-0"
-                               placeholder="Rechercher..."
-                               value="{{ this.searchInput }}"
-                               data-model="searchInput"
-                               data-action="input->live#action:1000"
-                               data-live-action-param="search"
-                               aria-label="Search">
-                        <button class="btn btn-success"
-                                data-action="live#action"
-                                data-live-action-param="clearSearch"
-                                type="button">
-                            <i class="bi bi-x-lg"></i>
-                        </button>
-                    </div>
-                {% endif %}
+    {# Autonomous card structure without external dependencies #}
+    <div class="card shadow-sm border-0 rounded-3">
+        {% if config.isSearchEnabled() or config.isPaginationEnabled() %}
+            <div class="card-header bg-transparent border-0 p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <!-- Search Input -->
+                    {% if config.isSearchEnabled() %}
+                        <div class="input-group input-group-joined input-group-solid w-25">
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input class="form-control ps-0"
+                                   placeholder="Rechercher..."
+                                   value="{{ this.searchInput }}"
+                                   data-model="searchInput"
+                                   data-action="input->live#action:1000"
+                                   data-live-action-param="search"
+                                   aria-label="Search">
+                            <button class="btn btn-success"
+                                    data-action="live#action"
+                                    data-live-action-param="clearSearch"
+                                    type="button">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        </div>
+                    {% endif %}
 
-                <!-- Items per page selector -->
-                {% if config.isPaginationEnabled() %}
-                    <div class="d-flex align-items-center">
-                        <label for="items-per-page" class="form-label me-2 mb-0">Éléments par page:</label>
-                        <select id="items-per-page" 
-                                class="form-select form-select-sm w-auto"
-                                data-model="itemsPerPageValue"
-                                data-action="live#action"
-                                data-live-action-param="changeItemsPerPage">
-                            {% for option in [5, 10, 25, 50, 100] %}
-                                <option value="{{ option }}" 
-                                        {% if this.itemsPerPageValue == option %}selected{% endif %}>
-                                    {{ option }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                {% endif %}
+                    <!-- Items per page selector -->
+                    {% if config.isPaginationEnabled() %}
+                        <div class="d-flex align-items-center">
+                            <label for="items-per-page" class="form-label me-2 mb-0">Éléments par page:</label>
+                            <select id="items-per-page" 
+                                    class="form-select form-select-sm w-auto"
+                                    data-model="itemsPerPageValue"
+                                    data-action="live#action"
+                                    data-live-action-param="changeItemsPerPage">
+                                {% for option in [5, 10, 25, 50, 100] %}
+                                    <option value="{{ option }}" 
+                                            {% if this.itemsPerPageValue == option %}selected{% endif %}>
+                                        {{ option }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-        {% endblock %}
+        {% endif %}
 
-        {% block body %}
+        <div class="card-body p-0">
             <!-- Alert Messages -->
             {% if this.showAlert %}
-                <div class="alert alert-{{ this.alertType == 'error' ? 'danger' : this.alertType }} alert-dismissible fade show" role="alert">
+                <div class="alert alert-{{ this.alertType == 'error' ? 'danger' : this.alertType }} alert-dismissible fade show m-3" role="alert">
                     <i class="bi bi-{{ this.alertType == 'success' ? 'check-circle' : 'exclamation-triangle' }}"></i>
                     {{ this.alertMessage }}
                     <button type="button" 
@@ -73,7 +72,7 @@
             
             <!-- Debug Info -->
             {% if app.debug %}
-                <div class="alert alert-info small">
+                <div class="alert alert-info small m-3">
                     <strong>Debug:</strong> Page {{ this.config.page }}/{{ data.getPageCount() }} | 
                     {{ data.getTotalItemCount() }} éléments | 
                     Recherche: "{{ this.config.searchQuery }}" | 
@@ -135,10 +134,10 @@
                     </tbody>
                 </table>
             </div>
-        {% endblock %}
+        </div>
 
-        {% block footer %}
-            {% if config.isPaginationEnabled() %}
+        {% if config.isPaginationEnabled() %}
+            <div class="card-footer bg-transparent border-0 p-3">
                 <nav aria-label="Navigation des pages">
                     <div class="d-flex justify-content-between align-items-center">
                         <!-- Results info -->
@@ -226,9 +225,9 @@
                         </ul>
                     </div>
                 </nav>
-            {% endif %}
-        {% endblock %}
-    {% endembed %}
+            </div>
+        {% endif %}
+    </div>
 
     <style>
     .sigmasoft-datatable .sortable-header {

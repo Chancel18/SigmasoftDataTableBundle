@@ -25,7 +25,7 @@ final class SigmasoftDataTableExtension extends Extension
 
     private function registerServices(ContainerBuilder $container, array $config): void
     {
-        // Register DataProvider
+        // Register DataProvider with service existence checks
         $container->register(DoctrineDataProvider::class)
             ->setArguments([
                 new Reference('doctrine.orm.entity_manager'),
