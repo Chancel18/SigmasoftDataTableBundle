@@ -94,6 +94,8 @@ class UserController extends AbstractController
     {
         $config = $this->dataTableBuilder
             ->createDataTable(User::class)
+            
+            // Colonnes éditables avec validation
             ->addColumn(
                 $this->editableColumnFactory->text('name', 'name', 'Nom')
                     ->required(true)
@@ -105,15 +107,28 @@ class UserController extends AbstractController
             )
             ->addColumn(
                 $this->editableColumnFactory->select('status', 'status', 'Statut', [
-                    'Y' => 'Actif',
-                    'N' => 'Inactif'
+                    'active' => 'Actif',
+                    'inactive' => 'Inactif'
                 ])
             )
+            ->addColumn(
+                $this->editableColumnFactory->number('age', 'age', 'Âge')
+                    ->min(18)
+                    ->max(100)
+            )
+            
+            // Colonnes de lecture seule
             ->addDateColumn('createdAt', 'createdAt', 'Créé le')
-            ->addActionColumn([
+            ->addBadgeColumn('role', 'roles', 'Rôle', [
+                'ROLE_USER' => 'Utilisateur',
+                'ROLE_ADMIN' => 'Admin'
+            ])
+            
+            // Actions personnalisées
+            ->addActionColumn('actions', 'Actions', [
                 'show' => ['route' => 'user_show', 'icon' => 'bi bi-eye'],
                 'edit' => ['route' => 'user_edit', 'icon' => 'bi bi-pencil'],
-                'delete' => ['type' => 'delete', 'icon' => 'bi bi-trash']
+                'delete' => ['route' => 'user_delete', 'icon' => 'bi bi-trash', 'confirm' => true]
             ])
             ->configureSearch(true, ['name', 'email'])
             ->configurePagination(true, 10);
@@ -151,6 +166,71 @@ class UserController extends AbstractController
     </div>
 </div>
 {% endblock %}
+```
+
+## 📊 Types de Colonnes Disponibles
+
+### Colonnes Éditables (avec EditableColumnFactory)
+
+| Type | Description | Exemple |
+|------|-------------|---------|
+| **text** | Champ texte avec validation | `->text('name', 'name', 'Nom')->required()->maxLength(100)` |
+| **email** | Email avec validation | `->email('email', 'email', 'Email')->required()` |
+| **number** | Nombre avec contraintes | `->number('price', 'price', 'Prix')->min(0)->step(0.01)` |
+| **select** | Liste déroulante | `->select('status', 'status', 'Statut', ['Y' => 'Actif'])` |
+| **textarea** | Zone de texte | `->textarea('notes', 'notes', 'Notes')->rows(3)` |
+| **color** | Sélecteur de couleur | `->color('color', 'color', 'Couleur')->showPresets()` |
+
+### Colonnes de Lecture Seule
+
+| Type | Description | Exemple |
+|------|-------------|---------|
+| **TextColumn** | Texte simple avec formatage | `new TextColumn('name', 'name', 'Nom')` |
+| **DateColumn** | Date avec format personnalisé | `new DateColumn('createdAt', 'createdAt', 'Créé le')` |
+| **BadgeColumn** | Badges colorés | `new BadgeColumn('status', 'status', 'Statut')` |
+| **ActionColumn** | Boutons d'actions | `new ActionColumn($urlGenerator, 'actions', 'Actions')` |
+
+### Exemple Complet E-commerce
+
+```php
+$config = $this->dataTableBuilder
+    ->createDataTable(Product::class)
+    
+    // Informations produit éditables
+    ->addColumn(
+        $this->editableColumnFactory->text('name', 'name', 'Nom')
+            ->required(true)
+            ->minLength(3)
+            ->maxLength(100)
+    )
+    ->addColumn(
+        $this->editableColumnFactory->number('price', 'price', 'Prix')
+            ->required(true)
+            ->min(0.01)
+            ->step(0.01)
+            ->suffix(' €')
+    )
+    ->addColumn(
+        $this->editableColumnFactory->select('status', 'status', 'Statut', [
+            'active' => 'Actif',
+            'inactive' => 'Inactif',
+            'out_of_stock' => 'Rupture'
+        ])
+    )
+    ->addColumn(
+        $this->editableColumnFactory->color('color', 'color', 'Couleur')
+            ->showPresets(true)
+    )
+    
+    // Colonnes informatives
+    ->addColumn(new BadgeColumn('category', 'category.name', 'Catégorie'))
+    ->addDateColumn('createdAt', 'createdAt', 'Créé le')
+    
+    // Actions
+    ->addActionColumn('actions', 'Actions', [
+        'edit' => ['route' => 'product_edit', 'icon' => 'bi bi-pencil'],
+        'delete' => ['route' => 'product_delete', 'icon' => 'bi bi-trash', 'confirm' => true]
+    ]);
 ```
 
 ## 🎨 Renderers Personnalisés
@@ -220,13 +300,23 @@ $config = $this->dataTableBuilder
 
 ## 📚 Documentation Complète
 
-Pour une documentation complète avec exemples avancés, consultez :
+### 🌐 Documentation en Ligne
+**Consultez la documentation complète sur :** [https://chancel18.github.io/SigmasoftDataTableBundle/](https://chancel18.github.io/SigmasoftDataTableBundle/)
 
-- [Guide d'installation](docs/installation.md)
-- [Utilisation de base](docs/basic-usage.md)
-- [Édition inline](docs/inline-editing.md)
-- [Renderers personnalisés](docs/custom-renderers.md)
-- [Export de données](docs/export.md)
+### 📖 Guides Principaux
+
+| Guide | Description | Niveau |
+|-------|-------------|--------|
+| [Types de Colonnes](docs/docs/user-guide/column-types.md) | **Guide complet** de tous les types disponibles | 🟢 Débutant |
+| [Édition Inline](docs/docs/user-guide/inline-editing.md) | Fonctionnalités d'édition en temps réel | 🟡 Intermédiaire |
+| [Configuration YAML](docs/docs/user-guide/configuration.md) | Toutes les options de configuration | 🟡 Intermédiaire |
+| [Exemples Avancés](docs/docs/examples/advanced-examples.md) | **Cas d'usage** E-commerce, CRM, Dashboard | 🔴 Avancé |
+| [Renderers Personnalisés](docs/docs/developer-guide/custom-renderers.md) | Créer ses propres types de champs | 🔴 Avancé |
+
+### 🚀 Démarrage Rapide
+1. **Installation** : `composer require sigmasoft/datatable-bundle`
+2. **Génération** : `php bin/console make:datatable MyEntity`
+3. **Personnalisation** : Consultez le [Guide des Types de Colonnes](docs/docs/user-guide/column-types.md)
 - [Configuration avancée](docs/configuration.md)
 
 ## 🛠️ Développement

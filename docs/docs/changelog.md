@@ -9,6 +9,31 @@ Toutes les modifications notables de ce projet sont documentées dans ce fichier
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Versioning Sémantique](https://semver.org/lang/fr/).
 
+## [2.3.5] - 2025-07-31
+
+### 🚀 Nouvelles Fonctionnalités
+- **Installation Automatique** : Templates copiés automatiquement lors de l'installation
+- **InstallAssetsCommand** : Nouvelle commande `php bin/console sigmasoft:datatable:install-assets`
+- **PostInstallSubscriber** : Copie automatique des templates au premier lancement en dev
+- **Configuration YAML** : Support complet avec toutes les options configurables
+- **Recipe Symfony Flex** : Amélioration pour inclure les templates automatiquement
+
+### 📚 Documentation
+- **Configuration YAML** : [Guide complet](./user-guide/configuration.md) avec toutes les options
+- **Édition Inline** : [Guide détaillé](./user-guide/inline-editing.md) avec exemples complets
+- **Renderers Personnalisés** : [Guide développeur](./developer-guide/custom-renderers.md) avec architecture modulaire
+- **Basic Usage** : Mise à jour avec section édition inline
+
+### 🔧 Architecture
+- **PostInstallPass** : CompilerPass pour copie automatique des templates
+- **EventSubscriber** : Gestion intelligente de l'installation en environnement dev
+- **Tests d'intégration** : Validation des chemins de templates ✅
+
+### ⚡ Amélioré
+- **UX Développeur** : Plus besoin de copie manuelle des templates
+- **Installation** : Process d'installation entièrement automatisé
+- **Tests** : 6 tests d'intégration passent ✅
+
 ## [2.3.4] - 2025-07-31
 
 ### 🐛 Corrigé

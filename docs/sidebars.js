@@ -30,7 +30,9 @@ const sidebars = {
       label: '📋 Guide Utilisateur',
       items: [
         'user-guide/basic-usage',
+        'user-guide/column-types',
         'user-guide/inline-editing',
+        'user-guide/configuration',
         'user-guide/customization',
       ],
     },
@@ -40,6 +42,13 @@ const sidebars = {
       items: [
         'developer-guide/architecture',
         'developer-guide/custom-renderers',
+      ],
+    },
+    {
+      type: 'category',
+      label: '💡 Exemples',
+      items: [
+        'examples/advanced-examples',
       ],
     },
     {
