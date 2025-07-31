@@ -28,16 +28,8 @@ services:
             - '@router'
             - '@Sigmasoft\DataTableBundle\Service\DataTableConfigResolver'
 
-    Sigmasoft\DataTableBundle\Component\DataTableComponent:
-        public: true
-        tags:
-            - { name: 'twig.component', key: 'sigmasoft_datatable' }
-        arguments:
-            - '@Sigmasoft\DataTableBundle\DataProvider\DataProviderInterface'
-            - '@doctrine.orm.entity_manager'
-            - '@Sigmasoft\DataTableBundle\Service\ColumnFactory'
-            - '@Sigmasoft\DataTableBundle\Service\DataTableRegistryInterface'
-            - '@logger'
+    # DataTableComponent est auto-configuré via l'annotation #[AsLiveComponent]
+    # Plus besoin de configuration manuelle
 
     # Data Provider
     Sigmasoft\DataTableBundle\DataProvider\DoctrineDataProvider:
