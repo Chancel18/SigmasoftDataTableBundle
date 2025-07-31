@@ -3,7 +3,8 @@
         "Sigmasoft\\DataTableBundle\\SigmasoftDataTableBundle": ["all"]
     },
     "copy-from-recipe": {
-        "config/": "%CONFIG_DIR%/"
+        "config/": "%CONFIG_DIR%/",
+        "templates/": "%TEMPLATES_DIR%/"
     },
     "env": {
         "SIGMASOFT_DATATABLE_CACHE_ENABLED": "false"

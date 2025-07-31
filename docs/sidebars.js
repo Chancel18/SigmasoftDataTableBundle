@@ -30,6 +30,7 @@ const sidebars = {
       label: '📋 Guide Utilisateur',
       items: [
         'user-guide/basic-usage',
+        'user-guide/inline-editing',
         'user-guide/customization',
       ],
     },
@@ -38,6 +39,7 @@ const sidebars = {
       label: '🏗️ Guide Développeur',
       items: [
         'developer-guide/architecture',
+        'developer-guide/custom-renderers',
       ],
     },
     {

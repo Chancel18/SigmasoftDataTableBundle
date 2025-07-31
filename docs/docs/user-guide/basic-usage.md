@@ -837,6 +837,37 @@ export default class extends Controller {
 }
 ```
 
+## Édition Inline
+
+Le bundle supporte l'édition inline des données directement dans la table. Cette fonctionnalité permet aux utilisateurs de modifier les valeurs sans quitter la page.
+
+### Configuration Rapide
+
+```php
+use Sigmasoft\DataTableBundle\Service\EditableColumnFactory;
+
+// Dans votre contrôleur
+$datatableConfig = $dataTableBuilder
+    ->createDataTable(Product::class)
+    ->addColumn($editableColumnFactory->text('name', 'name', 'Nom'))
+    ->addColumn($editableColumnFactory->number('price', 'price', 'Prix'))
+    ->addColumn($editableColumnFactory->select('status', 'status', 'Statut', [
+        'active' => 'Actif',
+        'inactive' => 'Inactif'
+    ]));
+```
+
+### Types de Champs Disponibles
+
+- **text** : Champ texte simple
+- **email** : Champ email avec validation
+- **number** : Champ numérique
+- **select** : Liste déroulante
+- **textarea** : Zone de texte
+- **color** : Sélecteur de couleur
+
+Pour plus de détails sur l'édition inline, consultez le [Guide d'édition inline](./inline-editing.md).
+
 ---
 
 ## Support et Assistance

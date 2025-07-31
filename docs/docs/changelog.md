@@ -9,6 +9,41 @@ Toutes les modifications notables de ce projet sont documentées dans ce fichier
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Versioning Sémantique](https://semver.org/lang/fr/).
 
+## [2.3.4] - 2025-07-31
+
+### 🐛 Corrigé
+- **ColumnFactory** : Ajout du support pour `EditableColumnV2`
+- **DependencyInjection** : Injection de `FieldRendererRegistry` dans `ColumnFactory`
+- **Erreur Runtime** : Résolution de "Unknown column type: EditableColumnV2"
+
+### 📚 Documentation
+- **Édition Inline** : Ajout de la page complète [Guide d'édition inline](./user-guide/inline-editing.md)
+- **Renderers** : Ajout du guide [Renderers Personnalisés](./developer-guide/custom-renderers.md)
+- **Basic Usage** : Mise à jour avec section édition inline
+
+### ⚡ Amélioré
+- **Test Coverage** : Tests FreshTest validés avec succès
+- **Packagist** : Version 2.3.4 disponible immédiatement
+
+## [2.3.3] - 2025-07-31
+
+### 🐛 Corrigé
+- **LiveComponent** : Ajout des dépendances symfony/ux-live-component manquantes
+- **Services** : Configuration auto-découverte corrigée
+- **Templates** : Résolution du namespace @SigmasoftDataTable
+
+## [2.3.2] - 2025-07-31
+
+### 🐛 Corrigé
+- **Templates** : Correction du rendu des données dans datatable.html.twig
+- **Data Display** : Résolution du problème de données invisibles
+
+## [2.3.1] - 2025-07-31
+
+### 🐛 Corrigé
+- **Services** : Suppression du binding $logger problématique
+- **Compilation** : Résolution de l'erreur ResolveBindingsPass
+
 ## [2.3.0] - 2025-01-31
 
 ### 🚀 Ajouté

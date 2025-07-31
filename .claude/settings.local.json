@@ -29,7 +29,8 @@
       "Bash(curl:*)",
       "Bash(grep:*)",
       "Bash(symfony new:*)",
-      "Bash(xcopy:*)"
+      "Bash(xcopy:*)",
+      "Bash(./vendor/bin/phpunit:*)"
     ],
     "deny": []
   }

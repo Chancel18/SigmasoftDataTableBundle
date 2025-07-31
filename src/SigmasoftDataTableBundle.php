@@ -30,6 +30,11 @@ final class SigmasoftDataTableBundle extends Bundle
         if (class_exists('Sigmasoft\DataTableBundle\DependencyInjection\Compiler\FieldRendererPass')) {
             $container->addCompilerPass(new \Sigmasoft\DataTableBundle\DependencyInjection\Compiler\FieldRendererPass());
         }
+        
+        // PostInstallPass pour copier automatiquement les templates
+        if (class_exists('Sigmasoft\DataTableBundle\DependencyInjection\Compiler\PostInstallPass')) {
+            $container->addCompilerPass(new \Sigmasoft\DataTableBundle\DependencyInjection\Compiler\PostInstallPass());
+        }
     }
 
     public function getPath(): string
