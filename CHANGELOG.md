@@ -5,6 +5,29 @@ Toutes les modifications importantes de ce projet seront documentées dans ce fi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet respecte le [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2025-07-31
+
+### 🚨 RESTRUCTURATION MAJEURE - Standards Symfony et PSR-4
+
+#### Changed
+- **BREAKING**: Restructuré l'autoloading PSR-4 - déplacé de `src/SigmasoftDataTableBundle/` vers `src/`
+- **BREAKING**: Mise à jour des chemins de configuration des services
+- Amélioration de la conformité aux standards Symfony
+- Configuration DependencyInjection optimisée
+- Autodécouverte des services améliorée avec de meilleures exclusions
+
+#### Added
+- Recette Symfony Flex pour configuration automatique
+- Configuration PHPUnit avec rapports de couverture
+- Support des variables d'environnement pour le cache
+- Alias de branche pour les versions de développement
+- Configuration Composer améliorée avec de meilleures contraintes
+
+#### Fixed
+- Structure d'autoloading PSR-4 suit maintenant les meilleures pratiques Symfony
+- Chemins de chargement des services corrigés pour la nouvelle structure
+- Extension charge maintenant les services depuis le bon répertoire
+
 ## [2.2.0] - 2025-07-31
 
 ### 🔧 AMÉLIORATION MAJEURE - Installation et Compatibilité

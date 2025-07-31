@@ -17,7 +17,7 @@ final class SigmasoftDataTableExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         // Load services from YAML file
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../../config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
         $loader->load('services.yaml');
 
         // Set configuration parameters

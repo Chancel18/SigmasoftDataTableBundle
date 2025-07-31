@@ -1,5 +1,5 @@
 # Configuration des services pour SigmasoftDataTableBundle
-# Ce fichier déclare tous les services du bundle avec leur configuration
+# Standards Symfony avec PSR-4 optimisé
 
 services:
     # Configuration par défaut des services
@@ -7,18 +7,21 @@ services:
         autowire: true
         autoconfigure: true
         public: false
+        bind:
+            $logger: '@logger'
 
     # Auto-configuration des services du bundle
     Sigmasoft\DataTableBundle\:
-        resource: '../src/SigmasoftDataTableBundle/*'
+        resource: '../src/*'
         exclude:
-            - '../src/SigmasoftDataTableBundle/{DependencyInjection,Entity,Tests,Kernel.php}'
-            - '../src/SigmasoftDataTableBundle/Column/ColumnInterface.php'
-            - '../src/SigmasoftDataTableBundle/DataProvider/DataProviderInterface.php'
-            - '../src/SigmasoftDataTableBundle/Service/DataTableRegistryInterface.php'
-            - '../src/SigmasoftDataTableBundle/Configuration/DataTableConfigurationInterface.php'
-            - '../src/SigmasoftDataTableBundle/Configuration/ConfiguratorInterface.php'
-            - '../src/SigmasoftDataTableBundle/InlineEdit/Renderer/FieldRendererInterface.php'
+            - '../src/{DependencyInjection,Entity,Tests,Kernel.php}'
+            - '../src/Column/ColumnInterface.php'
+            - '../src/DataProvider/DataProviderInterface.php'
+            - '../src/Service/DataTableRegistryInterface.php'
+            - '../src/Configuration/DataTableConfigurationInterface.php'
+            - '../src/Configuration/ConfiguratorInterface.php'
+            - '../src/InlineEdit/Renderer/FieldRendererInterface.php'
+            - '../src/SigmasoftDataTableBundle.php'
 
     # Services principaux du bundle
     Sigmasoft\DataTableBundle\Builder\DataTableBuilder:

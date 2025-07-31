@@ -21,7 +21,9 @@
       "Bash(php:*)",
       "Bash(composer show:*)",
       "Bash(composer:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(timeout 3 php -S localhost:8000 -t public/)"
     ],
     "deny": []
   }

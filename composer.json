@@ -48,11 +48,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Sigmasoft\\DataTableBundle\\": "src/SigmasoftDataTableBundle/"
-        },
-        "files": [
-            "src/SigmasoftDataTableBundle/SigmasoftDataTableBundle.php"
-        ]
+            "Sigmasoft\\DataTableBundle\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -62,7 +59,10 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.4.*"
+            "require": "6.4.*|7.0.*"
+        },
+        "branch-alias": {
+            "dev-master": "2.3-dev"
         }
     },
     "config": {
