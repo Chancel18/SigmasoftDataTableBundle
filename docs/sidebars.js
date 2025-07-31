@@ -22,6 +22,7 @@ const sidebars = {
       items: [
         'installation',
         'quick-start',
+        'migration-v2.3',
       ],
     },
     {
@@ -51,6 +52,13 @@ const sidebars = {
       label: '🚢 Déploiement',
       items: [
         'deployment/github-pages',
+      ],
+    },
+    {
+      type: 'category',
+      label: '📋 Ressources',
+      items: [
+        'changelog',
       ],
     },
   ],

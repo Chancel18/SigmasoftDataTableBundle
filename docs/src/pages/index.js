@@ -26,7 +26,7 @@ function HomepageHeader() {
           </Link>
         </div>
         <div className={styles.versionBadge}>
-          <span className="version-badge">v2.0.5 STABLE</span>
+          <span className="version-badge">v2.3.0 STABLE</span>
         </div>
         <div className={styles.badges}>
           <img src="https://img.shields.io/packagist/v/sigmasoft/datatable-bundle" alt="Version" />
@@ -103,7 +103,7 @@ export default function Home() {
               </div>
               <div className="col col--3">
                 <div className="text--center">
-                  <h3>v2.0.5</h3>
+                  <h3>v2.3.0</h3>
                   <p>Version Stable</p>
                 </div>
               </div>

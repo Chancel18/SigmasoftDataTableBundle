@@ -40,12 +40,19 @@ composer require sigmasoft/datatable-bundle
 ```
 
 <div className="highlight-box highlight-box--tip">
-  <strong>💡 Astuce :</strong> Si vous utilisez Symfony Flex, le bundle sera automatiquement configuré !
+  <strong>💡 Astuce :</strong> Avec Symfony Flex, le bundle v2.3.0+ est automatiquement configuré via la recipe intégrée !
 </div>
+
+### 1.1. Configuration automatique (v2.3.0+)
+
+Depuis la version 2.3.0, une recipe Symfony Flex est incluse qui :
+- Configure automatiquement les services
+- Crée le fichier `config/packages/sigmasoft_data_table.yaml`
+- Active l'autoloading PSR-4 optimisé
 
 ### 2. Activation du bundle (si nécessaire)
 
-Si Symfony Flex n'a pas automatiquement ajouté le bundle, ajoutez-le manuellement dans `config/bundles.php` :
+**Note :** Avec la v2.3.0+, cette étape est automatique grâce à la recipe Flex. Si nécessaire, vérifiez dans `config/bundles.php` :
 
 ```php title="config/bundles.php"
 <?php

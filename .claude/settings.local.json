@@ -23,7 +23,13 @@
       "Bash(composer:*)",
       "Bash(mv:*)",
       "Bash(cp:*)",
-      "Bash(timeout 3 php -S localhost:8000 -t public/)"
+      "Bash(timeout 3 php -S localhost:8000 -t public/)",
+      "Bash(dir:*)",
+      "Bash(symfony serve:*)",
+      "Bash(curl:*)",
+      "Bash(grep:*)",
+      "Bash(symfony new:*)",
+      "Bash(xcopy:*)"
     ],
     "deny": []
   }

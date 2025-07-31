@@ -53,7 +53,9 @@ Options disponibles :
 
 ## Étape 2 : Configuration générée
 
-La commande crée automatiquement `config/packages/sigmasoft_data_table.yaml` :
+**Note v2.3.0+** : Avec Symfony Flex, le fichier de configuration est automatiquement créé via la recipe intégrée.
+
+La commande crée/met à jour `config/packages/sigmasoft_data_table.yaml` :
 
 ```yaml title="config/packages/sigmasoft_data_table.yaml"
 sigmasoft_data_table:

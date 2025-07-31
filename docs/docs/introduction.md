@@ -22,14 +22,18 @@ SigmasoftDataTableBundle est un bundle Symfony moderne et puissant qui vous perm
 ## Version actuelle
 
 <div className="highlight-box highlight-box--tip">
-  <strong>Version 2.0.5 STABLE</strong> - Production Ready & Enterprise Quality
+  <strong>Version 2.3.0 STABLE</strong> - Production Ready & Enterprise Quality
 </div>
 
 Cette version apporte :
-- Bundle consolidé avec toutes les corrections v2.0.x
-- Architecture moderne AbstractBundle Symfony 6+
-- Tests automatisés garantissant la stabilité
-- Documentation complète et exemples pratiques
+- **Structure PSR-4 complète** : Bundle restructuré selon les standards Symfony
+- **Autoloading optimisé** : Configuration PSR-4 avec `src/` comme racine
+- **Symfony Flex compatible** : Recipe automatique pour configuration
+- **DependencyInjection améliorée** : Services autodécouverts et optimisés
+- **Migration facilitée** : Guide de migration depuis v2.2.x
+- **Architecture moderne AbstractBundle** Symfony 6+
+- **Tests automatisés** garantissant la stabilité
+- **Documentation mise à jour** et exemples pratiques
 
 ## Compatibilité
 
