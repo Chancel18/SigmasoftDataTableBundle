@@ -49,7 +49,10 @@
     "autoload": {
         "psr-4": {
             "Sigmasoft\\DataTableBundle\\": "src/SigmasoftDataTableBundle/"
-        }
+        },
+        "files": [
+            "src/SigmasoftDataTableBundle/SigmasoftDataTableBundle.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
