@@ -1,0 +1,9 @@
+{
+    "bundles": {
+        "Sigmasoft\\DataTableBundle\\SigmasoftDataTableBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
+    },
+    "aliases": ["datatable", "sigmasoft-datatable"]
+}

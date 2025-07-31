@@ -1,0 +1,5 @@
+# Routes pour SigmasoftDataTableBundle
+# Ce fichier peut être utilisé pour définir des routes spécifiques au bundle si nécessaire
+
+# Pour l'instant, le bundle n'a pas de routes spécifiques
+# Les DataTables sont gérées via les LiveComponents de Symfony UX

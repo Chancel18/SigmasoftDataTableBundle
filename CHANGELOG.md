@@ -5,6 +5,41 @@ Toutes les modifications importantes de ce projet seront documentées dans ce fi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet respecte le [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2025-07-31
+
+### 🔧 AMÉLIORATION MAJEURE - Installation et Compatibilité
+
+#### Configuration et Services
+- **NOUVEAU** : Création du fichier `config/services.yaml` avec tous les services du bundle
+- **NOUVEAU** : Support complet de l'autowiring et autoconfiguration
+- **NOUVEAU** : Manifest Symfony Flex (`.symfony/manifest.json`) pour l'auto-configuration
+- **NOUVEAU** : Configuration par défaut (`config/packages/sigmasoft_data_table.yaml`)
+
+#### Corrections Structure
+- **CRITIQUE** : Correction autoloading PSR-4 dans composer.json (`src/SigmasoftDataTableBundle/`)
+- **CRITIQUE** : Correction `getPath()` dans SigmasoftDataTableBundle.php (retourne `__DIR__`)
+- **CRITIQUE** : SigmasoftDataTableExtension charge maintenant `services.yaml` au lieu du code manuel
+- **FIX** : Renommage du dossier templates de `SigmasoftDataTableBundle` à `SigmasoftDataTable`
+
+#### Documentation
+- **NOUVEAU** : Guide d'installation détaillé (`INSTALL.md`)
+- **NOUVEAU** : Rapport d'audit complet (`BUNDLE_AUDIT_REPORT.md`)
+- **MISE À JOUR** : Documentation Docusaurus avec étapes d'installation correctes
+- **NOUVEAU** : Section troubleshooting complète avec solutions détaillées
+
+#### Amélioration Expérience Utilisateur
+- **NOUVEAU** : Instructions claires pour `composer dump-autoload` après installation
+- **NOUVEAU** : Commandes de diagnostic pour vérifier l'installation
+- **NOUVEAU** : Script de vérification rapide (`check-datatable.php`)
+
+#### Impact
+- **Installation** : Le bundle s'installe maintenant correctement dans tous les projets Symfony 6.4/7.0
+- **Maker** : La commande `make:datatable` apparaît correctement après installation
+- **Services** : Tous les services sont disponibles avec autowiring
+- **Templates** : Les templates sont trouvés automatiquement
+
+Cette version résout définitivement tous les problèmes d'installation rencontrés !
+
 ## [2.1.1] - 2025-07-30
 
 ### 🚨 FIX ULTIME - Structure Autoloading PSR-4

@@ -56,15 +56,28 @@ return [
 ];
 ```
 
-### 3. Configuration Twig Component (si nécessaire)
+### 3. Mise à jour de l'autoloader
 
-Si vous rencontrez l'erreur "Could not generate a component name", ajoutez cette configuration :
+Après l'installation, mettez à jour l'autoloader Composer :
 
-```yaml title="config/packages/twig_component.yaml"
-twig_component:
-    defaults:
-        # Autres namespaces...
-        'Sigmasoft\DataTableBundle\Twig\Components\': 'Sigmasoft'
+```bash
+composer dump-autoload
+```
+
+### 4. Vider le cache Symfony
+
+Videz le cache pour charger la nouvelle configuration :
+
+```bash
+php bin/console cache:clear
+```
+
+### 5. Installation des assets (si nécessaire)
+
+Si vous utilisez Symfony UX, installez les assets :
+
+```bash
+php bin/console assets:install
 ```
 
 ## Vérification de l'installation
@@ -95,16 +108,40 @@ Créez le fichier de configuration pour personnaliser le comportement global :
 
 ```yaml title="config/packages/sigmasoft_data_table.yaml"
 sigmasoft_data_table:
-    global_config:
-        items_per_page: 25
+    defaults:
+        items_per_page: 10
         enable_search: true
-        enable_sort: true
-        enable_pagination: true
+        enable_export: true
+        export_formats: ['csv', 'excel']
+        table_class: 'table table-striped table-hover'
+        date_format: 'd/m/Y'
+        datetime_format: 'd/m/Y H:i'
+        empty_message: 'Aucune donnée disponible'
     
     templates:
-        base: '@SigmasoftDataTableBundle/components/SigmasoftDataTableComponent.html.twig'
-        pagination: '@SigmasoftDataTableBundle/components/datatable/pagination.html.twig'
-        search: '@SigmasoftDataTableBundle/components/datatable/search_input.html.twig'
+        datatable: '@SigmasoftDataTable/datatable.html.twig'
+        custom_templates: []
+    
+    caching:
+        enabled: false
+        ttl: 3600
+    
+    maker:
+        auto_add_actions: true
+        default_actions:
+            show:
+                label: 'Voir'
+                icon: 'eye'
+                class: 'btn btn-sm btn-info'
+            edit:
+                label: 'Modifier'
+                icon: 'pencil'
+                class: 'btn btn-sm btn-warning'
+            delete:
+                label: 'Supprimer'
+                icon: 'trash'
+                class: 'btn btn-sm btn-danger'
+                confirm: true
 ```
 
 ### Assets et Webpack Encore

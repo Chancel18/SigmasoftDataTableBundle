@@ -34,7 +34,7 @@ final class SigmasoftDataTableBundle extends Bundle
 
     public function getPath(): string
     {
-        return __DIR__ . '/src/SigmasoftDataTableBundle';
+        return __DIR__;
     }
 }
 
