@@ -1,0 +1,23 @@
+{# 
+  Cellule de corps de table
+  Variables disponibles:
+  - column: Colonne courante
+  - item: Élément de données courant
+  - component: Instance du LiveComponent
+#}
+
+<td class="datatable-body-cell{% if column.getCssClass() %} {{ column.getCssClass() }}{% endif %}"
+    {% if column.getDataAttributes() %}
+        {% for attr, value in column.getDataAttributes() %}
+            data-{{ attr }}="{{ value }}"
+        {% endfor %}
+    {% endif %}>
+    {% if column.getName() == 'actions' %}
+        {# Pour ActionColumn, on ne récupère pas de valeur de propriété #}
+        {{ component.renderColumn(column.getName(), null, item)|raw }}
+    {% else %}
+        {# Pour les autres colonnes, on récupère la valeur de la propriété #}
+        {% set fieldValue = attribute(item, column.getName()) %}
+        {{ component.renderColumn(column.getName(), fieldValue, item)|raw }}
+    {% endif %}
+</td>

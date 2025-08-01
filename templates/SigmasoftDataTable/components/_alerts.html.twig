@@ -1,0 +1,44 @@
+{# 
+  Composant d'alertes pour DataTable
+  Variables disponibles:
+  - this: Instance du LiveComponent
+#}
+
+{% if this.showAlert %}
+    <div class="alert alert-{{ this.alertType == 'error' ? 'danger' : this.alertType }} alert-dismissible fade show m-3" 
+         role="alert"
+         aria-live="polite"
+         aria-atomic="true">
+        <div class="d-flex align-items-start">
+            <i class="bi bi-{{ this.alertType == 'success' ? 'check-circle' : (this.alertType == 'error' ? 'exclamation-triangle' : 'info-circle') }} me-2"></i>
+            <div class="flex-grow-1">
+                {{ this.alertMessage }}
+            </div>
+            <button type="button" 
+                    class="btn-close ms-2" 
+                    data-action="live#action"
+                    data-live-action-param="dismissAlert"
+                    aria-label="{{ 'datatable.alert.close'|trans({}, 'SigmasoftDataTable')|default('Fermer') }}"></button>
+        </div>
+    </div>
+{% endif %}
+
+{# Debug info en mode développement #}
+{% if app.debug and config is defined and data is defined %}
+    <div class="alert alert-info small m-3">
+        <details>
+            <summary class="cursor-pointer">
+                <strong>Debug Info</strong>
+            </summary>
+            <div class="mt-2">
+                <ul class="mb-0">
+                    <li>Page: {{ this.config.page|default(1) }}/{{ data.getPageCount()|default(1) }}</li>
+                    <li>Total: {{ data.getTotalItemCount()|default(0) }} éléments</li>
+                    <li>Recherche: "{{ this.config.searchQuery|default('') }}"</li>
+                    <li>Tri: {{ this.config.sortField|default('id') }} {{ this.config.sortDirection|default('asc') }}</li>
+                    <li>Entité: {{ config.getEntityClass()|split('\\')|last }}</li>
+                </ul>
+            </div>
+        </details>
+    </div>
+{% endif %}

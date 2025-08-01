@@ -43,11 +43,12 @@ composer require sigmasoft/datatable-bundle
   <strong>💡 Astuce :</strong> Avec Symfony Flex, le bundle v2.3.0+ est automatiquement configuré via la recipe intégrée !
 </div>
 
-### 1.1. Configuration automatique (v2.3.0+)
+### 1.1. Configuration automatique
 
-Depuis la version 2.3.0, une recipe Symfony Flex est incluse qui :
+Le bundle s'installe automatiquement et :
 - Configure automatiquement les services
 - Crée le fichier `config/packages/sigmasoft_data_table.yaml`
+- Copie les templates de base dans `templates/bundles/SigmasoftDataTableBundle/`
 - Active l'autoloading PSR-4 optimisé
 
 ### 2. Activation du bundle (si nécessaire)
@@ -92,12 +93,22 @@ php bin/console assets:install
 ### 1. Vérifier les commandes disponibles
 
 ```bash
-php bin/console list make
+php bin/console list sigmasoft
 ```
 
-Vous devriez voir la commande `make:datatable` dans la liste.
+Vous devriez voir les commandes suivantes :
+- `sigmasoft:datatable:install-config` - Installer/réinstaller la configuration
+- Et si le MakerBundle est installé : `make:datatable`
 
-### 2. Test rapide
+### 2. Vérifier la configuration
+
+```bash
+php bin/console config:dump-reference sigmasoft_data_table
+```
+
+Cette commande affiche la référence complète de la configuration disponible.
+
+### 3. Test rapide
 
 Créez votre premier DataTable :
 
@@ -111,23 +122,22 @@ Si la commande s'affiche correctement, l'installation est réussie ! ✅
 
 ### Configuration globale
 
-Créez le fichier de configuration pour personnaliser le comportement global :
+Le fichier de configuration `config/packages/sigmasoft_data_table.yaml` est automatiquement créé lors de l'installation. Vous pouvez le personnaliser selon vos besoins :
 
 ```yaml title="config/packages/sigmasoft_data_table.yaml"
 sigmasoft_data_table:
     defaults:
         items_per_page: 10
         enable_search: true
-        enable_export: true
-        export_formats: ['csv', 'excel']
-        table_class: 'table table-striped table-hover'
+        enable_pagination: true
+        enable_sorting: true
+        table_class: 'table table-striped table-hover align-middle'
         date_format: 'd/m/Y'
-        datetime_format: 'd/m/Y H:i'
-        empty_message: 'Aucune donnée disponible'
+        pagination_sizes: [5, 10, 25, 50, 100]
+        theme: 'bootstrap5'
     
     templates:
         datatable: '@SigmasoftDataTable/datatable.html.twig'
-        custom_templates: []
     
     caching:
         enabled: false
@@ -136,6 +146,19 @@ sigmasoft_data_table:
     maker:
         auto_add_actions: true
         default_actions:
+            show:
+                icon: 'bi bi-eye'
+                class: 'btn btn-sm btn-info'
+                title: 'Voir'
+            edit:
+                icon: 'bi bi-pencil-square'
+                class: 'btn btn-sm btn-warning'
+                title: 'Modifier'
+            delete:
+                type: 'delete'
+                icon: 'bi bi-trash'
+                class: 'btn btn-sm btn-danger'
+                title: 'Supprimer'
             show:
                 label: 'Voir'
                 icon: 'eye'

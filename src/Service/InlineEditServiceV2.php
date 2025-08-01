@@ -6,6 +6,8 @@ namespace Sigmasoft\DataTableBundle\Service;
 
 use Sigmasoft\DataTableBundle\InlineEdit\Configuration\EditableFieldConfiguration;
 use Sigmasoft\DataTableBundle\Exception\DataTableException;
+use Sigmasoft\DataTableBundle\Event\DataTableEvents;
+use Sigmasoft\DataTableBundle\Event\InlineEditEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
@@ -13,6 +15,7 @@ use Symfony\Component\PropertyAccess\Exception\AccessException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -33,7 +36,8 @@ class InlineEditServiceV2
         private EntityManagerInterface $entityManager,
         private ValidatorInterface $validator,
         private ?Security $security = null,
-        private ?LoggerInterface $logger = null
+        private ?LoggerInterface $logger = null,
+        private ?EventDispatcherInterface $eventDispatcher = null
     ) {
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
     }
@@ -76,15 +80,36 @@ class InlineEditServiceV2
                 $fieldConfig
             );
             
-            // 7. Application de la nouvelle valeur
+            // 7. Déclencher l'événement PRE_INLINE_EDIT
+            if ($this->eventDispatcher) {
+                $event = new InlineEditEvent($entity, $fieldName, $oldValue, $convertedValue);
+                $this->eventDispatcher->dispatch($event, DataTableEvents::PRE_INLINE_EDIT);
+                
+                // Permettre la modification de la valeur via l'événement
+                if (!$event->isValid()) {
+                    throw new DataTableException(
+                        implode(', ', $event->getErrors()),
+                        DataTableException::VALIDATION_ERROR
+                    );
+                }
+                $convertedValue = $event->getNewValue();
+            }
+            
+            // 8. Application de la nouvelle valeur
             $this->setFieldValue($entity, $fieldName, $convertedValue);
             
-            // 8. Validation de l'entité complète
+            // 9. Validation de l'entité complète
             $this->validateEntity($entity, $fieldName);
             
-            // 9. Sauvegarde en base
+            // 10. Sauvegarde en base
             $this->entityManager->flush();
             $this->entityManager->commit();
+            
+            // 11. Déclencher l'événement POST_INLINE_EDIT
+            if ($this->eventDispatcher) {
+                $event = new InlineEditEvent($entity, $fieldName, $oldValue, $convertedValue);
+                $this->eventDispatcher->dispatch($event, DataTableEvents::POST_INLINE_EDIT);
+            }
             
             // 10. Audit et logging
             $this->logSuccessfulUpdate($entityClass, $entityId, $fieldName, $oldValue, $convertedValue);

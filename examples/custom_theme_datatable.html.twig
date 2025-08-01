@@ -1,0 +1,83 @@
+{# Exemple de personnalisation : Thème personnalisé pour DataTable #}
+
+{% extends '@SigmasoftDataTable/datatable.html.twig' %}
+
+{# Surcharge du wrapper pour un thème personnalisé #}
+{% block datatable_wrapper %}
+    <div class="custom-datatable-wrapper shadow-lg rounded-lg overflow-hidden">
+        <div class="custom-header bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4">
+            <h3 class="text-lg font-semibold mb-2">{{ config.getEntityClass()|split('\\')|last }} Management</h3>
+            {{ block('datatable_toolbar') }}
+        </div>
+        
+        <div class="custom-body bg-white">
+            {{ block('datatable_alerts') }}
+            {{ block('datatable_content') }}
+        </div>
+        
+        {% if config.isPaginationEnabled() %}
+            <div class="custom-footer bg-gray-50 p-4 border-t">
+                {{ block('datatable_pagination') }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{# Personnalisation de la recherche #}
+{% block datatable_search %}
+    <div class="custom-search relative">
+        <input type="text"
+               class="form-control pl-10 pr-4 py-2 border-2 border-blue-300 rounded-full focus:border-blue-500 focus:outline-none"
+               placeholder="🔍 Recherche avancée..."
+               value="{{ this.searchInput }}"
+               data-model="searchInput"
+               data-action="input->live#action:1000"
+               data-live-action-param="search">
+        {% if this.searchInput %}
+            <button class="absolute right-2 top-2 text-gray-400 hover:text-red-500"
+                    data-action="live#action"
+                    data-live-action-param="clearSearch">
+                ❌
+            </button>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{# Personnalisation des styles #}
+{% block datatable_theme_styles %}
+    .custom-datatable-wrapper {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    .custom-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .custom-search input {
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .custom-search input:focus {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        transform: scale(1.02);
+    }
+    
+    .datatable-header-cell {
+        background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        letter-spacing: 0.05em;
+    }
+    
+    .datatable-body-cell {
+        transition: background 0.2s ease;
+    }
+    
+    tr:hover .datatable-body-cell {
+        background: #f0f9ff;
+    }
+{% endblock %}

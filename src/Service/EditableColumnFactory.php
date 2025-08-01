@@ -40,10 +40,69 @@ class EditableColumnFactory
     public function number(
         string $name,
         string $propertyPath,
-        string $label = ''
+        string $label = '',
+        int $decimals = 2,
+        ?float $min = null,
+        ?float $max = null
     ): EditableColumnV2 {
-        $config = EditableFieldConfiguration::create(EditableFieldConfiguration::FIELD_TYPE_NUMBER);
-        return new EditableColumnV2($name, $propertyPath, $label, $config, true, true, [], $this->rendererRegistry);
+        $config = EditableFieldConfiguration::create('number')
+            ->dataAttributes([
+                'decimals' => $decimals,
+                'min' => $min,
+                'max' => $max,
+                'format' => 'decimal'
+            ]);
+        return new EditableColumnV2($name, $propertyPath, $label, $config, true, false, [], $this->rendererRegistry);
+    }
+
+    public function currency(
+        string $name,
+        string $propertyPath,
+        string $label = '',
+        string $currency = 'EUR',
+        int $decimals = 2
+    ): EditableColumnV2 {
+        $config = EditableFieldConfiguration::create('number')
+            ->dataAttributes([
+                'format' => 'currency',
+                'currency' => $currency,
+                'decimals' => $decimals
+            ]);
+        return new EditableColumnV2($name, $propertyPath, $label, $config, true, false, [], $this->rendererRegistry);
+    }
+
+    public function percentage(
+        string $name,
+        string $propertyPath,
+        string $label = '',
+        int $decimals = 1
+    ): EditableColumnV2 {
+        $config = EditableFieldConfiguration::create('number')
+            ->dataAttributes([
+                'format' => 'percentage',
+                'decimals' => $decimals,
+                'min' => 0,
+                'max' => 100
+            ]);
+        return new EditableColumnV2($name, $propertyPath, $label, $config, true, false, [], $this->rendererRegistry);
+    }
+
+    public function integer(
+        string $name,
+        string $propertyPath,
+        string $label = '',
+        ?int $min = null,
+        ?int $max = null
+    ): EditableColumnV2 {
+        $config = EditableFieldConfiguration::create('number')
+            ->dataAttributes([
+                'format' => 'integer',
+                'decimals' => 0,
+                'min' => $min,
+                'max' => $max,
+                'step' => 1
+            ]);
+        return new EditableColumnV2($name, $propertyPath, $label, $config, true, false, [], $this->rendererRegistry);
     }
 
     public function select(

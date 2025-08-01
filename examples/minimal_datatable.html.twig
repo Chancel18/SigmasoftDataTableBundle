@@ -1,0 +1,92 @@
+{# Exemple de personnalisation : Version minimaliste sans Bootstrap #}
+
+{% extends '@SigmasoftDataTable/datatable.html.twig' %}
+
+{# Wrapper simple sans card Bootstrap #}
+{% block datatable_wrapper %}
+    <div class="minimal-datatable">
+        {% block datatable_toolbar %}
+            <div class="minimal-toolbar">
+                {% if config.isSearchEnabled() %}
+                    {{ include('@SigmasoftDataTable/components/_search.html.twig') }}
+                {% endif %}
+            </div>
+        {% endblock %}
+        
+        {{ block('datatable_content') }}
+        
+        {% if config.isPaginationEnabled() %}
+            <div class="minimal-pagination">
+                {{ block('datatable_pagination') }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{# Table sans classes Bootstrap #}
+{% block datatable_table_classes %}minimal-table{% endblock %}
+
+{# Styles minimalistes #}
+{% block datatable_theme_styles %}
+    .minimal-datatable {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .minimal-toolbar {
+        padding: 1rem;
+        background: #f9f9f9;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .minimal-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+    }
+    
+    .minimal-table th,
+    .minimal-table td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .minimal-table th {
+        background: #f5f5f5;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: #333;
+    }
+    
+    .minimal-table tr:hover {
+        background: #f9f9f9;
+    }
+    
+    .minimal-pagination {
+        padding: 1rem;
+        background: #f9f9f9;
+        border-top: 1px solid #ddd;
+        text-align: center;
+    }
+    
+    .minimal-pagination button {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 0.5rem 1rem;
+        margin: 0 0.25rem;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+    
+    .minimal-pagination button:hover {
+        background: #f0f0f0;
+    }
+    
+    .minimal-pagination button.active {
+        background: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+{% endblock %}

@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace Sigmasoft\DataTableBundle\DataProvider;
 
 use Sigmasoft\DataTableBundle\Configuration\DataTableConfiguration;
+use Sigmasoft\DataTableBundle\Event\DataTableEvents;
+use Sigmasoft\DataTableBundle\Event\DataTableQueryEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 
 final class DoctrineDataProvider implements DataProviderInterface
@@ -16,13 +19,28 @@ final class DoctrineDataProvider implements DataProviderInterface
     public function __construct(
         private EntityManagerInterface $entityManager,
         private PaginatorInterface $paginator,
-        private ?LoggerInterface $logger = null
+        private ?LoggerInterface $logger = null,
+        private ?EventDispatcherInterface $eventDispatcher = null
     ) {
     }
 
     public function getData(DataTableConfiguration $configuration): PaginationInterface
     {
         $queryBuilder = $this->createBaseQueryBuilder($configuration);
+        
+        // Déclencher l'événement PRE_QUERY
+        if ($this->eventDispatcher) {
+            $event = new DataTableQueryEvent($configuration->getEntityClass(), $queryBuilder);
+            $event->setSearchTerm($configuration->getSearchValue())
+                  ->setSortField($configuration->getSortBy())
+                  ->setSortDirection($configuration->getSortOrder())
+                  ->setCurrentPage($configuration->getPage())
+                  ->setItemsPerPage($configuration->getItemsPerPage());
+            
+            $this->eventDispatcher->dispatch($event, DataTableEvents::PRE_QUERY);
+            $queryBuilder = $event->getQueryBuilder();
+        }
+        
         $this->applyFilters($queryBuilder, $configuration);
         $this->applySearch($queryBuilder, $configuration);
         $this->applySorting($queryBuilder, $configuration);
@@ -36,11 +54,20 @@ final class DoctrineDataProvider implements DataProviderInterface
             ]);
         }
 
-        return $this->paginator->paginate(
+        $results = $this->paginator->paginate(
             $query,
             $configuration->getPage(),
             $configuration->getItemsPerPage()
         );
+        
+        // Déclencher l'événement POST_QUERY
+        if ($this->eventDispatcher) {
+            $event = new DataTableQueryEvent($configuration->getEntityClass(), $queryBuilder);
+            $event->setResults($results);
+            $this->eventDispatcher->dispatch($event, DataTableEvents::POST_QUERY);
+        }
+        
+        return $results;
     }
 
     public function getTotalCount(DataTableConfiguration $configuration): int

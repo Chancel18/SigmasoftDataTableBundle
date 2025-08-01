@@ -1,0 +1,55 @@
+# English translations for SigmasoftDataTableBundle
+
+datatable:
+    # Search
+    search:
+        placeholder: "Search..."
+        aria_label: "Search in table"
+        clear: "Clear search"
+    
+    # Pagination
+    pagination:
+        aria_label: "Page navigation"
+        info: "Showing %first% to %last% of %total% results"
+        no_results: "No results"
+        first: "First page"
+        previous: "Previous page"
+        previous_short: "Previous"
+        next: "Next page"
+        next_short: "Next"
+        last: "Last page"
+    
+    # Items per page
+    items_per_page:
+        label: "Items per page:"
+        aria_label: "Number of items per page"
+    
+    # Sort
+    sort:
+        by: "Sort by %field%"
+        current: "Current sort: %direction%"
+        asc: "ascending"
+        desc: "descending"
+    
+    # Messages
+    no_data: "No data available"
+    no_results_for: "No results for \"%search%\""
+    loading: "Loading..."
+    
+    # Alerts
+    alert:
+        close: "Close"
+    
+    # Actions
+    actions:
+        show: "View"
+        edit: "Edit"
+        delete: "Delete"
+        confirm_delete: "Are you sure you want to delete this item?"
+    
+    # Export
+    export:
+        button: "Export"
+        csv: "CSV"
+        excel: "Excel"
+        pdf: "PDF"

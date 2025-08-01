@@ -27,6 +27,8 @@ class DataTableConfiguration
     private string $dateFormat = 'd/m/Y';
     private bool $exportEnabled = false;
     private array $exportFormats = ['csv'];
+    private string $theme = 'bootstrap5';
+    private array $paginationSizes = [5, 10, 25, 50, 100];
 
     public function __construct(string $entityClass)
     {
@@ -262,5 +264,27 @@ class DataTableConfiguration
     public function hasActions(): bool
     {
         return !empty($this->actions);
+    }
+
+    public function getTheme(): string
+    {
+        return $this->theme;
+    }
+
+    public function setTheme(string $theme): self
+    {
+        $this->theme = $theme;
+        return $this;
+    }
+
+    public function getPaginationSizes(): array
+    {
+        return $this->paginationSizes;
+    }
+
+    public function setPaginationSizes(array $paginationSizes): self
+    {
+        $this->paginationSizes = $paginationSizes;
+        return $this;
     }
 }

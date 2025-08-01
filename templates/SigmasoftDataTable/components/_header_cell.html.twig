@@ -1,0 +1,37 @@
+{# 
+  Cellule d'en-tête de table
+  Variables disponibles:
+  - column: Colonne courante
+  - config: Configuration de la DataTable
+  - sortField: Champ de tri actuel
+  - sortDirection: Direction de tri actuelle
+#}
+
+{% set isSortable = column.isSortable() and config.isSortingEnabled() %}
+{% set isCurrentSort = sortField == column.getName() %}
+
+<th class="datatable-header-cell{% if isSortable %} sortable{% endif %}{% if column.getCssClass() %} {{ column.getCssClass() }}{% endif %}"
+    {% if column.getWidth() %}style="width: {{ column.getWidth() }};"{% endif %}
+    scope="col">
+    <div class="d-flex align-items-center justify-content-between gap-2">
+        <span class="datatable-header-label">{{ column.getLabel() }}</span>
+        {% if isSortable %}
+            <button type="button"
+                    class="btn btn-link btn-sm p-1 text-decoration-none sort-button"
+                    data-action="live#action"
+                    data-live-action-param="sort"
+                    data-live-field-param="{{ column.getName() }}"
+                    title="{{ 'datatable.sort.by'|trans({'%field%': column.getLabel()}, 'SigmasoftDataTable')|default('Trier par ' ~ column.getLabel()) }}"
+                    aria-label="{{ 'datatable.sort.by'|trans({'%field%': column.getLabel()}, 'SigmasoftDataTable')|default('Trier par ' ~ column.getLabel()) }}">
+                {% if isCurrentSort %}
+                    <i class="bi bi-sort-{{ sortDirection == 'asc' ? 'up' : 'down' }}" aria-hidden="true"></i>
+                    <span class="visually-hidden">
+                        {{ 'datatable.sort.current'|trans({'%direction%': sortDirection}, 'SigmasoftDataTable')|default('Tri actuel: ' ~ sortDirection) }}
+                    </span>
+                {% else %}
+                    <i class="bi bi-arrow-down-up opacity-50" aria-hidden="true"></i>
+                {% endif %}
+            </button>
+        {% endif %}
+    </div>
+</th>

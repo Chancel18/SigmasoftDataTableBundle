@@ -1,0 +1,35 @@
+{# 
+  Composant de recherche pour DataTable
+  Variables disponibles:
+  - config: Configuration de la DataTable
+  - this: Instance du LiveComponent
+#}
+
+{% set searchId = 'datatable-search-' ~ random() %}
+
+<div class="datatable-search">
+    <div class="input-group">
+        <span class="input-group-text">
+            <i class="bi bi-search"></i>
+        </span>
+        <input type="text"
+               id="{{ searchId }}"
+               class="form-control"
+               placeholder="{{ 'datatable.search.placeholder'|trans({}, 'SigmasoftDataTable')|default('Rechercher...') }}"
+               value="{{ this.searchInput }}"
+               data-model="searchInput"
+               data-action="input->live#action:1000"
+               data-live-action-param="search"
+               aria-label="{{ 'datatable.search.aria_label'|trans({}, 'SigmasoftDataTable')|default('Rechercher dans le tableau') }}">
+        {% if this.searchInput %}
+            <button class="btn btn-outline-secondary"
+                    data-action="live#action"
+                    data-live-action-param="clearSearch"
+                    type="button"
+                    title="{{ 'datatable.search.clear'|trans({}, 'SigmasoftDataTable')|default('Effacer la recherche') }}">
+                <i class="bi bi-x-lg"></i>
+                <span class="visually-hidden">{{ 'datatable.search.clear'|trans({}, 'SigmasoftDataTable')|default('Effacer') }}</span>
+            </button>
+        {% endif %}
+    </div>
+</div>

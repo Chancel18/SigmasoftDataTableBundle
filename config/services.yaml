@@ -37,6 +37,7 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@knp_paginator'
             - '@logger'
+            - '@?event_dispatcher'
         tags:
             - { name: 'sigmasoft_datatable.data_provider' }
 
@@ -77,6 +78,7 @@ services:
             - '@validator'
             - '@?security.helper'
             - '@logger'
+            - '@?event_dispatcher'
 
     # Factory
     Sigmasoft\DataTableBundle\Factory\DataTableFactory:
@@ -110,6 +112,12 @@ services:
         tags:
             - { name: 'sigmasoft_datatable.field_renderer' }
 
+    Sigmasoft\DataTableBundle\InlineEdit\Renderer\NumberFieldRenderer:
+        arguments:
+            - '@property_accessor'
+        tags:
+            - { name: 'sigmasoft_datatable.field_renderer' }
+
     # Field Renderer Registry
     Sigmasoft\DataTableBundle\InlineEdit\Renderer\FieldRendererRegistry:
         arguments:
@@ -129,3 +137,11 @@ services:
             - '%sigmasoft_data_table.config%'
         tags:
             - { name: 'maker.command' }
+
+    # Install Config Command
+    Sigmasoft\DataTableBundle\Command\InstallConfigCommand:
+        arguments:
+            - '@kernel'
+            - '@filesystem'
+        tags:
+            - { name: 'console.command' }

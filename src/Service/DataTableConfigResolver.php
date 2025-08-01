@@ -14,10 +14,16 @@ class DataTableConfigResolver
 {
     private ParameterBagInterface $parameterBag;
     private array $registeredConfigurations = [];
+    private array $bundleConfig = [];
     
     public function __construct(ParameterBagInterface $parameterBag)
     {
         $this->parameterBag = $parameterBag;
+        
+        // Charger la configuration du bundle si elle existe
+        if ($this->parameterBag->has('sigmasoft_data_table.config')) {
+            $this->bundleConfig = $this->parameterBag->get('sigmasoft_data_table.config');
+        }
     }
     
     public function registerConfiguration(string $entity, DataTableConfigurationInterface $configuration): void
@@ -75,6 +81,12 @@ class DataTableConfigResolver
     
     public function getGlobalDefaults(): array
     {
+        // D'abord, vérifier la configuration du bundle
+        if (!empty($this->bundleConfig['defaults'])) {
+            return $this->bundleConfig['defaults'];
+        }
+        
+        // Ensuite, vérifier le fichier global.yaml
         $projectDir = $this->parameterBag->get('kernel.project_dir');
         $globalPath = sprintf('%s/config/datatable/global.yaml', $projectDir);
         

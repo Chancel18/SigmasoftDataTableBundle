@@ -51,6 +51,16 @@ class PostInstallSubscriber implements EventSubscriberInterface
     private function checkAndCopyTemplates(): void
     {
         $projectDir = $this->kernel->getProjectDir();
+        
+        // 1. Copie des templates
+        $this->copyTemplatesIfNeeded($projectDir);
+        
+        // 2. Copie de la configuration
+        $this->copyConfigIfNeeded($projectDir);
+    }
+    
+    private function copyTemplatesIfNeeded(string $projectDir): void
+    {
         $targetDir = $projectDir . '/templates/bundles/SigmasoftDataTableBundle';
         
         // Si les templates existent déjà, on ne fait rien
@@ -75,6 +85,39 @@ class PostInstallSubscriber implements EventSubscriberInterface
             
             // Copier les templates
             $this->filesystem->mirror($sourceDir, $targetDir, null, ['override' => false]);
+            
+        } catch (\Exception $e) {
+            // En cas d'erreur, on ne fait rien pour ne pas bloquer l'application
+        }
+    }
+    
+    private function copyConfigIfNeeded(string $projectDir): void
+    {
+        $targetConfig = $projectDir . '/config/packages/sigmasoft_data_table.yaml';
+        
+        // Si le fichier de configuration existe déjà, on ne fait rien
+        if (file_exists($targetConfig)) {
+            return;
+        }
+        
+        // Trouver le fichier source de configuration
+        $reflection = new \ReflectionClass(\Sigmasoft\DataTableBundle\SigmasoftDataTableBundle::class);
+        $bundleDir = dirname($reflection->getFileName());
+        $sourceConfig = $bundleDir . '/config/install/sigmasoft_data_table.yaml';
+        
+        if (!file_exists($sourceConfig)) {
+            return;
+        }
+        
+        try {
+            // Créer le répertoire cible si nécessaire
+            $targetDir = dirname($targetConfig);
+            if (!is_dir($targetDir)) {
+                $this->filesystem->mkdir($targetDir);
+            }
+            
+            // Copier le fichier de configuration
+            $this->filesystem->copy($sourceConfig, $targetConfig);
             
         } catch (\Exception $e) {
             // En cas d'erreur, on ne fait rien pour ne pas bloquer l'application

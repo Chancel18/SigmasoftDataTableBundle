@@ -30,8 +30,10 @@
       "Bash(grep:*)",
       "Bash(symfony new:*)",
       "Bash(xcopy:*)",
-      "Bash(./vendor/bin/phpunit:*)"
+      "Bash(./vendor/bin/phpunit:*)",
+      "Bash(.vendorbinphpunit --testdox)"
     ],
     "deny": []
-  }
+  },
+  "$schema": "https://json.schemastore.org/claude-code-settings.json"
 }

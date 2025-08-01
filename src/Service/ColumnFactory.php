@@ -10,6 +10,7 @@ use Sigmasoft\DataTableBundle\Column\ColumnInterface;
 use Sigmasoft\DataTableBundle\Column\DateColumn;
 use Sigmasoft\DataTableBundle\Column\EditableColumn;
 use Sigmasoft\DataTableBundle\Column\EditableColumnV2;
+use Sigmasoft\DataTableBundle\Column\NumberColumn;
 use Sigmasoft\DataTableBundle\Column\TextColumn;
 use Sigmasoft\DataTableBundle\Configuration\DataTableConfiguration;
 use Sigmasoft\DataTableBundle\Configuration\SerializableDataTableConfig;
@@ -39,6 +40,7 @@ class ColumnFactory
             TextColumn::class => new TextColumn($name, $propertyPath, $label, $sortable, $searchable, $options),
             DateColumn::class => new DateColumn($name, $propertyPath, $label, $sortable, $searchable, $options),
             BadgeColumn::class => new BadgeColumn($name, $propertyPath, $label, $sortable, $searchable, $options),
+            NumberColumn::class => new NumberColumn($name, $propertyPath, $label, $options),
             EditableColumn::class => new EditableColumn($name, $propertyPath, $label, $sortable, $searchable, $options),
             EditableColumnV2::class => new EditableColumnV2(
                 $name,

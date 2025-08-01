@@ -1,0 +1,28 @@
+{# 
+  Sélecteur du nombre d'éléments par page
+  Variables disponibles:
+  - config: Configuration de la DataTable
+  - this: Instance du LiveComponent
+#}
+
+{% set itemsPerPageId = 'datatable-items-per-page-' ~ random() %}
+{% set itemsPerPageOptions = config.getPaginationSizes()|default([5, 10, 25, 50, 100]) %}
+
+<div class="datatable-items-per-page d-flex align-items-center gap-2">
+    <label for="{{ itemsPerPageId }}" class="form-label mb-0 text-nowrap">
+        {{ 'datatable.items_per_page.label'|trans({}, 'SigmasoftDataTable')|default('Éléments par page:') }}
+    </label>
+    <select id="{{ itemsPerPageId }}" 
+            class="form-select form-select-sm"
+            data-model="itemsPerPageValue"
+            data-action="live#action"
+            data-live-action-param="changeItemsPerPage"
+            aria-label="{{ 'datatable.items_per_page.aria_label'|trans({}, 'SigmasoftDataTable')|default('Nombre d\'éléments par page') }}">
+        {% for option in itemsPerPageOptions %}
+            <option value="{{ option }}" 
+                    {% if this.itemsPerPageValue == option %}selected{% endif %}>
+                {{ option }}
+            </option>
+        {% endfor %}
+    </select>
+</div>

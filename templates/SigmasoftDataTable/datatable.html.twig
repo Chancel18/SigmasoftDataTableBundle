@@ -1,262 +1,254 @@
 {# 
-  SigmasoftDataTableBundle - Modern DataTable Template (Autonomous)
+  SigmasoftDataTableBundle - Modular DataTable Template
+  
+  Cette template est conçue pour être facilement personnalisable via des blocks Twig.
+  Chaque partie peut être surchargée individuellement dans vos propres templates.
+  
   Usage:
   {{ component('sigmasoft_datatable', { configuration: datatableConfig }) }}
+  
+  Pour personnaliser:
+  {% extends '@SigmasoftDataTable/datatable.html.twig' %}
+  {% block datatable_search %}
+      {# Votre propre implémentation de la recherche #}
+  {% endblock %}
 #}
-<div{{ attributes }} class="sigmasoft-datatable">
-    {% set config = this.getConfiguration() %}
-    {% set data = this.getData() %}
+
+{% set config = this.getConfiguration() %}
+{% set data = this.getData() %}
+{% set theme = config.getTheme()|default('bootstrap5') %}
+
+{# Conteneur principal avec classes personnalisables #}
+<div{{ attributes.defaults({
+    'class': 'sigmasoft-datatable sigmasoft-datatable--' ~ theme,
+    'data-entity': config.getEntityClass()|split('\\')|last|lower
+}) }}>
     
-    {# Autonomous card structure without external dependencies #}
-    <div class="card shadow-sm border-0 rounded-3">
-        {% if config.isSearchEnabled() or config.isPaginationEnabled() %}
-            <div class="card-header bg-transparent border-0 p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <!-- Search Input -->
-                    {% if config.isSearchEnabled() %}
-                        <div class="input-group input-group-joined input-group-solid w-25">
-                            <span class="input-group-text">
-                                <i class="bi bi-search"></i>
-                            </span>
-                            <input class="form-control ps-0"
-                                   placeholder="Rechercher..."
-                                   value="{{ this.searchInput }}"
-                                   data-model="searchInput"
-                                   data-action="input->live#action:1000"
-                                   data-live-action-param="search"
-                                   aria-label="Search">
-                            <button class="btn btn-success"
-                                    data-action="live#action"
-                                    data-live-action-param="clearSearch"
-                                    type="button">
-                                <i class="bi bi-x-lg"></i>
-                            </button>
+    {% block datatable_wrapper %}
+        {# Structure wrapper personnalisable selon le thème #}
+        {% if theme == 'bootstrap5' %}
+            <div class="card shadow-sm border-0 rounded-3">
+                {% block datatable_header_wrapper %}
+                    {% if block('datatable_header') is defined or config.isSearchEnabled() or config.isPaginationEnabled() %}
+                        <div class="card-header bg-transparent border-0 p-3">
+                            {% block datatable_header %}
+                                {{ block('datatable_toolbar') }}
+                            {% endblock %}
                         </div>
                     {% endif %}
+                {% endblock %}
 
-                    <!-- Items per page selector -->
+                {% block datatable_body_wrapper %}
+                    <div class="card-body p-0">
+                        {% block datatable_alerts %}
+                            {{ include('@SigmasoftDataTable/components/_alerts.html.twig') }}
+                        {% endblock %}
+                        
+                        {% block datatable_content %}
+                            {{ block('datatable_table') }}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block datatable_footer_wrapper %}
                     {% if config.isPaginationEnabled() %}
-                        <div class="d-flex align-items-center">
-                            <label for="items-per-page" class="form-label me-2 mb-0">Éléments par page:</label>
-                            <select id="items-per-page" 
-                                    class="form-select form-select-sm w-auto"
-                                    data-model="itemsPerPageValue"
-                                    data-action="live#action"
-                                    data-live-action-param="changeItemsPerPage">
-                                {% for option in [5, 10, 25, 50, 100] %}
-                                    <option value="{{ option }}" 
-                                            {% if this.itemsPerPageValue == option %}selected{% endif %}>
-                                        {{ option }}
-                                    </option>
-                                {% endfor %}
-                            </select>
+                        <div class="card-footer bg-transparent border-0 p-3">
+                            {% block datatable_footer %}
+                                {{ block('datatable_pagination') }}
+                            {% endblock %}
                         </div>
                     {% endif %}
-                </div>
+                {% endblock %}
             </div>
-        {% endif %}
-
-        <div class="card-body p-0">
-            <!-- Alert Messages -->
-            {% if this.showAlert %}
-                <div class="alert alert-{{ this.alertType == 'error' ? 'danger' : this.alertType }} alert-dismissible fade show m-3" role="alert">
-                    <i class="bi bi-{{ this.alertType == 'success' ? 'check-circle' : 'exclamation-triangle' }}"></i>
-                    {{ this.alertMessage }}
-                    <button type="button" 
-                            class="btn-close" 
-                            data-action="live#action"
-                            data-live-action-param="dismissAlert"
-                            aria-label="Close"></button>
-                </div>
-            {% endif %}
+        {% else %}
+            {# Structure simple pour autres thèmes #}
+            {% block datatable_header %}
+                {{ block('datatable_toolbar') }}
+            {% endblock %}
             
-            <!-- Debug Info -->
-            {% if app.debug %}
-                <div class="alert alert-info small m-3">
-                    <strong>Debug:</strong> Page {{ this.config.page }}/{{ data.getPageCount() }} | 
-                    {{ data.getTotalItemCount() }} éléments | 
-                    Recherche: "{{ this.config.searchQuery }}" | 
-                    Tri: {{ this.config.sortField }} {{ this.config.sortDirection }}
-                </div>
-            {% endif %}
+            {% block datatable_content %}
+                {{ block('datatable_table') }}
+            {% endblock %}
+            
+            {% block datatable_footer %}
+                {{ block('datatable_pagination') }}
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
 
-            <!-- Data Table -->
-            <div class="table-responsive">
-                <table class="{{ config.getTableClass() }}" data-loading="addClass(opacity-50)" style="width: auto; border-collapse: collapse;">
-                    <thead>
+    {# Toolbar avec recherche et contrôles #}
+    {% block datatable_toolbar %}
+        <div class="datatable-toolbar d-flex justify-content-between align-items-center flex-wrap gap-3">
+            {% block datatable_toolbar_start %}
+                <div class="datatable-toolbar__start d-flex align-items-center gap-3">
+                    {% block datatable_search %}
+                        {% if config.isSearchEnabled() %}
+                            {{ include('@SigmasoftDataTable/components/_search.html.twig') }}
+                        {% endif %}
+                    {% endblock %}
+                    
+                    {% block datatable_filters %}
+                        {# Emplacement pour des filtres personnalisés #}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block datatable_toolbar_end %}
+                <div class="datatable-toolbar__end d-flex align-items-center gap-3">
+                    {% block datatable_actions %}
+                        {# Emplacement pour des actions globales (export, etc.) #}
+                    {% endblock %}
+                    
+                    {% block datatable_items_per_page %}
+                        {% if config.isPaginationEnabled() %}
+                            {{ include('@SigmasoftDataTable/components/_items_per_page.html.twig') }}
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {# Table principale #}
+    {% block datatable_table %}
+        <div class="table-responsive">
+            <table class="{{ block('datatable_table_classes') }}" 
+                   data-loading="addClass(opacity-50)">
+                {% block datatable_thead %}
+                    <thead class="{{ block('datatable_thead_classes') }}">
                         <tr>
-                            {% for column in config.getColumns() %}
-                                <th class="{% if column.isSortable() %}sortable-header{% endif %}" style="white-space: nowrap; padding: 8px;">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <span>{{ column.getLabel() }}</span>
-                                        {% if column.isSortable() and config.isSortingEnabled() %}
-                                            <button type="button"
-                                                    class="btn btn-link btn-sm p-0 ms-2 sort-button"
-                                                    data-action="live#action"
-                                                    data-live-action-param="sort"
-                                                    data-live-field-param="{{ column.getName() }}"
-                                                    title="Trier par {{ column.getLabel() }}">
-                                                {% if this.config.sortField == column.getName() %}
-                                                    <i class="bi bi-sort-{{ this.config.sortDirection == 'asc' ? 'up' : 'down' }}"></i>
-                                                {% else %}
-                                                    <i class="bi bi-funnel"></i>
-                                                {% endif %}
-                                            </button>
-                                        {% endif %}
-                                    </div>
-                                </th>
-                            {% endfor %}
+                            {% block datatable_headers %}
+                                {% for column in config.getColumns() %}
+                                    {% block datatable_header_cell %}
+                                        {{ include('@SigmasoftDataTable/components/_header_cell.html.twig', {
+                                            'column': column,
+                                            'config': config,
+                                            'sortField': this.config.sortField,
+                                            'sortDirection': this.config.sortDirection
+                                        }) }}
+                                    {% endblock %}
+                                {% endfor %}
+                            {% endblock %}
                         </tr>
                     </thead>
-                    <tbody>
-                        {% for item in data %}
-                            <tr>
-                                {% for column in config.getColumns() %}
-                                    <td style="white-space: nowrap; padding: 8px;">
-                                        {% if column.getName() == 'actions' %}
-                                            {# Pour ActionColumn, on ne récupère pas de valeur de propriété #}
-                                            {{ this.renderColumn(column.getName(), null, item)|raw }}
-                                        {% else %}
-                                            {# Pour les autres colonnes, on récupère la valeur de la propriété #}
-                                            {% set fieldValue = attribute(item, column.getName()) %}
-                                            {{ this.renderColumn(column.getName(), fieldValue, item)|raw }}
-                                        {% endif %}
-                                    </td>
-                                {% endfor %}
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="{{ config.getColumns()|length }}" class="text-center text-muted py-4">
-                                    <i class="bi bi-inbox fs-2 d-block mb-2"></i>
-                                    <span>Aucune donnée trouvée</span>
-                                    {% if this.config.searchQuery %}
-                                        <br>
-                                        <small class="text-muted">
-                                            pour la recherche "{{ this.config.searchQuery }}"
-                                        </small>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                {% endblock %}
 
-        {% if config.isPaginationEnabled() %}
-            <div class="card-footer bg-transparent border-0 p-3">
-                <nav aria-label="Navigation des pages">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <!-- Results info -->
-                        <div class="text-muted small">
-                            {% set paginationData = data.getPaginationData() %}
-                            Affichage de {{ paginationData.firstItemNumber }} à {{ paginationData.lastItemNumber }} 
-                            sur {{ data.getTotalItemCount }} résultats
-                        </div>
-
-                        <!-- Pagination -->
-                        <ul class="pagination pagination-sm mb-0">
-                            <!-- Previous -->
-                            {% if data.getCurrentPageNumber() > 1 %}
-                                <li class="page-item">
-                                    <button class="page-link"
-                                            data-action="live#action"
-                                            data-live-action-param="changePage"
-                                            data-live-page-param="{{ data.getCurrentPageNumber() - 1 }}"
-                                            title="Page précédente">
-                                        <i class="bi bi-chevron-left"></i>
-                                    </button>
-                                </li>
-                            {% endif %}
-
-                            <!-- Page numbers -->
-                            {% set current = data.getCurrentPageNumber() %}
-                            {% set total = data.getPageCount() %}
-                            {% set range = 2 %}
-
-                            <!-- First page -->
-                            {% if current > range + 2 %}
-                                <li class="page-item">
-                                    <button class="page-link"
-                                            data-action="live#action"
-                                            data-live-action-param="changePage"
-                                            data-live-page-param="1">1</button>
-                                </li>
-                                {% if current > range + 3 %}
-                                    <li class="page-item disabled">
-                                        <span class="page-link">...</span>
-                                    </li>
-                                {% endif %}
-                            {% endif %}
-
-                            <!-- Pages around current -->
-                            {% for page in max(1, current - range)..min(total, current + range) %}
-                                <li class="page-item {% if page == current %}active{% endif %}">
-                                    <button class="page-link"
-                                            data-action="live#action"
-                                            data-live-action-param="changePage"
-                                            data-live-page-param="{{ page }}"
-                                            {% if page == current %}aria-current="page"{% endif %}>
-                                        {{ page }}
-                                    </button>
-                                </li>
+                {% block datatable_tbody %}
+                    <tbody class="{{ block('datatable_tbody_classes') }}">
+                        {% block datatable_rows %}
+                            {% for item in data %}
+                                {% block datatable_row %}
+                                    <tr class="{{ block('datatable_row_classes') }}" 
+                                        data-id="{{ attribute(item, 'id')|default('') }}">
+                                        {% block datatable_cells %}
+                                            {% for column in config.getColumns() %}
+                                                {% block datatable_cell %}
+                                                    {{ include('@SigmasoftDataTable/components/_body_cell.html.twig', {
+                                                        'column': column,
+                                                        'item': item,
+                                                        'component': this
+                                                    }) }}
+                                                {% endblock %}
+                                            {% endfor %}
+                                        {% endblock %}
+                                    </tr>
+                                {% endblock %}
+                            {% else %}
+                                {% block datatable_empty %}
+                                    <tr>
+                                        <td colspan="{{ config.getColumns()|length }}" 
+                                            class="text-center text-muted py-5">
+                                            {% block datatable_empty_content %}
+                                                <div class="datatable-empty">
+                                                    <i class="bi bi-inbox fs-1 d-block mb-3 opacity-50"></i>
+                                                    <p class="mb-1">{{ 'datatable.no_data'|trans({}, 'SigmasoftDataTable') }}</p>
+                                                    {% if this.config.searchQuery %}
+                                                        <small class="text-muted">
+                                                            {{ 'datatable.no_results_for'|trans({'%search%': this.config.searchQuery}, 'SigmasoftDataTable') }}
+                                                        </small>
+                                                    {% endif %}
+                                                </div>
+                                            {% endblock %}
+                                        </td>
+                                    </tr>
+                                {% endblock %}
                             {% endfor %}
+                        {% endblock %}
+                    </tbody>
+                {% endblock %}
 
-                            <!-- Last page -->
-                            {% if current < total - range - 1 %}
-                                {% if current < total - range - 2 %}
-                                    <li class="page-item disabled">
-                                        <span class="page-link">...</span>
-                                    </li>
-                                {% endif %}
-                                <li class="page-item">
-                                    <button class="page-link"
-                                            data-action="live#action"
-                                            data-live-action-param="changePage"
-                                            data-live-page-param="{{ total }}">{{ total }}</button>
-                                </li>
-                            {% endif %}
+                {% block datatable_tfoot %}
+                    {# Optionnel : pied de table pour totaux, etc. #}
+                {% endblock %}
+            </table>
+        </div>
+    {% endblock %}
 
-                            <!-- Next -->
-                            {% if data.getCurrentPageNumber() < data.getPageCount() %}
-                                <li class="page-item">
-                                    <button class="page-link"
-                                            data-action="live#action"
-                                            data-live-action-param="changePage"
-                                            data-live-page-param="{{ data.getCurrentPageNumber() + 1 }}"
-                                            title="Page suivante">
-                                        <i class="bi bi-chevron-right"></i>
-                                    </button>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+    {# Pagination #}
+    {% block datatable_pagination %}
+        {% if config.isPaginationEnabled() and data.getPageCount() > 1 %}
+            {{ include('@SigmasoftDataTable/components/_pagination.html.twig', {
+                'data': data
+            }) }}
         {% endif %}
-    </div>
+    {% endblock %}
 
-    <style>
-    .sigmasoft-datatable .sortable-header {
-        cursor: pointer;
-        user-select: none;
-    }
+    {# Styles personnalisables #}
+    {% block datatable_styles %}
+        <style>
+            {% block datatable_custom_styles %}
+                .sigmasoft-datatable {
+                    {% block datatable_container_styles %}
+                    {% endblock %}
+                }
 
-    .sigmasoft-datatable .sort-button {
-        color: var(--bs-gray-600);
-        border: none !important;
-    }
+                .sigmasoft-datatable .sortable-header {
+                    cursor: pointer;
+                    user-select: none;
+                }
 
-    .sigmasoft-datatable .sort-button:hover {
-        color: var(--bs-primary);
-    }
+                .sigmasoft-datatable .sort-button {
+                    transition: color 0.2s ease;
+                }
 
-    .sigmasoft-datatable .table td {
-        vertical-align: middle;
-    }
+                .sigmasoft-datatable [data-loading] {
+                    transition: opacity 0.2s ease;
+                }
 
-    .sigmasoft-datatable [data-loading] {
-        transition: opacity 0.2s ease;
-    }
-    </style>
+                {% block datatable_theme_styles %}
+                    {% if theme == 'bootstrap5' %}
+                        .sigmasoft-datatable--bootstrap5 .sort-button {
+                            color: var(--bs-gray-600);
+                            border: none;
+                            background: none;
+                            padding: 0.25rem;
+                        }
+
+                        .sigmasoft-datatable--bootstrap5 .sort-button:hover {
+                            color: var(--bs-primary);
+                        }
+
+                        .sigmasoft-datatable--bootstrap5 .table > :not(caption) > * > * {
+                            vertical-align: middle;
+                        }
+                    {% endif %}
+                {% endblock %}
+
+                {% block datatable_additional_styles %}
+                    {# Pour des styles additionnels #}
+                {% endblock %}
+            {% endblock %}
+        </style>
+    {% endblock %}
+
+    {# Scripts personnalisables #}
+    {% block datatable_scripts %}
+        {# Pour des scripts additionnels si nécessaire #}
+    {% endblock %}
 </div>
+
+{# Définition des classes par défaut - peuvent être surchargées #}
+{% block datatable_table_classes %}{{ config.getTableClass() }}{% endblock %}
+{% block datatable_thead_classes %}{% endblock %}
+{% block datatable_tbody_classes %}{% endblock %}
+{% block datatable_row_classes %}{% endblock %}

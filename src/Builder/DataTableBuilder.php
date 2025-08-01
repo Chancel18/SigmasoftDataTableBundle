@@ -20,6 +20,7 @@ use Sigmasoft\DataTableBundle\Column\ActionColumn;
 use Sigmasoft\DataTableBundle\Column\BadgeColumn;
 use Sigmasoft\DataTableBundle\Column\ColumnInterface;
 use Sigmasoft\DataTableBundle\Column\DateColumn;
+use Sigmasoft\DataTableBundle\Column\NumberColumn;
 use Sigmasoft\DataTableBundle\Column\TextColumn;
 use Sigmasoft\DataTableBundle\Configuration\DataTableConfiguration;
 use Sigmasoft\DataTableBundle\Service\DataTableConfigResolver;
@@ -36,6 +37,30 @@ final class DataTableBuilder
     public function createDataTable(string $entityClass): DataTableConfiguration
     {
         $config = new DataTableConfiguration($entityClass);
+        
+        // Appliquer les configurations par défaut du bundle
+        $defaults = $this->configResolver->getGlobalDefaults();
+        if (!empty($defaults)) {
+            if (isset($defaults['items_per_page'])) {
+                $config->setItemsPerPage($defaults['items_per_page']);
+            }
+            if (isset($defaults['enable_search'])) {
+                $config->enableSearch($defaults['enable_search']);
+            }
+            if (isset($defaults['enable_pagination'])) {
+                $config->enablePagination($defaults['enable_pagination']);
+            }
+            if (isset($defaults['enable_sorting'])) {
+                $config->enableSorting($defaults['enable_sorting']);
+            }
+            if (isset($defaults['table_class'])) {
+                $config->setTableClass($defaults['table_class']);
+            }
+            if (isset($defaults['date_format'])) {
+                $config->setDateFormat($defaults['date_format']);
+            }
+        }
+        
         return $config;
     }
     
@@ -172,6 +197,23 @@ final class DataTableBuilder
             $label,
             $options['sortable'] ?? true,
             $options['searchable'] ?? false,
+            $options
+        );
+
+        return $config->addColumn($column);
+    }
+
+    public function addNumberColumn(
+        DataTableConfiguration $config,
+        string $name,
+        string $propertyPath = null,
+        string $label = '',
+        array $options = []
+    ): DataTableConfiguration {
+        $column = new NumberColumn(
+            $name,
+            $propertyPath ?? $name,
+            $label,
             $options
         );
 

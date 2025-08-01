@@ -1,0 +1,55 @@
+# Traductions françaises pour SigmasoftDataTableBundle
+
+datatable:
+    # Recherche
+    search:
+        placeholder: "Rechercher..."
+        aria_label: "Rechercher dans le tableau"
+        clear: "Effacer la recherche"
+    
+    # Pagination
+    pagination:
+        aria_label: "Navigation par page"
+        info: "Affichage de %first% à %last% sur %total% résultats"
+        no_results: "Aucun résultat"
+        first: "Première page"
+        previous: "Page précédente"
+        previous_short: "Précédent"
+        next: "Page suivante"
+        next_short: "Suivant"
+        last: "Dernière page"
+    
+    # Éléments par page
+    items_per_page:
+        label: "Éléments par page:"
+        aria_label: "Nombre d'éléments par page"
+    
+    # Tri
+    sort:
+        by: "Trier par %field%"
+        current: "Tri actuel: %direction%"
+        asc: "croissant"
+        desc: "décroissant"
+    
+    # Messages
+    no_data: "Aucune donnée disponible"
+    no_results_for: "Aucun résultat pour \"%search%\""
+    loading: "Chargement..."
+    
+    # Alertes
+    alert:
+        close: "Fermer"
+    
+    # Actions
+    actions:
+        show: "Voir"
+        edit: "Modifier"
+        delete: "Supprimer"
+        confirm_delete: "Êtes-vous sûr de vouloir supprimer cet élément ?"
+    
+    # Export
+    export:
+        button: "Exporter"
+        csv: "CSV"
+        excel: "Excel"
+        pdf: "PDF"

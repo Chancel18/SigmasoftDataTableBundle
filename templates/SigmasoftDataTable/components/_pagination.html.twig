@@ -1,0 +1,147 @@
+{# 
+  Composant de pagination pour DataTable
+  Variables disponibles:
+  - data: Données paginées (PaginationInterface)
+  - this: Instance du LiveComponent (optionnel)
+#}
+
+{% set current = data.getCurrentPageNumber() %}
+{% set total = data.getPageCount() %}
+{% set paginationData = data.getPaginationData() %}
+
+<nav aria-label="{{ 'datatable.pagination.aria_label'|trans({}, 'SigmasoftDataTable')|default('Navigation par page') }}" 
+     class="datatable-pagination">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        {# Informations sur les résultats #}
+        <div class="datatable-pagination__info text-muted small">
+            {% if data.getTotalItemCount() > 0 %}
+                {{ 'datatable.pagination.info'|trans({
+                    '%first%': paginationData.firstItemNumber,
+                    '%last%': paginationData.lastItemNumber,
+                    '%total%': data.getTotalItemCount()
+                }, 'SigmasoftDataTable')|default('Affichage de ' ~ paginationData.firstItemNumber ~ ' à ' ~ paginationData.lastItemNumber ~ ' sur ' ~ data.getTotalItemCount() ~ ' résultats') }}
+            {% else %}
+                {{ 'datatable.pagination.no_results'|trans({}, 'SigmasoftDataTable')|default('Aucun résultat') }}
+            {% endif %}
+        </div>
+
+        {# Pagination #}
+        {% if total > 1 %}
+            <ul class="pagination pagination-sm mb-0">
+                {# Bouton Première page #}
+                {% if current > 1 %}
+                    <li class="page-item">
+                        <button class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="1"
+                                title="{{ 'datatable.pagination.first'|trans({}, 'SigmasoftDataTable')|default('Première page') }}"
+                                aria-label="{{ 'datatable.pagination.first'|trans({}, 'SigmasoftDataTable')|default('Aller à la première page') }}">
+                            <i class="bi bi-chevron-double-left"></i>
+                        </button>
+                    </li>
+                {% endif %}
+
+                {# Bouton Précédent #}
+                <li class="page-item{% if current <= 1 %} disabled{% endif %}">
+                    {% if current > 1 %}
+                        <button class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="{{ current - 1 }}"
+                                aria-label="{{ 'datatable.pagination.previous'|trans({}, 'SigmasoftDataTable')|default('Page précédente') }}">
+                            <i class="bi bi-chevron-left"></i>
+                            <span class="d-none d-sm-inline">{{ 'datatable.pagination.previous_short'|trans({}, 'SigmasoftDataTable')|default('Précédent') }}</span>
+                        </button>
+                    {% else %}
+                        <span class="page-link">
+                            <i class="bi bi-chevron-left"></i>
+                            <span class="d-none d-sm-inline">{{ 'datatable.pagination.previous_short'|trans({}, 'SigmasoftDataTable')|default('Précédent') }}</span>
+                        </span>
+                    {% endif %}
+                </li>
+
+                {# Numéros de page #}
+                {% set range = 2 %}
+                {% set start = max(1, current - range) %}
+                {% set end = min(total, current + range) %}
+
+                {# Première page si nécessaire #}
+                {% if start > 1 %}
+                    <li class="page-item">
+                        <button class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="1">1</button>
+                    </li>
+                    {% if start > 2 %}
+                        <li class="page-item disabled">
+                            <span class="page-link">…</span>
+                        </li>
+                    {% endif %}
+                {% endif %}
+
+                {# Pages autour de la page courante #}
+                {% for page in start..end %}
+                    <li class="page-item{% if page == current %} active{% endif %}">
+                        <button class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="{{ page }}"
+                                {% if page == current %}aria-current="page"{% endif %}>
+                            {{ page }}
+                        </button>
+                    </li>
+                {% endfor %}
+
+                {# Dernière page si nécessaire #}
+                {% if end < total %}
+                    {% if end < total - 1 %}
+                        <li class="page-item disabled">
+                            <span class="page-link">…</span>
+                        </li>
+                    {% endif %}
+                    <li class="page-item">
+                        <button class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="{{ total }}">{{ total }}</button>
+                    </li>
+                {% endif %}
+
+                {# Bouton Suivant #}
+                <li class="page-item{% if current >= total %} disabled{% endif %}">
+                    {% if current < total %}
+                        <button class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="{{ current + 1 }}"
+                                aria-label="{{ 'datatable.pagination.next'|trans({}, 'SigmasoftDataTable')|default('Page suivante') }}">
+                            <span class="d-none d-sm-inline">{{ 'datatable.pagination.next_short'|trans({}, 'SigmasoftDataTable')|default('Suivant') }}</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    {% else %}
+                        <span class="page-link">
+                            <span class="d-none d-sm-inline">{{ 'datatable.pagination.next_short'|trans({}, 'SigmasoftDataTable')|default('Suivant') }}</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </span>
+                    {% endif %}
+                </li>
+
+                {# Bouton Dernière page #}
+                {% if current < total %}
+                    <li class="page-item">
+                        <button class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="{{ total }}"
+                                title="{{ 'datatable.pagination.last'|trans({}, 'SigmasoftDataTable')|default('Dernière page') }}"
+                                aria-label="{{ 'datatable.pagination.last'|trans({}, 'SigmasoftDataTable')|default('Aller à la dernière page') }}">
+                            <i class="bi bi-chevron-double-right"></i>
+                        </button>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</nav>

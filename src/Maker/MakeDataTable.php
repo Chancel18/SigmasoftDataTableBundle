@@ -248,9 +248,9 @@ final class MakeDataTable extends AbstractMaker
         $typeMapping = $this->bundleConfig['maker']['default_column_types'] ?? [
             'string' => 'text',
             'text' => 'text',
-            'integer' => 'text',
-            'float' => 'text',
-            'decimal' => 'text',
+            'integer' => 'number',
+            'float' => 'number',
+            'decimal' => 'number',
             'boolean' => 'badge',
             'datetime' => 'date',
             'datetime_immutable' => 'date',
@@ -279,6 +279,17 @@ final class MakeDataTable extends AbstractMaker
 
         // Options spécifiques par type
         switch ($fieldType) {
+            case 'integer':
+                $options['format'] = 'integer';
+                $options['thousands_separator'] = ' ';
+                break;
+            case 'float':
+            case 'decimal':
+                $options['format'] = 'decimal';
+                $options['decimals'] = 2;
+                $options['thousands_separator'] = ' ';
+                $options['decimal_separator'] = ',';
+                break;
             case 'boolean':
                 $options['value_mapping'] = [
                     '1' => 'Oui',
@@ -377,6 +388,7 @@ final class MakeDataTable extends AbstractMaker
             'date' => 'DateColumn',
             'badge' => 'BadgeColumn',
             'action' => 'ActionColumn',
+            'number' => 'NumberColumn',
             default => 'TextColumn'
         };
     }
