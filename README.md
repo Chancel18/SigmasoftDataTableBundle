@@ -60,7 +60,7 @@
 ## 📦 Installation
 
 ```bash
-composer require sigmasoft/datatable-bundle:^3.0@beta
+composer require sigmasoft/datatable-bundle:v3.0.0-beta.1
 ```
 
 ### Configuration des bundles

@@ -117,7 +117,7 @@ $config->addColumn(NumberColumn::integer('quantity', 'quantity', 'Quantité'));
 ### Étape 1 : Mise à jour Composer
 
 ```bash
-composer require sigmasoft/datatable-bundle:^3.0@beta
+composer require sigmasoft/datatable-bundle:v3.0.0-beta.1
 ```
 
 ### Étape 2 : Mise à jour des Imports
