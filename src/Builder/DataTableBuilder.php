@@ -34,7 +34,7 @@ final class DataTableBuilder
     ) {
     }
 
-    public function createDataTable(string $entityClass): DataTableConfiguration
+    public function createDataTable(string $entityClass): self
     {
         $config = new DataTableConfiguration($entityClass);
         
@@ -45,13 +45,13 @@ final class DataTableBuilder
                 $config->setItemsPerPage($defaults['items_per_page']);
             }
             if (isset($defaults['enable_search'])) {
-                $config->enableSearch($defaults['enable_search']);
+                $config->setSearchEnabled($defaults['enable_search']);
             }
             if (isset($defaults['enable_pagination'])) {
-                $config->enablePagination($defaults['enable_pagination']);
+                $config->setPaginationEnabled($defaults['enable_pagination']);
             }
             if (isset($defaults['enable_sorting'])) {
-                $config->enableSorting($defaults['enable_sorting']);
+                $config->setSortingEnabled($defaults['enable_sorting']);
             }
             if (isset($defaults['table_class'])) {
                 $config->setTableClass($defaults['table_class']);
@@ -61,7 +61,8 @@ final class DataTableBuilder
             }
         }
         
-        return $config;
+        $this->currentConfig = $config;
+        return $this;
     }
     
     public function createDataTableFromConfig(string $entityClass): DataTableConfiguration
@@ -145,14 +146,14 @@ final class DataTableBuilder
         }
         return $this;
     }
-
+    
+    // Méthodes fluides pour l'ajout de colonnes
     public function addTextColumn(
-        DataTableConfiguration $config,
         string $name,
         string $propertyPath = null,
         string $label = '',
         array $options = []
-    ): DataTableConfiguration {
+    ): self {
         $column = new TextColumn(
             $name,
             $propertyPath ?? $name,
@@ -162,16 +163,18 @@ final class DataTableBuilder
             $options
         );
 
-        return $config->addColumn($column);
+        if (isset($this->currentConfig)) {
+            $this->currentConfig->addColumn($column);
+        }
+        return $this;
     }
 
     public function addDateColumn(
-        DataTableConfiguration $config,
         string $name,
         string $propertyPath = null,
         string $label = '',
         array $options = []
-    ): DataTableConfiguration {
+    ): self {
         $column = new DateColumn(
             $name,
             $propertyPath ?? $name,
@@ -181,16 +184,18 @@ final class DataTableBuilder
             $options
         );
 
-        return $config->addColumn($column);
+        if (isset($this->currentConfig)) {
+            $this->currentConfig->addColumn($column);
+        }
+        return $this;
     }
 
     public function addBadgeColumn(
-        DataTableConfiguration $config,
         string $name,
         string $propertyPath = null,
         string $label = '',
         array $options = []
-    ): DataTableConfiguration {
+    ): self {
         $column = new BadgeColumn(
             $name,
             $propertyPath ?? $name,
@@ -200,16 +205,18 @@ final class DataTableBuilder
             $options
         );
 
-        return $config->addColumn($column);
+        if (isset($this->currentConfig)) {
+            $this->currentConfig->addColumn($column);
+        }
+        return $this;
     }
 
     public function addNumberColumn(
-        DataTableConfiguration $config,
         string $name,
         string $propertyPath = null,
         string $label = '',
         array $options = []
-    ): DataTableConfiguration {
+    ): self {
         $column = new NumberColumn(
             $name,
             $propertyPath ?? $name,
@@ -217,27 +224,44 @@ final class DataTableBuilder
             $options
         );
 
-        return $config->addColumn($column);
+        if (isset($this->currentConfig)) {
+            $this->currentConfig->addColumn($column);
+        }
+        return $this;
     }
 
     public function addActionColumn(
-        DataTableConfiguration $config,
-        array $actions = [],
-        string $label = 'Actions'
-    ): DataTableConfiguration {
+        string $name = 'actions',
+        string $label = 'Actions',
+        array $actions = []
+    ): self {
         $column = new ActionColumn(
             $this->urlGenerator,
-            'actions',
+            $name,
             $label,
             $actions
         );
 
-        return $config->addColumn($column);
+        if (isset($this->currentConfig)) {
+            $this->currentConfig->addColumn($column);
+        }
+        return $this;
     }
 
-    public function addCustomColumn(DataTableConfiguration $config, ColumnInterface $column): DataTableConfiguration
+    public function addCustomColumn(ColumnInterface $column): self
     {
-        return $config->addColumn($column);
+        if (isset($this->currentConfig)) {
+            $this->currentConfig->addColumn($column);
+        }
+        return $this;
+    }
+    
+    /**
+     * Retourne la configuration construite
+     */
+    public function getConfiguration(): DataTableConfiguration
+    {
+        return $this->currentConfig;
     }
 
     // Méthodes de compatibilité avec l'ancienne API

@@ -116,7 +116,7 @@ class UserController extends AbstractController
     #[Route('/users', name: 'app_user_index')]
     public function index(): Response
     {
-        $config = $this->dataTableBuilder
+        $datatableConfig = $this->dataTableBuilder
             ->createDataTable(User::class)
             
             // Colonnes éditables avec validation
@@ -155,10 +155,11 @@ class UserController extends AbstractController
                 'delete' => ['route' => 'user_delete', 'icon' => 'bi bi-trash', 'confirm' => true]
             ])
             ->configureSearch(true, ['name', 'email'])
-            ->configurePagination(true, 10);
+            ->configurePagination(true, 10)
+            ->getConfiguration(); // Récupérer la configuration finale
 
         return $this->render('user/index.html.twig', [
-            'datatableConfig' => $config,
+            'datatableConfig' => $datatableConfig,
         ]);
     }
 }
