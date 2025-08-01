@@ -78,7 +78,50 @@ return [
 
 ### Configuration YAML
 
-Créez le fichier `config/packages/sigmasoft_data_table.yaml` :
+#### Installation automatique (recommandée)
+
+Après installation du bundle, utilisez la commande d'installation :
+
+```bash
+# Vider le cache Symfony d'abord
+php bin/console cache:clear
+
+# Installer la configuration
+php bin/console sigmasoft:datatable:install-config
+```
+
+Si la commande n'est pas trouvée, utilisez notre **script de diagnostic** :
+
+```bash
+# Script de diagnostic automatique
+php vendor/sigmasoft/datatable-bundle/bin/check-installation.php
+```
+
+**Ou vérifiez manuellement :**
+
+1. **Bundle enregistré** dans `config/bundles.php` :
+```php
+<?php
+return [
+    // ...
+    Sigmasoft\DataTableBundle\SigmasoftDataTableBundle::class => ['all' => true],
+];
+```
+
+2. **Vider le cache** après installation :
+```bash
+php bin/console cache:clear
+composer dump-autoload
+```
+
+3. **Lister les commandes** pour vérifier :
+```bash
+php bin/console list sigmasoft
+```
+
+#### Installation manuelle (alternative)
+
+Si la commande ne fonctionne pas, créez manuellement le fichier `config/packages/sigmasoft_data_table.yaml` :
 
 ```yaml
 sigmasoft_data_table:
@@ -87,6 +130,17 @@ sigmasoft_data_table:
         enable_search: true
         table_class: 'table table-striped table-hover'
         date_format: 'd/m/Y'
+        enable_pagination: true
+        enable_sorting: true
+    templates:
+        theme: 'bootstrap5'
+        override_path: null
+    caching:
+        enabled: true
+        ttl: 3600
+    maker:
+        default_actions: true
+        generate_templates: true
 ```
 
 ## 🚀 Utilisation Rapide

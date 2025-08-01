@@ -128,9 +128,41 @@ Utilisez la recherche/remplacement dans votre IDE :
 
 ### Étape 3 : Configuration
 
-1. Supprimez votre ancienne configuration
-2. Exécutez : `php bin/console sigmasoft:datatable:install-config`
-3. Personnalisez le fichier `config/packages/sigmasoft_data_table.yaml`
+1. **Vider le cache Symfony** :
+```bash
+php bin/console cache:clear
+composer dump-autoload
+```
+
+2. **Installation automatique** (si la commande est disponible) :
+```bash
+php bin/console sigmasoft:datatable:install-config
+```
+
+3. **Installation manuelle** (si la commande ne fonctionne pas) :
+
+Créez le fichier `config/packages/sigmasoft_data_table.yaml` :
+```yaml
+sigmasoft_data_table:
+    defaults:
+        items_per_page: 10
+        enable_search: true
+        table_class: 'table table-striped table-hover'
+        date_format: 'd/m/Y'
+        enable_pagination: true
+        enable_sorting: true
+    templates:
+        theme: 'bootstrap5'
+        override_path: null
+    caching:
+        enabled: true
+        ttl: 3600
+    maker:
+        default_actions: true
+        generate_templates: true
+```
+
+4. **Personnalisez** le fichier selon vos besoins
 
 ### Étape 4 : Services
 
