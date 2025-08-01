@@ -62,7 +62,7 @@
             "require": "6.4.*|7.0.*"
         },
         "branch-alias": {
-            "dev-master": "2.3-dev"
+            "dev-master": "3.0-dev"
         }
     },
     "config": {

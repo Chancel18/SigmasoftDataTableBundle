@@ -1,8 +1,12 @@
-# SigmasoftDataTableBundle
+# SigmasoftDataTableBundle (BETA)
 
 [![Latest Stable Version](https://poser.pugx.org/sigmasoft/datatable-bundle/v/stable)](https://packagist.org/packages/sigmasoft/datatable-bundle)
 [![License](https://poser.pugx.org/sigmasoft/datatable-bundle/license)](https://packagist.org/packages/sigmasoft/datatable-bundle)
 [![PHP Version Require](https://poser.pugx.org/sigmasoft/datatable-bundle/require/php)](https://packagist.org/packages/sigmasoft/datatable-bundle)
+
+> ⚠️ **VERSION BETA 3.0.0** - Cette version est en phase de test. Ne pas utiliser en production.
+> 
+> 📧 Merci de reporter tout problème à : support@sigmasoft-solution.com
 
 **SigmasoftDataTableBundle** est un bundle Symfony moderne et puissant conçu pour créer facilement des tables de données interactives avec des fonctionnalités avancées de tri, recherche, pagination, édition inline et export.
 
@@ -33,10 +37,30 @@
 - **Contrôle des permissions** par rôle et propriétaire
 - **Logging PSR-3** des erreurs et tentatives suspectes
 
+## 🆕 Nouveautés v3.0.0-beta
+
+### Configuration YAML Fonctionnelle
+- ✅ Prise en compte correcte de la configuration bundle
+- ✅ Application automatique des valeurs par défaut
+
+### Système d'Événements Complet
+- ✅ DataTableEvents : PRE_LOAD, POST_LOAD, PRE_QUERY
+- ✅ InlineEditEvents : PRE_EDIT, POST_EDIT, EDIT_ERROR
+
+### Templates Refactorisés
+- ✅ Architecture modulaire avec blocks Twig
+- ✅ Support de thèmes (Bootstrap 5, Minimal, Custom)
+- ✅ Composants réutilisables
+
+### Support des Colonnes Numériques
+- ✅ NumberColumn avec formatage localisé
+- ✅ 4 formats : integer, decimal, currency, percentage
+- ✅ Édition inline avec validation
+
 ## 📦 Installation
 
 ```bash
-composer require sigmasoft/datatable-bundle
+composer require sigmasoft/datatable-bundle:^3.0@beta
 ```
 
 ### Configuration des bundles

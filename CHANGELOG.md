@@ -5,6 +5,58 @@ Toutes les modifications importantes de ce projet seront documentées dans ce fi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet respecte le [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0-beta.1] - 2025-08-01
+
+> ⚠️ **VERSION BETA** - Phase de test avant release finale
+
+### 🚀 REFONTE MAJEURE - Version 3.0
+
+Cette version majeure apporte une refonte complète du bundle avec de nombreuses améliorations
+et nouvelles fonctionnalités. **Breaking changes** importants - consultez UPGRADE-3.0.md.
+
+#### Added
+- **Système d'événements complet** avec EventDispatcher Symfony
+  - DataTableEvents : PRE_LOAD, POST_LOAD, PRE_QUERY
+  - InlineEditEvents : PRE_EDIT, POST_EDIT, EDIT_ERROR
+  - Architecture extensible pour Event Listeners personnalisés
+- **Templates modulaires** avec architecture de blocks Twig
+  - Support de thèmes (Bootstrap 5, Minimal, Custom)
+  - Composants réutilisables (_search, _pagination, etc.)
+  - Accessibilité ARIA complète
+- **Support des colonnes numériques** (NumberColumn)
+  - 4 formats : integer, decimal, currency, percentage
+  - Formatage localisé (séparateurs français)
+  - Édition inline avec validation
+  - Factory methods statiques
+- **Installation automatisée**
+  - Commande `sigmasoft:datatable:install-config`
+  - Copie automatique de la configuration
+  - PostInstallSubscriber pour Composer
+- **Tests unitaires** complets (81%+ couverture)
+- **Documentation** mise à jour et cohérente avec le code
+
+#### Changed
+- **BREAKING**: Namespace principal : `App\SigmasoftDataTableBundle` → `Sigmasoft\DataTableBundle`
+- **BREAKING**: `EditableColumn` → `EditableColumnV2` (architecture modulaire)
+- **BREAKING**: `InlineEditService` → `InlineEditServiceV2`
+- Configuration YAML maintenant correctement prise en compte
+- DataTableConfigResolver charge la configuration depuis ParameterBag
+- DataTableBuilder applique les defaults du bundle
+- Templates complètement refactorisés avec blocks modulaires
+
+#### Fixed
+- Configuration YAML non appliquée aux DataTables
+- Système d'événements documenté mais non implémenté
+- Templates peu flexibles pour la personnalisation
+- Installation manuelle fastidieuse
+- Documentation incohérente avec le code
+
+#### Security
+- Validation renforcée de toutes les entrées utilisateur
+- Échappement HTML systématique
+- Protection CSRF sur les formulaires d'édition
+- Logging PSR-3 des tentatives suspectes
+
 ## [Unreleased] - 2025-07-31
 
 ### 🚨 RESTRUCTURATION MAJEURE - Standards Symfony et PSR-4
