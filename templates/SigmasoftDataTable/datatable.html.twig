@@ -329,7 +329,7 @@ class InlineEditManagerV2 {
     }
 
     isEditableField(element) {
-        return element && element.classList.contains('editable-field');
+        return element && element.classList && element.classList.contains('editable-field');
     }
 
     scheduleUpdate(field) {
