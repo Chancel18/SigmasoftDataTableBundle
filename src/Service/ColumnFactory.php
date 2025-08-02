@@ -68,16 +68,65 @@ class ColumnFactory
         $fieldType = $options['field_type'] ?? EditableFieldConfiguration::FIELD_TYPE_TEXT;
         $config = EditableFieldConfiguration::create($fieldType);
 
+        // Propriétés de base
+        if (isset($options['field_required'])) {
+            $config = $config->required((bool) $options['field_required']);
+        }
+
+        if (isset($options['field_placeholder'])) {
+            $config = $config->placeholder($options['field_placeholder']);
+        }
+
+        if (isset($options['field_max_length'])) {
+            $config = $config->maxLength((int) $options['field_max_length']);
+        }
+
+        if (isset($options['field_min_length'])) {
+            $config = $config->minLength((int) $options['field_min_length']);
+        }
+
+        if (isset($options['field_pattern'])) {
+            $config = $config->pattern($options['field_pattern']);
+        }
+
+        if (isset($options['field_min'])) {
+            $config = $config->min($options['field_min']);
+        }
+
+        if (isset($options['field_max'])) {
+            $config = $config->max($options['field_max']);
+        }
+
+        if (isset($options['field_step'])) {
+            $config = $config->step($options['field_step']);
+        }
+
+        if (isset($options['field_readonly'])) {
+            $config = $config->readonly((bool) $options['field_readonly']);
+        }
+
+        if (isset($options['field_disabled'])) {
+            $config = $config->disabled((bool) $options['field_disabled']);
+        }
+
+        // Options spécifiques (pour select, radio, etc.)
         if (isset($options['field_options'])) {
-            $config->options($options['field_options']);
+            $config = $config->options($options['field_options']);
         }
 
+        // Règles de validation
         if (isset($options['validation_rules'])) {
-            $config->validationRules($options['validation_rules']);
+            $config = $config->validationRules($options['validation_rules']);
         }
 
+        // Classes CSS
+        if (isset($options['field_css_classes'])) {
+            $config = $config->cssClasses($options['field_css_classes']);
+        }
+
+        // Attributs de données
         if (isset($options['data_attributes'])) {
-            $config->dataAttributes($options['data_attributes']);
+            $config = $config->dataAttributes($options['data_attributes']);
         }
 
         return $config;

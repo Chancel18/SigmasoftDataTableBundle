@@ -28,10 +28,13 @@ final class EditableColumnV2 extends AbstractColumn
         array $options = [],
         ?FieldRendererRegistry $rendererRegistry = null
     ) {
-        parent::__construct($name, $propertyPath, $label, $sortable, $searchable, $options);
-        
         $this->fieldConfig = $fieldConfig ?: EditableFieldConfiguration::create();
         $this->rendererRegistry = $rendererRegistry ?: new FieldRendererRegistry();
+        
+        // Inclure la configuration du champ dans les options pour la sérialisation
+        $options = $this->mergeFieldConfigIntoOptions($options);
+        
+        parent::__construct($name, $propertyPath, $label, $sortable, $searchable, $options);
     }
 
     /**
@@ -104,72 +107,84 @@ final class EditableColumnV2 extends AbstractColumn
     public function required(bool $required = true): self
     {
         $this->fieldConfig = $this->fieldConfig->required($required);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function placeholder(string $placeholder): self
     {
         $this->fieldConfig = $this->fieldConfig->placeholder($placeholder);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function maxLength(int $maxLength): self
     {
         $this->fieldConfig = $this->fieldConfig->maxLength($maxLength);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function minLength(int $minLength): self
     {
         $this->fieldConfig = $this->fieldConfig->minLength($minLength);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function pattern(string $pattern): self
     {
         $this->fieldConfig = $this->fieldConfig->pattern($pattern);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function min(string $min): self
     {
         $this->fieldConfig = $this->fieldConfig->min($min);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function max(string $max): self
     {
         $this->fieldConfig = $this->fieldConfig->max($max);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function readonly(bool $readonly = true): self
     {
         $this->fieldConfig = $this->fieldConfig->readonly($readonly);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function disabled(bool $disabled = true): self
     {
         $this->fieldConfig = $this->fieldConfig->disabled($disabled);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function cssClasses(array $classes): self
     {
         $this->fieldConfig = $this->fieldConfig->cssClasses($classes);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function dataAttributes(array $attributes): self
     {
         $this->fieldConfig = $this->fieldConfig->dataAttributes($attributes);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
     public function validationRules(array $rules): self
     {
         $this->fieldConfig = $this->fieldConfig->validationRules($rules);
+        $this->updateOptionsFromFieldConfig();
         return $this;
     }
 
@@ -210,5 +225,81 @@ final class EditableColumnV2 extends AbstractColumn
     {
         $this->rendererRegistry = $registry;
         return $this;
+    }
+
+    /**
+     * Fusionne la configuration du champ dans les options pour la sérialisation
+     */
+    private function mergeFieldConfigIntoOptions(array $options): array
+    {
+        // Inclure le type de champ
+        $options['field_type'] = $this->fieldConfig->getFieldType();
+        
+        // Propriétés de base
+        $options['field_required'] = $this->fieldConfig->isRequired();
+        
+        if ($this->fieldConfig->getPlaceholder() !== null) {
+            $options['field_placeholder'] = $this->fieldConfig->getPlaceholder();
+        }
+        
+        if ($this->fieldConfig->getMaxLength() !== null) {
+            $options['field_max_length'] = $this->fieldConfig->getMaxLength();
+        }
+        
+        if ($this->fieldConfig->getMinLength() !== null) {
+            $options['field_min_length'] = $this->fieldConfig->getMinLength();
+        }
+        
+        if ($this->fieldConfig->getPattern() !== null) {
+            $options['field_pattern'] = $this->fieldConfig->getPattern();
+        }
+        
+        if ($this->fieldConfig->getMin() !== null) {
+            $options['field_min'] = $this->fieldConfig->getMin();
+        }
+        
+        if ($this->fieldConfig->getMax() !== null) {
+            $options['field_max'] = $this->fieldConfig->getMax();
+        }
+        
+        if ($this->fieldConfig->getStep() !== null) {
+            $options['field_step'] = $this->fieldConfig->getStep();
+        }
+        
+        $options['field_readonly'] = $this->fieldConfig->isReadonly();
+        $options['field_disabled'] = $this->fieldConfig->isDisabled();
+        
+        // Inclure les options du champ si elles existent
+        if ($this->fieldConfig->hasOptions()) {
+            $options['field_options'] = $this->fieldConfig->getOptions();
+        }
+        
+        // Inclure les règles de validation si elles existent
+        $validationRules = $this->fieldConfig->getValidationRules();
+        if (!empty($validationRules)) {
+            $options['validation_rules'] = $validationRules;
+        }
+        
+        // Inclure les classes CSS si elles existent
+        $cssClasses = $this->fieldConfig->getCssClasses();
+        if (!empty($cssClasses)) {
+            $options['field_css_classes'] = $cssClasses;
+        }
+        
+        // Inclure les attributs de données si ils existent
+        $dataAttributes = $this->fieldConfig->getDataAttributes();
+        if (!empty($dataAttributes)) {
+            $options['data_attributes'] = $dataAttributes;
+        }
+        
+        return $options;
+    }
+
+    /**
+     * Met à jour les options à partir de la configuration actuelle du champ
+     */
+    private function updateOptionsFromFieldConfig(): void
+    {
+        $this->options = $this->mergeFieldConfigIntoOptions($this->options);
     }
 }
