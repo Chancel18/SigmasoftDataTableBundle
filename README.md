@@ -128,19 +128,25 @@ sigmasoft_data_table:
     defaults:
         items_per_page: 10
         enable_search: true
-        table_class: 'table table-striped table-hover'
-        date_format: 'd/m/Y'
         enable_pagination: true
         enable_sorting: true
+        table_class: 'table table-striped table-hover'
+        date_format: 'd/m/Y'
+        pagination_sizes: [5, 10, 25, 50, 100]
     templates:
-        theme: 'bootstrap5'
-        override_path: null
+        datatable: '@SigmasoftDataTable/datatable.html.twig'
     caching:
-        enabled: true
+        enabled: false
         ttl: 3600
     maker:
-        default_actions: true
-        generate_templates: true
+        default_column_types:
+            string: 'text'
+            integer: 'number'
+            decimal: 'number'
+            boolean: 'badge'
+            datetime: 'date'
+        excluded_properties: ['password', 'plainPassword', 'salt', 'token']
+        auto_add_actions: true
 ```
 
 ## 🚀 Utilisation Rapide

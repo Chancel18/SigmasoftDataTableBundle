@@ -11,7 +11,6 @@ sigmasoft_data_table:
         table_class: 'table table-striped table-hover align-middle'  # Classes CSS Bootstrap 5
         date_format: 'd/m/Y'        # Format d'affichage des dates
         pagination_sizes: [5, 10, 25, 50, 100]  # Options du sélecteur de pagination
-        theme: 'bootstrap5'         # Thème par défaut (bootstrap5, minimal, custom)
     
     # Configuration des templates
     templates:
