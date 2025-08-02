@@ -31,9 +31,9 @@ final class DoctrineDataProvider implements DataProviderInterface
         // Déclencher l'événement PRE_QUERY
         if ($this->eventDispatcher) {
             $event = new DataTableQueryEvent($configuration->getEntityClass(), $queryBuilder);
-            $event->setSearchTerm($configuration->getSearchValue())
-                  ->setSortField($configuration->getSortBy())
-                  ->setSortDirection($configuration->getSortOrder())
+            $event->setSearchTerm($configuration->getSearchQuery())
+                  ->setSortField($configuration->getSortField())
+                  ->setSortDirection($configuration->getSortDirection())
                   ->setCurrentPage($configuration->getPage())
                   ->setItemsPerPage($configuration->getItemsPerPage());
             
