@@ -112,10 +112,10 @@
     {# Table principale #}
     {% block datatable_table %}
         <div class="table-responsive">
-            <table class="{{ block('datatable_table_classes') }}" 
+            <table class="{{ config.getTableClass() }}" 
                    data-loading="addClass(opacity-50)">
                 {% block datatable_thead %}
-                    <thead class="{{ block('datatable_thead_classes') }}">
+                    <thead>
                         <tr>
                             {% block datatable_headers %}
                                 {% for column in config.getColumns() %}
@@ -134,12 +134,11 @@
                 {% endblock %}
 
                 {% block datatable_tbody %}
-                    <tbody class="{{ block('datatable_tbody_classes') }}">
+                    <tbody>
                         {% block datatable_rows %}
                             {% for item in data %}
                                 {% block datatable_row %}
-                                    <tr class="{{ block('datatable_row_classes') }}" 
-                                        data-id="{{ attribute(item, 'id')|default('') }}">
+                                    <tr data-id="{{ attribute(item, 'id')|default('') }}">
                                         {% block datatable_cells %}
                                             {% for column in config.getColumns() %}
                                                 {% block datatable_cell %}
@@ -246,9 +245,3 @@
         {# Pour des scripts additionnels si nécessaire #}
     {% endblock %}
 </div>
-
-{# Définition des classes par défaut - peuvent être surchargées #}
-{% block datatable_table_classes %}{{ config.getTableClass() }}{% endblock %}
-{% block datatable_thead_classes %}{% endblock %}
-{% block datatable_tbody_classes %}{% endblock %}
-{% block datatable_row_classes %}{% endblock %}
