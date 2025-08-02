@@ -6,9 +6,9 @@
   - component: Instance du LiveComponent
 #}
 
-<td class="datatable-body-cell{% if column.getCssClass() %} {{ column.getCssClass() }}{% endif %}"
-    {% if column.getDataAttributes() %}
-        {% for attr, value in column.getDataAttributes() %}
+<td class="datatable-body-cell{% if column.getOption('cssClass') %} {{ column.getOption('cssClass') }}{% endif %}"
+    {% if column.getOption('dataAttributes') %}
+        {% for attr, value in column.getOption('dataAttributes') %}
             data-{{ attr }}="{{ value }}"
         {% endfor %}
     {% endif %}>

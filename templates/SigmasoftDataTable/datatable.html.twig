@@ -8,10 +8,10 @@
   {{ component('sigmasoft_datatable', { configuration: datatableConfig }) }}
   
   Pour personnaliser:
-  {% extends '@SigmasoftDataTable/datatable.html.twig' %}
-  {% block datatable_search %}
-      {# Votre propre implémentation de la recherche #}
-  {% endblock %}
+  - extends '@SigmasoftDataTable/datatable.html.twig'
+  - block datatable_search
+      Votre propre implémentation de la recherche
+  - endblock
 #}
 
 {% set config = this.getConfiguration() %}
